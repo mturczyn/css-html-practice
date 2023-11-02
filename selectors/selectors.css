@@ -1,0 +1,100 @@
+/* if we would switch order of two below attributes,
+red color would be overwritten by global style for
+the attribute.*/
+[data-type] {
+    color: rgb(95, 16, 16);
+    font-size: 2em;
+}
+
+[data-type='primary'] {
+    color: red;
+}
+
+#firstOfTypeExample {
+    border: 5px solid red;
+    padding: 5px;
+}
+
+#firstOfTypeExample p:first-of-type {
+    color: blue;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+* {
+    font-style: italic;
+}
+
+[href*='example.com'] {
+    text-decoration: none;
+}
+
+[href^='https:'] {
+    color: green;
+}
+
+[href$='.pl'] {
+    color: black;
+}
+
+div.bordered {
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+}
+
+ul li:nth-child(even) {
+    color: red;
+}
+
+ul li:nth-child(odd) {
+    color: green;
+}
+
+ul li::marker {
+    color: blue;
+}
+
+ul li::before {
+    color: goldenrod;
+    content: 'BFR||';
+}
+
+ul li::after {
+    color: goldenrod;
+    content: '||AFTR';
+}
+
+.top div {
+    padding-left: 2em;
+}
+
+.next-sibling-example * {
+    background-color: antiquewhite;
+    border: 1px solid black;
+    margin: 0;
+}
+
+.next-sibling-example * + * {
+    margin-top: 2em;
+}
+
+.subsequent-sibling-examle p ~ span {
+    color: red;
+}
+
+/* This will have more specifity than below rules. */
+.specifity-example > .specifity-example-child {
+    color: blue;
+}
+
+/* This will be overwritten by below rule. */
+.specifity-example > p {
+    font-weight: bold;
+    color: green;
+}
+
+.specifity-example > p {
+    font-weight: bold;
+    color: red;
+}

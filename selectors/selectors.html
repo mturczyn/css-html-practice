@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="selectors.css" />
+        <link rel="stylesheet" href="../styles.css" />
+        <script src="../index.js"></script>
+    </head>
+
+    <body>
+        <button onclick="goTo('../index.html')">Go to main page</button>
+        <p>
+            Italic style for font is set globally for this whole page with *
+            selector.
+        </p>
+        <p data-type="primary">
+            Paragraph with data-type attribute, which is used in CSS to color
+            this text.
+        </p>
+        <p data-type="sec">This is affected by [attribute-name] selector.</p>
+        <div id="firstOfTypeExample">
+            <p>First paragraph, which is affected by first-of-type</p>
+            <p>Second paragraph</p>
+        </div>
+        <br />
+        <div class="bordered">
+            <p>This is affected by selector href*='example.com'</p>
+            <p>Matches if attribute contains given text.</p>
+            <a href="http://example.com">http://example.com</a>
+        </div>
+        <div class="bordered">
+            <p>This is affected by selector href^='https'</p>
+            <p>Matches if attribute starts wtih given text.</p>
+            <a href="https://example.com">https://example.com</a>
+        </div>
+        <div class="bordered">
+            <p>This is affected by selector href$='.pl'</p>
+            <p>Matches if attribute ends with given text.</p>
+            <a href="http://example.pl">http://example.pl</a>
+        </div>
+        <p>
+            Below we have a list with styled children with pseudo-class
+            'nth-child'.
+        </p>
+        <div class="bordered">
+            <p>
+                Markers are colored with ::marker pseudo-element, and the are
+                golden text-parts added with ::after and ::before pseudo
+                elements.
+            </p>
+            <button onclick="appendListItem('list', true)">
+                Create list item
+            </button>
+            <button
+                onclick="document.getElementById('list').style.display = 'block'"
+            >
+                Show list
+            </button>
+            <button
+                onclick="document.getElementById('list').style.display = 'none'"
+            >
+                Hide list
+            </button>
+            <ul id="list">
+                <li>Item 1</li>
+                <li>Item 2</li>
+            </ul>
+        </div>
+        <h2>Descendant recursion</h2>
+        <p>
+            When using space between selectors, that means we will select
+            descendants of the first selector matching the latter. But
+            descendants will be searched recursively, so no matter how deep
+            descendant will be. For example, see below:
+        </p>
+        <p>
+            Below we have nested divs, only top one has class set, that indent
+            child divs, while each next div is child of other one. Result is
+            that child selector applies to all children elements recursively, no
+            matter how deep. So all divs are indented and those that are
+            children of other divs, indents add up.
+        </p>
+        <div class="top">
+            <div>
+                <p>1 level deep</p>
+                <div>
+                    <p>2 levels deep</p>
+                    <div>
+                        <p>3 levels deep</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1>Combinators</h1>
+        <h2>Next sibling combinator</h2>
+        <div class="bordered">
+            <p>Below we have example of next sibling comibnator:</p>
+            <p>
+                Margin is applied only to next sibling, so exlucing first one.
+                Other styles are applied to all children of the container.
+            </p>
+            <div class="bordered next-sibling-example">
+                <p>First paragraph</p>
+                <p>Second paragraph</p>
+            </div>
+        </div>
+        <h2>Subsequent-sibling</h2>
+        <div class="bordered">
+            <p>
+                The subsequent-sibling combinator (~) separates two selectors
+                and matches all instances of the second element that follow the
+                first element (not necessarily immediately) and share the same
+                parent element.
+            </p>
+            <code>p ~ span {color: red;}</code>
+            <div class="bordered subsequent-sibling-examle">
+                <span>This is first span.</span>
+                <p>Here's first paragraph.</p>
+                <span>This is second span after paragraph.</span>
+            </div>
+        </div>
+        <h2>Direct children combinator</h2>
+        <p>
+            Used with > character, limits matching children only to direct
+            descendants.
+        </p>
+        <h1>The cascade and specifity of the rules</h1>
+        <p>
+            CSS rules are calculated accordingly to specifity, if multiple rules
+            apply to the same element.
+        </p>
+        <div class="bordered specifity-example">
+            <p>This is first paragraph.</p>
+            <p class="specifity-example-child">
+                This is second paragraph - this paragraph has class set, which
+                makes its CSS selector more specific.
+            </p>
+            <p>This is third paragraph.</p>
+        </div>
+    </body>
+</html>
