@@ -7,4 +7,9 @@ button {
 
 button:hover {
     box-shadow: inset 0 0 8px #f9f8fc;
+    cursor: pointer;
+}
+
+.main-page-button {
+    display: block;
 }

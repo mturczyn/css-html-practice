@@ -98,3 +98,17 @@ ul li::after {
     font-weight: bold;
     color: red;
 }
+
+/* This is more specific than following 2 selectors-and-cascade,
+as it has greater cumulative score. */
+.another-specifity-example p.spec-example {
+    color: blue;
+}
+
+.another-specifity-example p {
+    color: lightgreen;
+}
+
+.another-specifity-example .spec-example {
+    color: darkgreen;
+}

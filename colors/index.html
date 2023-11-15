@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../index.js"></script>
+        <link href="colors.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+        <script>
+            function getHex(number) {
+                return number.toString(16).padStart(2, '0')
+            }
+
+            function getRevByteHex(number) {
+                return (255 - number).toString(16).padStart(2, '0')
+            }
+
+            function getRgba(r, g, b, a) {
+                return `#${getHex(r)}${getHex(g)}${getHex(b)}${getHex(a)}`
+            }
+
+            function getReversedColorRgba(r, g, b) {
+                return `#${getRevByteHex(r)}${getRevByteHex(g)}${getRevByteHex(
+                    b
+                )}`
+            }
+
+            function onChange() {
+                let el = document.getElementById('colorPreview')
+                let red = document.getElementById('rValue').value
+                let green = document.getElementById('gValue').value
+                let blue = document.getElementById('bValue').value
+                let alpha = document.getElementById('alphaValue').value
+                let backgroundColor = getRgba(
+                    Number(red),
+                    Number(green),
+                    Number(blue),
+                    Number(alpha)
+                )
+                let revBackgroundColor = getReversedColorRgba(
+                    Number(red),
+                    Number(green),
+                    Number(blue)
+                )
+                let backP = document.createElement('p')
+                backP.innerText = `Background ${backgroundColor.toUpperCase()}`
+                let frontP = document.createElement('p')
+                frontP.innerText = `Front color ${revBackgroundColor.toUpperCase()}`
+                el.style.backgroundColor = backgroundColor
+                el.style.color = revBackgroundColor
+                el.innerHTML = ''
+                el.appendChild(backP)
+                el.appendChild(frontP)
+            }
+        </script>
+    </head>
+    <body>
+        <button class="main-page-button" onclick="goTo('../index.html')">
+            Go to main page
+        </button>
+        <div>
+            <h1>RGB colors</h1>
+            <p>
+                Below sliders are used to set values for particular RGBA values
+                for background color of below element
+            </p>
+            <label for="rValue"
+                >Red
+                <input
+                    type="range"
+                    min="0"
+                    max="255"
+                    id="rValue"
+                    oninput="onChange()"
+            /></label>
+            <label
+                >Green
+                <input
+                    type="range"
+                    min="0"
+                    max="255"
+                    id="gValue"
+                    oninput="onChange()"
+            /></label>
+            <label
+                >Blue
+                <input
+                    type="range"
+                    min="0"
+                    max="255"
+                    id="bValue"
+                    oninput="onChange()"
+            /></label>
+            <label
+                >Alpha
+                <input
+                    type="range"
+                    min="0"
+                    max="255"
+                    id="alphaValue"
+                    oninput="onChange()"
+            /></label>
+            <div
+                style="
+                    font-weight: bold;
+                    line-height: 5rem;
+                    text-align: center;
+                    vertical-align: middle;
+                "
+                id="colorPreview"
+            >
+                COLOR PREVIEW
+            </div>
+        </div>
+        <script>
+            function onHslChange() {
+                let el = document.getElementById('hslColorPreview')
+                let hue = document.getElementById('hueValue').value
+                let saturation =
+                    document.getElementById('saturationValue').value
+                let lightness = document.getElementById('lightnessValue').value
+                let alpha = document.getElementById('alphaHslValue').value
+
+                let hslValue = `hsla(${hue}deg, ${saturation}%, ${lightness}%, ${alpha}%)`
+                el.style.backgroundColor = hslValue
+                el.innerText = ''
+                el.innerText = hslValue
+            }
+        </script>
+        <div>
+            <h1>HSL colors</h1>
+            <p>
+                Below sliders are used to set values for particular HSLA values
+                for background color of below element
+            </p>
+            <label
+                >Hue
+                <input
+                    type="range"
+                    min="0"
+                    max="360"
+                    id="hueValue"
+                    oninput="onHslChange()"
+            /></label>
+            <label
+                >Saturation
+                <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    id="saturationValue"
+                    oninput="onHslChange()"
+            /></label>
+            <label
+                >Lightness
+                <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    id="lightnessValue"
+                    oninput="onHslChange()"
+            /></label>
+            <label
+                >Alpha
+                <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    id="alphaHslValue"
+                    oninput="onHslChange()"
+            /></label>
+            <div
+                style="
+                    font-weight: bold;
+                    line-height: 5rem;
+                    text-align: center;
+                    vertical-align: middle;
+                "
+                id="hslColorPreview"
+            >
+                COLOR PREVIEW
+            </div>
+        </div>
+        <style>
+            div.color-keywords {
+                background-color: red;
+                font-weight: bold;
+            }
+            div.color-keywords * {
+                font-weight: bold;
+            }
+            .currentColor-keyword {
+                margin: 1rem 0;
+                border: 2px solid currentColor;
+                color: red;
+            }
+        </style>
+        <div>
+            <h1>Color keywords</h1>
+            <div class="color-keywords">
+                This is start of div which has backgroundcolor set to red
+                <p style="background-color: green">
+                    This is inner paragraph, which has background color to green
+                </p>
+                <p style="background-color: transparent">
+                    This is another inner paragraph with background set to
+                    <code>transparent</code> (keyword)
+                </p>
+            </div>
+            <div class="currentColor-keyword">
+                <h2>currentColor keyword</h2>
+                <p>
+                    This div has color set to red and also has 2px wide solid
+                    border, which has set its color to <code>currentColor</code>
+                </p>
+            </div>
+            <h2>System color keywords</h2>
+            <p style="background-color: Highlight">
+                This paragraph has set its background to system keyword
+                <code>Highlight</code>
+            </p>
+            <p style="background-color: Background">
+                This paragraph has set its background to system keyword
+                <code>Background</code>
+            </p>
+        </div>
+        <script>
+            onChange()
+            onHslChange()
+        </script>
+    </body>
+</html>

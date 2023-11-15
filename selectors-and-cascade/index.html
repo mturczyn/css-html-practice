@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="selectors.css" />
+        <link rel="stylesheet" href="selectors-and-cascade.css" />
         <link rel="stylesheet" href="../styles.css" />
         <script src="../index.js"></script>
     </head>
 
     <body>
-        <button onclick="goTo('../index.html')">Go to main page</button>
+        <button class="main-page-button" onclick="goTo('../index.html')">
+            Go to main page
+        </button>
         <p>
             Italic style for font is set globally for this whole page with *
             selector.
@@ -67,8 +69,8 @@
         </div>
         <h2>Descendant recursion</h2>
         <p>
-            When using space between selectors, that means we will select
-            descendants of the first selector matching the latter. But
+            When using space between selectors-and-cascade, that means we will
+            select descendants of the first selector matching the latter. But
             descendants will be searched recursively, so no matter how deep
             descendant will be. For example, see below:
         </p>
@@ -106,10 +108,10 @@
         <h2>Subsequent-sibling</h2>
         <div class="bordered">
             <p>
-                The subsequent-sibling combinator (~) separates two selectors
-                and matches all instances of the second element that follow the
-                first element (not necessarily immediately) and share the same
-                parent element.
+                The subsequent-sibling combinator (~) separates two
+                selectors-and-cascade and matches all instances of the second
+                element that follow the first element (not necessarily
+                immediately) and share the same parent element.
             </p>
             <code>p ~ span {color: red;}</code>
             <div class="bordered subsequent-sibling-examle">
@@ -135,6 +137,21 @@
                 makes its CSS selector more specific.
             </p>
             <p>This is third paragraph.</p>
+        </div>
+        <div class="bordered another-specifity-example">
+            <p class="spec-example">
+                This is paragraph which is influenced by selector with most
+                specifity
+            </p>
+            <span class="spec-example"
+                >This span has the same class as above paragraph, but is colored
+                differently, so above paragraph is styled by more specific
+                selector.</span
+            >
+            <p>
+                This paragraph has no class, and thus is influenced by other
+                selector than one above.
+            </p>
         </div>
     </body>
 </html>

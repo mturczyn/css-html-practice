@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="layout.css" />
+        <link rel="stylesheet" href="../styles.css" />
+        <script src="../index.js"></script>
+    </head>
+    <body>
+        <button class="main-page-button" onclick="goTo('../index.html')">
+            Go to main page
+        </button>
+        <div style="border: 3px solid red; height: 10rem">
+            <code>div</code> element has block display, which makes it take
+            whole width, such as this <code>div</code>.
+            <br />
+            Additionally, inline elements ignore setting height and width
+            properties.
+        </div>
+        <div class="div-inline">
+            This div has inline display which just takes needed space.
+        </div>
+        <div class="div-inline">Antoher inline div</div>
+
+        <h1>Flexbox and grid display</h1>
+        <p>
+            The <code>display</code> property also determines how an element's
+            children should behave. For example, setting the
+            <code>display</code> property to <code>display: flex</code> makes
+            the box a block-level box, and also converts its children to flex
+            items. This enables the flex properties that control alignment,
+            ordering and flow.
+        </p>
+        <p>Below we have div with speicfied <code>display: flex</code></p>
+
+        <label>
+            <input id="should-wrap" type="checkbox" role="switch" />
+            Should wrap</label
+        >
+        <p>Below is just plain flex box</p>
+        <div class="flexbox-example">
+            <p>This is first paragraph (block element) in flex div</p>
+            <p>This paragraph will be displayed next to first paragraph</p>
+            <div>This is div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+        </div>
+
+        <p>Below flex-box has <code>justify-content: space-between</code></p>
+        <div class="flexbox-example" style="justify-content: space-between">
+            <p>This is first paragraph (block element) in flex div</p>
+            <p>This paragraph will be displayed next to first paragraph</p>
+            <div>This is div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+        </div>
+
+        <p>Below flex-box has <code>align-items: center</code></p>
+        <div class="flexbox-example" style="align-items: center">
+            <p>This is first paragraph (block element) in flex div</p>
+            <p>This paragraph will be displayed next to first paragraph</p>
+            <div>This is div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+            <div>This is another div</div>
+        </div>
+
+        <h2>flex-grow, flex-shrink, flex-basis</h2>
+        <p>Plain flex box</p>
+        <div
+            style="
+                display: flex;
+                margin: 2px;
+                padding: 2px;
+                border: 1px solid black;
+            "
+        >
+            <div style="border: inherit; margin: inherit">item</div>
+            <div style="border: inherit; margin: inherit">item</div>
+            <div style="border: inherit; margin: inherit">item</div>
+        </div>
+        <p>
+            Flexbox with <code>flex: 1 0 auto</code> which is shorthand for
+            <code>flex-grow: 1; flex-shrink 0; flex-basis: auto</code>
+        </p>
+        <div
+            style="
+                display: flex;
+                margin: 2px;
+                padding: 2px;
+                border: 1px solid black;
+            "
+        >
+            <div style="flex: 1 0 auto; border: inherit; margin: inherit">
+                item
+            </div>
+            <div style="flex: 1 0 auto; border: inherit; margin: inherit">
+                item
+            </div>
+            <div style="flex: 1 0 auto; border: inherit; margin: inherit">
+                item
+            </div>
+        </div>
+
+        <script>
+            let shouldWrap = document.getElementById('should-wrap')
+            shouldWrap.onchange = wrap
+
+            function wrap(e) {
+                let flexBoxDivs = document.querySelectorAll('.flexbox-example')
+
+                if (!flexBoxDivs || !e) {
+                    return
+                }
+
+                flexBoxDivs.forEach((element) => {
+                    if (e.target.checked) {
+                        element.classList.add('flexbox-example-wrap')
+                    } else {
+                        element.classList.remove('flexbox-example-wrap')
+                    }
+                })
+            }
+        </script>
+    </body>
+</html>

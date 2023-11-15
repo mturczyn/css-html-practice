@@ -1,0 +1,24 @@
+div.div-inline {
+    display: inline;
+    border: 1px solid black;
+    margin: 1px;
+    padding: 10px;
+    line-height: 3;
+    height: 20rem;
+}
+
+div.flexbox-example * {
+    border: 2px solid black;
+    padding: 5px;
+}
+
+div.flexbox-example {
+    margin: 10px;
+    display: flex;
+    border: 2px solid green;
+    justify-content: space-between;
+}
+
+div.flexbox-example-wrap {
+    flex-wrap: wrap;
+}

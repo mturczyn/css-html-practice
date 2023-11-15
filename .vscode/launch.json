@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "file:///C:/Users/MT/source/repos/CssPractice/index.html",
+            "url": "file:///C:/Users/MT/source/repos/css-practice/index.html",
             "webRoot": "${workspaceFolder}"
         }
     ]
