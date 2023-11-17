@@ -22,6 +22,7 @@
         <div class="div-inline">Antoher inline div</div>
 
         <h1>Flexbox and grid display</h1>
+        <h2>Flex</h2>
         <p>
             The <code>display</code> property also determines how an element's
             children should behave. For example, setting the
@@ -37,67 +38,16 @@
             Should wrap</label
         >
         <p>Below is just plain flex box</p>
-        <div class="flexbox-example">
-            <p>This is first paragraph (block element) in flex div</p>
-            <p>This paragraph will be displayed next to first paragraph</p>
-            <div>This is div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-        </div>
+        <div class="flexbox-example"></div>
 
         <p>Below flex-box has <code>justify-content: space-between</code></p>
-        <div class="flexbox-example" style="justify-content: space-between">
-            <p>This is first paragraph (block element) in flex div</p>
-            <p>This paragraph will be displayed next to first paragraph</p>
-            <div>This is div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-        </div>
+        <div
+            class="flexbox-example"
+            style="justify-content: space-between"
+        ></div>
 
         <p>Below flex-box has <code>align-items: center</code></p>
-        <div class="flexbox-example" style="align-items: center">
-            <p>This is first paragraph (block element) in flex div</p>
-            <p>This paragraph will be displayed next to first paragraph</p>
-            <div>This is div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-            <div>This is another div</div>
-        </div>
+        <div class="flexbox-example" style="align-items: center"></div>
 
         <h2>flex-grow, flex-shrink, flex-basis</h2>
         <p>Plain flex box</p>
@@ -136,24 +86,209 @@
             </div>
         </div>
 
+        <h2>Grid</h2>
+
+        <div id="grid-example"></div>
+
+        <h2>Other layout methods</h2>
+
+        <h3><code>inline-block</code></h3>
+        <p>
+            Below is present <code>inline-block</code> layout, that causes
+            inline element to have it's margin and padding respected (see
+            bordered span below).
+        </p>
+        <div class="inline-block-example">
+            <p>
+                bla bla bla <span>this is span</span>
+                bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+                bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+                bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+                bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+                bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+                bla bla bla bla bla bla bla bla bla bla bla bla
+            </p>
+
+            <p>
+                bla bla bla <span>this is span</span>
+                bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+                bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+                bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+                bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+                bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+                bla bla bla bla bla bla bla bla bla bla bla bla
+            </p>
+        </div>
+
+        <h3><code>float</code></h3>
+
+        <div class="float-example">
+            <img src="../flowers.webp" />
+            <p>
+                The image has float property specified to <code>left</code>.
+                Specifying <code>float</code> property "takes out" the element
+                from its regular document flow, causing for example the text to
+                wrap around image element. This is very long, long, long, long,
+                long, long, long, long, long, long, long, long, long, long,
+                long, long, long, long, long, long, long, long, long, long,
+                long, long, long, long, long, long, long, long, long, long,
+                long, long, long, long, long, long, long, long, long, long,
+                long, long, long, long, long, long, long, long, long, long,
+                long, long, long, long, long, long, long, long, long, long,
+                long, long, long, long, long, long, long, long, long, long,
+                long, long, long, long, long, long, long, long, long, long,
+                long, long, long, long, long, long, long, long, long, long,
+                long, long, long, long, long, long, long, long, long, long,
+                long, long, long, long, long, long, long, long, long, long,
+                long, long text.
+            </p>
+        </div>
+
+        <h3>Multicolumn ul and ol</h3>
+        <p>
+            With help of <code>column-count</code> and
+            <code>column-gap</code> we can easily alter display behaviour of
+            lists, for example, below list has set
+            <code>column-width</code> which automatically adjusts number of
+            columns in response to viewport width:
+        </p>
+        <ul style="column-width: 10rem">
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+        </ul>
+        <p>
+            Here's example div with inner paragraphs using
+            <code>column-count</code> property.
+        </p>
+        <div style="column-count: 2">
+            <p>Some paragraph 1</p>
+            <p>
+                Some paragraph 2 and long, long, long, long, long, long, long,
+                long, long, long, long, long text.
+            </p>
+            <p>Some paragraph 3</p>
+            <p>Some paragraph 4</p>
+            <p>Some paragraph 5</p>
+        </div>
+
+        <h2><code>position</code></h2>
+        <div>
+            <article>
+                <h1>CSS Position Property</h1>
+                <p>
+                    Change the <code>position</code> style to see how the box
+                    behaves, both relative to its parent and the viewport. For
+                    <code>position: sticky</code> and
+                    <code>position: fixed</code>, make sure you scroll to see
+                    the effect.
+                </p>
+                <p>
+                    To help you see the changes, the box has a
+                    <code>top</code> and <code>left</code> value of
+                    <code>1.5rem</code>.
+                </p>
+                <div>
+                    <label>
+                        Change position value
+                        <select id="position-select">
+                            <option value="static">Static (default)</option>
+                            <option value="relative">Relative</option>
+                            <option value="absolute">Absolute</option>
+                            <option value="sticky">Sticky</option>
+                            <option value="fixed">Fixed</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="parent">
+                    <p>I am a sibling element.</p>
+                    <div class="box">Change my position value</div>
+                    <p>
+                        I am another sibling element so you can see how we
+                        reflow when the position value is changed
+                    </p>
+                    <p>
+                        Below is just some text to enable scroll - pick
+                        <code>sticky</code> position value and scroll to see the
+                        effect.
+                    </p>
+                    <p>Meaningless text</p>
+                    <p>Meaningless text</p>
+                    <p>Meaningless text</p>
+                    <p>Meaningless text</p>
+                    <p>Meaningless text</p>
+                    <p>Meaningless text</p>
+                    <p>Meaningless text</p>
+                    <p>Meaningless text</p>
+                    <p>Meaningless text</p>
+                </div>
+            </article>
+        </div>
+
         <script>
             let shouldWrap = document.getElementById('should-wrap')
             shouldWrap.onchange = wrap
+            const select = document.querySelector('select')
+
+            select.onchange = () => {
+                let box = document.querySelector('.box')
+                box.style.position = select.value
+            }
+
+            // let gridExampleDiv = document.getElementById('grid-example')
+            for (let i = 1; i <= 60; i++) {
+                createElementAndAppendById('div', `DIV ${i}`, 'grid-example')
+            }
+
+            changeFlexboxDivs((element) => {
+                createElementAndAppend(
+                    'p',
+                    'This is first paragraph (block element) in flex div',
+                    element
+                )
+                createElementAndAppend(
+                    'p',
+                    'This paragraph will be displayed next to first paragraph',
+                    element
+                )
+                createElementAndAppend('p', 'This is div', element)
+            })
+
+            changeFlexboxDivs((element) => {
+                for (let i = 1; i <= 20; i++) {
+                    createElementAndAppend('p', `Another div ${i}`, element)
+                }
+            })
 
             function wrap(e) {
-                let flexBoxDivs = document.querySelectorAll('.flexbox-example')
-
-                if (!flexBoxDivs || !e) {
+                if (!e) {
                     return
                 }
 
-                flexBoxDivs.forEach((element) => {
+                changeFlexboxDivs((element) => {
                     if (e.target.checked) {
                         element.classList.add('flexbox-example-wrap')
                     } else {
                         element.classList.remove('flexbox-example-wrap')
                     }
                 })
+            }
+
+            function changeFlexboxDivs(action) {
+                let flexBoxDivs = document.querySelectorAll('.flexbox-example')
+
+                if (!flexBoxDivs) {
+                    return
+                }
+
+                flexBoxDivs.forEach(action)
             }
         </script>
     </body>

@@ -4,7 +4,13 @@ function goTo(path) {
     window.location = path
 }
 
-function createElementAndAppend(tag, text, id, scrollToElement) {
+function createElementAndAppend(tag, text, element, scrollToElement) {
+    const newElement = createElement(tag, text)
+    element.appendChild(newElement)
+    scrollToElement && newElement.scrollIntoView()
+}
+
+function createElementAndAppendById(tag, text, id, scrollToElement) {
     const container = document.getElementById(id)
     const newElement = createElement(tag, text)
     container?.appendChild(newElement)
@@ -20,7 +26,7 @@ function createElement(tag, text) {
 
 function appendListItem(listId, scrollToElement) {
     const itemCount = document.getElementById(listId).children.length
-    createElementAndAppend(
+    createElementAndAppendById(
         'li',
         `item ${itemCount + 1}`,
         listId,
