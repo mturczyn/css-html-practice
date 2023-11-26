@@ -1,0 +1,84 @@
+.page {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.page > * {
+    padding: 1rem;
+}
+
+.sidebar {
+    background: rgba(100, 100, 100, 0.5);
+    outline: 1px solid black;
+    flex-grow: 1;
+    flex-basis: 12rem;
+}
+
+.content {
+    flex-basis: 0;
+    flex-grow: 2;
+    min-width: 70%;
+}
+
+/* Extrinsic sizes on this page simulate the small viewport for you */
+body {
+    min-height: unset;
+    padding: 1rem;
+    background: rgba(50, 50, 50, 0.5);
+    margin: 1rem auto;
+}
+
+.page {
+    background: white;
+    border: 1px solid black;
+}
+
+.container {
+    max-width: 10rem;
+    display: flex;
+    border: 2px solid red;
+    padding: 2px;
+}
+
+.container *,
+#flex-property-container * {
+    border: 1px solid black;
+    margin: 1px;
+}
+
+#flex-property-container {
+    display: flex;
+    border: 2px solid red;
+}
+
+.flex-property-contanier-initial * {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+}
+
+.flex-property-contanier-auto * {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+}
+
+.flex-property-contanier-one * {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+}
+
+#place-content-example {
+    min-height: 2rem;
+    border: 1px solid black;
+    padding: 1px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+#place-content-example * {
+    border: 1px solid black;
+}

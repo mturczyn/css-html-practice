@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="flexbox.css" />
+        <link rel="stylesheet" href="../../styles.css" />
+        <script src="../../index.js"></script>
+    </head>
+    <body>
+        <button class="main-page-button" onclick="goToMainPage()">
+            Go to main page
+        </button>
+        <button class="main-page-button" onclick="goToLayout()">
+            Go back to layout
+        </button>
+        <div class="page">
+            <main class="content">
+                <article>
+                    <p>
+                        This is an article of content that sits inline with a
+                        sidebar. Resize the browser to see how when there’s no
+                        enough room, the sidebar will stack on to a new line.
+                    </p>
+                </article>
+            </main>
+            <aside class="sidebar">
+                <p>This sidebar will stack where there is not enough room.</p>
+            </aside>
+        </div>
+        <p>Flex container display as row with no wrap as default.</p>
+
+        <p><code>flex-wrap: wrap</code></p>
+        <div class="container" style="flex-wrap: wrap">
+            <div>Item</div>
+            <div>Item</div>
+            <div>Item</div>
+            <div>Item</div>
+            <div>Item</div>
+            <div>Item</div>
+        </div>
+
+        <p><code>flex-direction: column</code></p>
+        <div class="container" style="flex-direction: column">
+            <div>Item</div>
+            <div>Item</div>
+            <div>Item</div>
+            <div>Item</div>
+            <div>Item</div>
+            <div>Item</div>
+        </div>
+
+        <p><code>flex-flow: column wrap</code></p>
+        <div class="container" style="flex-flow: column wrap; max-height: 4rem">
+            <div style="height: 1.5rem">Item</div>
+            <div style="height: 1.5rem">Item</div>
+            <div style="height: 1.5rem">Item</div>
+        </div>
+
+        <label>
+            Change flex property value for children, to behave differently.
+            <select id="flex-property-select">
+                <option value="initial">initial</option>
+                <option value="auto">auto</option>
+                <option value="one">1</option>
+            </select>
+        </label>
+
+        <div id="flex-property-container">
+            <div>Item</div>
+            <div>Item</div>
+            <div>Item</div>
+            <div>Item that is larger than the others</div>
+        </div>
+
+        <p>
+            Below is presented how we can adjust content within the flex
+            container. <code>Justifying</code> is aligning along main axis and
+            <code>align</code> aligns content along cross axis.
+        </p>
+        <div id="place-content-example">
+            <div>Item</div>
+            <div>Item</div>
+            <div>Item</div>
+            <div>Another item</div>
+        </div>
+
+        <script>
+            let flexPropSelect = document.getElementById('flex-property-select')
+            flexPropSelect.onchange = changeFlexProperties
+
+            function changeFlexProperties(e) {
+                let flexPropContainer = document.getElementById(
+                    'flex-property-container'
+                )
+                if (!flexPropContainer) return
+                console.log(e)
+
+                const classNamePrefix = 'flex-property-contanier-'
+
+                flexPropContainer.classList.remove(`${classNamePrefix}initial`)
+                flexPropContainer.classList.remove(`${classNamePrefix}auto`)
+                flexPropContainer.classList.remove(`${classNamePrefix}one`)
+
+                flexPropContainer.classList.add(
+                    `${classNamePrefix}${e.target.value}`
+                )
+            }
+        </script>
+    </body>
+</html>
