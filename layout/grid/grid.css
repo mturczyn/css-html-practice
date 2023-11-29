@@ -1,0 +1,64 @@
+#basic-grid-example {
+    display: grid;
+    border: 1px solid black;
+}
+
+#basic-grid-example *,
+#grid-with-rows-and-columns-example *,
+#grid-with-fit-content-example *,
+#grid-with-min-content-example *,
+#grid-with-max-content-example *,
+#fr-unit-example *,
+#repeat-example *,
+#repeat-auto-fill-example *,
+#repeat-auto-fit-example * {
+    margin: 1px;
+    border: 1px solid black;
+}
+
+#grid-with-rows-and-columns-example {
+    display: grid;
+    grid-template-columns: 5em 100px 30%;
+    grid-template-rows: 200px auto;
+    gap: 10px;
+}
+
+#grid-with-min-content-example {
+    display: grid;
+    grid-template-columns: min-content;
+}
+
+#grid-with-max-content-example {
+    display: grid;
+    grid-template-columns: max-content;
+}
+
+#grid-with-fit-content-example {
+    display: grid;
+    grid-template-columns: fit-content(4rem);
+}
+
+#grid-content-sizing {
+    border: 1px solid red;
+    padding: 1px;
+}
+
+#fr-unit-example {
+    display: grid;
+    grid-template-columns: 1fr 1fr 4fr;
+}
+
+#repeat-example {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr 2fr 3fr);
+}
+
+#repeat-auto-fill-example {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+}
+
+#repeat-auto-fit-example {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}

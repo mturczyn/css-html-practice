@@ -1,4 +1,5 @@
 const FLEXBOX = '/layout/flexbox/'
+const GRID = '/layout/grid/'
 const LAYOUT = '/layout/'
 const MAIN_PAGE = '/'
 const COLORS = '/colors/'
@@ -17,6 +18,10 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToGrid() {
+    goToPage(GRID)
 }
 
 function goToFlexBox() {
