@@ -57,7 +57,87 @@
         </p>
         <div id="repeat-auto-fill-example"></div>
         <h3><code>auto-fit</code></h3>
+        <p>
+            <code>auto-fit</code> expands items to fit the whole container grid.
+            Differently to <code>auto-fill</code>, it won't allow empty spaces
+            at the end of the row (along main axis), by collapsing additional
+            empty tracks (setting their width to 0).
+        </p>
         <div id="repeat-auto-fit-example"></div>
+        <h2>Placing elements along column with <code>grid-auto-flow</code></h2>
+        <div id="grid-auto-flow-example"></div>
+        <h2>Spaning multiple tracks (rows or columns)</h2>
+        <div id="spanning-tracks-example">
+            <div id="spanned-item">
+                I'm spanning ;) I am using
+                <br />
+                <code>grid-row-end: 2 span;</code>
+                <br />
+                <code>grid-column-end: 2 span;</code>
+            </div>
+        </div>
+
+        <h2>Dense packing items</h2>
+        <p>
+            Items are densely packed here thanks to
+            <code>grid-auto-flow: dense;</code>. Go to dev tools and remove it,
+            <code>Item 4</code> will move out of its position and will be placed
+            at the end.
+        </p>
+        <div id="dense-grid-example">
+            <div style="grid-row-end: 2 span">Item 1</div>
+            <div>Item 2</div>
+            <div style="grid-column-end: 2 span">Item 3</div>
+            <div>Item 4</div>
+        </div>
+
+        <h2>Other way of placing items</h2>
+        <p>
+            By using <code>grid-[column|row]-[start|end]</code> you can decide
+            where particular item starts and ends, for instance take a look at
+            first item <code>Item 1</code>. This way one can also achieve
+            stacking of items, if we force multiple elements to be placed at
+            same cell of a grid. Then display of those items can be controlled
+            with <code>z-index</code>
+        </p>
+        <div id="more-advanced-placing-items">
+            <div id="more-advanced-placing-items-item">
+                Item 1 - item that will be placed very differently from normal
+                automatic grid flow.
+            </div>
+            <div>Item 2</div>
+            <div>Item 3</div>
+            <div>Item 4</div>
+            <div>Item 5</div>
+            <div>Item 6</div>
+            <div>Item 7</div>
+            <div>Item 8</div>
+            <div>Item 9</div>
+        </div>
+
+        <h2>Negative line numbers</h2>
+        <p>
+            First item here is spanned using <code>grid-row-end: -1</code>.
+            Negative numbers denote line numbers from the end of the grid.
+        </p>
+        <div id="negative-line-numbers-example">
+            <div id="negative-line-numbers-example-item">SPANNED ITEM 0</div>
+        </div>
+        <p>
+            Below is the grid with item specified the same as above, but is
+            using <code>auto-fill</code> keyword to define column tracks. Thus,
+            number of columns/rows, and so number of lines, is dynamic, thus
+            <b>negative line numbers does not work</b>, because we have
+            implicitly created rows/columns. In such situation we can use
+            <code>grid-auto-rows</code> and <code>grid-auto-columns</code>
+            to control the size of columns and rows that are created implicitly.
+        </p>
+
+        <div id="negative-line-numbers-example-with-implcit-sizing">
+            <div id="negative-line-numbers-example-with-implcit-sizing-item">
+                SPANNED ITEM 0
+            </div>
+        </div>
 
         <script>
             function addItemsToContainer(containerId, count, content) {
@@ -73,6 +153,13 @@
                 }
             }
 
+            addItemsToContainer(
+                'negative-line-numbers-example-with-implcit-sizing',
+                6
+            )
+            addItemsToContainer('negative-line-numbers-example', 6)
+            addItemsToContainer('spanning-tracks-example', 7)
+            addItemsToContainer('grid-auto-flow-example', 7)
             addItemsToContainer('repeat-auto-fit-example', 20)
             addItemsToContainer('repeat-auto-fill-example', 20)
             addItemsToContainer('repeat-example', 20)

@@ -3,6 +3,12 @@
     border: 1px solid black;
 }
 
+#negative-line-numbers-example-with-implcit-sizing > *,
+#negative-line-numbers-example > *,
+#more-advanced-placing-items > *,
+#dense-grid-example > *,
+#spanning-tracks-example > *,
+#grid-auto-flow-example *,
 #basic-grid-example *,
 #grid-with-rows-and-columns-example *,
 #grid-with-fit-content-example *,
@@ -61,4 +67,69 @@
 #repeat-auto-fit-example {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+#grid-auto-flow-example {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 2rem);
+}
+
+#spanning-tracks-example {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 2rem);
+}
+
+#spanned-item {
+    grid-row-end: 2 span;
+    grid-column-end: 2 span;
+    background-color: lightblue;
+}
+
+#dense-grid-example {
+    display: grid;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 2rem);
+}
+
+#more-advanced-placing-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 200px 100px);
+}
+
+#more-advanced-placing-items-item {
+    text-align: center;
+    font-weight: bold;
+    grid-column-start: 1; /* start at column line 1 */
+    grid-column-end: 4; /* end at column line 4 */
+    grid-row-start: 2; /*start at row line 2 */
+    grid-row-end: 4; /* end at row line 4 */
+}
+
+#negative-line-numbers-example {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 100px);
+}
+
+#negative-line-numbers-example-item {
+    grid-row: 1 / -1;
+    /* equivalent to: 
+    grid-row-start: 1;
+    grid-row-end: -1; */
+}
+
+#negative-line-numbers-example-with-implcit-sizing-item {
+    grid-row: 1 / -1;
+}
+
+#negative-line-numbers-example-with-implcit-sizing {
+    width: 600px;
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
