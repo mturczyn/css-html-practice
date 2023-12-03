@@ -139,6 +139,63 @@
             </div>
         </div>
 
+        <h2>Named grid lines</h2>
+        <p>
+            You can name grids, such as<br />
+            <code>
+                .container { <br />
+                display: grid; <br />
+                grid-template-columns: <br />
+                [main-start aside-start] 1fr <br />
+                [aside-end content-start] 2fr <br />
+                [content-end main-end]; /* a two column layout */ <br />
+                }
+            </code>
+        </p>
+        <div
+            style="
+                display: grid;
+                grid-template-columns:
+                    [main-start aside-start] 1fr
+                    [aside-end content-start] 2fr
+                    [content-end main-end];
+            "
+        >
+            <div
+                style="
+                    border: 1px solid black;
+                    grid-column: aside-start / aside-end;
+                    /* placed between line 1 and 2*/
+                "
+            >
+                Item 1
+            </div>
+            <div style="border: 1px solid black">Item 2</div>
+            <div
+                style="
+                    border: 1px solid black;
+                    grid-column: main-start / main-end;
+                    /* right across the layout from line 1 to line 3 */
+                "
+            >
+                Item 3
+            </div>
+            <div style="border: 1px solid black">Item 4</div>
+        </div>
+
+        <h2>Grid template areas</h2>
+        <p>
+            Naming areas of the grid and placing items onto those named areas is
+            a lovely technique as it allows you to see what your component looks
+            like right there in the CSS.
+        </p>
+        <div id="grid-template-areas-example">
+            <div id="grid-template-areas-example-header">Header item</div>
+            <div id="grid-template-areas-example-content">Content item</div>
+            <div id="grid-template-areas-example-sidebar">Sidebar item</div>
+            <div id="grid-template-areas-example-footer">Footer item</div>
+        </div>
+
         <script>
             function addItemsToContainer(containerId, count, content) {
                 fallbackContent = function (index) {

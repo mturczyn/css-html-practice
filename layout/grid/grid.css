@@ -3,6 +3,7 @@
     border: 1px solid black;
 }
 
+#grid-template-areas-example > *,
 #negative-line-numbers-example-with-implcit-sizing > *,
 #negative-line-numbers-example > *,
 #more-advanced-placing-items > *,
@@ -132,4 +133,25 @@
     border: 1px solid red;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+#grid-template-areas-example {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        'header header header header'
+        'sidebar content content content'
+        'sidebar footer footer footer';
+}
+
+#grid-template-areas-example-header {
+    grid-area: header;
+}
+
+#grid-template-areas-example-content {
+    grid-area: content;
+}
+
+#grid-template-areas-example-footer {
+    grid-area: footer;
 }
