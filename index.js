@@ -2,8 +2,12 @@ const FLEXBOX = '/layout/flexbox/'
 const GRID = '/layout/grid/'
 const LAYOUT = '/layout/'
 const MAIN_PAGE = '/'
+const TEST_AREA = '/test-area/'
 const COLORS = '/colors/'
+const SPACING = '/spacing/'
+const INHERITANCE = '/inheritance/'
 const INDEX = 'index.html'
+const LOGICAL_PROPERTIES = '/logicalProperties/'
 const BASE_DIR = 'C:/Users/MT/source/repos/css-practice'
 
 function goTo(path) {
@@ -18,6 +22,22 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToTestArea() {
+    goToPage(TEST_AREA)
+}
+
+function goToSpacing() {
+    goToPage(SPACING)
+}
+
+function goToInheritance() {
+    goToPage(INHERITANCE)
+}
+
+function goToLogicalProperties() {
+    goToPage(LOGICAL_PROPERTIES)
 }
 
 function goToGrid() {

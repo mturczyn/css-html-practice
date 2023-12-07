@@ -1,0 +1,22 @@
+#different-writing-mode {
+    writing-mode: vertical-lr;
+}
+
+#margin-block-start-example {
+    border: 1px solid black;
+    writing-mode: vertical-lr;
+}
+
+#margin-block-start-example p:first-child {
+    margin-top: 10px;
+    background-color: aliceblue;
+}
+
+#margin-block-start-example p:nth-child(2) {
+    margin-block-start: 50px;
+    background-color: aliceblue;
+}
+
+#margin-block-start-example p {
+    border: 1px solid black;
+}

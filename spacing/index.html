@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../index.js"></script>
+        <link href="./spacing.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <button class="main-page-button" onclick="goToMainPage()">
+            Go to main page
+        </button>
+
+        <h1><code>hr</code> and <code>br</code></h1>
+        <p>Here is a<br />breakline.</p>
+        Here is a
+        <hr />
+        <p><code>hr</code> element in action.</p>
+
+        <p>
+            <code>auto</code> margin in flex box - it pushes third element away
+            from its predecessors.
+        </p>
+        <div class="bordered" style="display: flex; max-inline-size: 250px">
+            <div class="bordered" style="max-inline-size: 50px">Item 1</div>
+            <div class="bordered" style="max-inline-size: 50px">Item 2</div>
+            <div
+                class="bordered"
+                style="margin-left: auto; max-inline-size: 50px"
+            >
+                Item 3 with auto margin
+            </div>
+        </div>
+
+        <div class="bordered" style="block-size: 200px">
+            <div
+                class="bordered"
+                style="
+                    margin-inline: auto;
+                    max-block-size: 100px;
+                    max-inline-size: 100px;
+                "
+            >
+                This is centered uisng <code>margin: 0 auto</code>
+            </div>
+        </div>
+        <h1 class="bordered" style="margin-bottom: 1rem">
+            This is heading with <code>margin-bottom</code>
+        </h1>
+        <p class="bordered" style="margin-top: 1rem">
+            This is paragraph with <code>margin-top</code> equal to bottom
+            margin of above header. After all margin is 1rem, as vertical margin
+            is collapsed.
+        </p>
+        <div style="position: relative">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+                diam justo, auctor nec tincidunt ac, convallis non massa.
+                Vivamus lacinia sagittis efficitur. Suspendisse posuere
+                pellentesque lectus vitae posuere. Nam facilisis ornare mauris,
+                ut lobortis ex tempor ut. Praesent pulvinar augue dignissim leo
+                aliquam, non lacinia dolor varius. Nullam eget consectetur
+                risus, in ullamcorper libero. Morbi et efficitur urna. Aenean
+                ornare gravida nibh et tempus. Vestibulum a velit et lorem
+                vestibulum dignissim. Vestibulum ante ipsum primis in faucibus
+                orci luctus et ultrices posuere cubilia curae; Integer aliquet
+                lacinia suscipit. Nunc in nibh finibus, elementum justo id,
+                euismod lectus.
+            </p>
+            <div
+                style="
+                    border: 2px solid black;
+                    position: absolute;
+                    inset-block: 1rem;
+                    inset-inline: 1rem;
+                    max-inline-size: 200px;
+                    max-block-size: 200px;
+                    font-weight: bolder;
+                    background-color: rgba(212, 152, 162, 0.8);
+                "
+            >
+                Absolutely positioned element
+            </div>
+        </div>
+    </body>
+</html>

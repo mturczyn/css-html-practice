@@ -13,3 +13,7 @@ button:hover {
 .main-page-button {
     display: block;
 }
+
+.bordered {
+    border: 1px solid black;
+}
