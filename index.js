@@ -7,7 +7,9 @@ const COLORS = '/colors/'
 const SPACING = '/spacing/'
 const INHERITANCE = '/inheritance/'
 const INDEX = 'index.html'
-const LOGICAL_PROPERTIES = '/logicalProperties/'
+const LOGICAL_PROPERTIES = '/logical-properties/'
+const PSEUDO_ELEMENTS = '/pseudo-elements/'
+const PSEUDO_CLASSES = '/pseudo-classes/'
 const BASE_DIR = 'C:/Users/MT/source/repos/css-practice'
 
 function goTo(path) {
@@ -22,6 +24,14 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToPseudoClasses() {
+    goToPage(PSEUDO_CLASSES)
+}
+
+function goToPseudoElements() {
+    goToPage(PSEUDO_ELEMENTS)
 }
 
 function goToTestArea() {

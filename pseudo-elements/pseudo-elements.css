@@ -1,0 +1,46 @@
+#first-letter-example::first-letter {
+    font-weight: bold;
+    color: blue;
+    font-size: 2rem;
+    background: lightpink;
+}
+
+#first-line-example::first-line {
+    font-weight: bold;
+    color: blue;
+    font-size: 2rem;
+    background: lightpink;
+}
+
+#before-and-after-example::before {
+    content: 'I AM THE PREFIX';
+    background: lightpink;
+}
+
+#before-and-after-example::after {
+    content: 'I AM THE SUFFIX';
+    background: lightpink;
+}
+
+button {
+    font-size: 1.2rem;
+    padding: 5px 15px;
+}
+
+dialog::backdrop {
+    background-color: salmon;
+}
+
+ol ::marker {
+    color: salmon;
+    font-size: 1.5em;
+}
+
+#selection-example::selection {
+    background-color: lightgreen;
+    color: darkred;
+}
+
+input::placeholder {
+    color: lightgreen;
+}

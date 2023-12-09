@@ -1,0 +1,27 @@
+#hover-example:hover {
+    background: salmon;
+}
+
+#active-example:active {
+    font-weight: bold;
+}
+
+.focusable:focus {
+    border: 10px dotted red;
+}
+
+.focusable:focus-within {
+    font-weight: bolder;
+}
+
+#smart-focusable:focus-visible {
+    outline: 5px dotted red;
+}
+
+a:link {
+    color: green;
+}
+
+a:visited {
+    color: red;
+}

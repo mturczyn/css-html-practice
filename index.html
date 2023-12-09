@@ -12,8 +12,21 @@
         <button onclick="goToInheritance()">Inheritance</button>
         <button onclick="goToColors()">Colors</button>
         <button onclick="goToLayout()">Layout</button>
-        <button onclick="goToLogicalProperties()">Logical Properties</button>
+        <button onclick="goToLogicalProperties()">Logical properties</button>
         <button onclick="goToSpacing()">Spacing</button>
+        <button onclick="goToPseudoElements()">Pseudo elements</button>
+        <button onclick="goToPseudoClasses()">Pseudo classes</button>
         <button onclick="goToTestArea()">Test area</button>
+
+        <script>
+            ;(async function sampleFunc(arg) {
+                let promise = new Promise((resolve, reject) => {
+                    setTimeout(() => resolve('MICHAL'), 1000)
+                })
+                let resolvedValue = await promise
+                console.log(`hello ${arg}`)
+                console.log(`Resolved value ${resolvedValue}`)
+            })('MICHAL')
+        </script>
     </body>
 </html>

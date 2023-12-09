@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../index.js"></script>
+        <link href="./pseudo-classes.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <button class="main-page-button" onclick="goToMainPage()">
+            Go to main page
+        </button>
+
+        <h1><code> :hover </code></h1>
+        <p id="hover-example">
+            Hover over this paragraph to see some cool effect.
+        </p>
+        <h1><code> :active </code></h1>
+        <button id="active-example">Click me to see active state</button>
+
+        <h1><code>:focus</code></h1>
+        <button class="focusable">Switch with tab to focus this button</button>
+
+        <h1><code>:focus-within</code></h1>
+        <div class="focusable">
+            <p>
+                Element containing this paragraph and below button has
+                <code>focus-within</code> pseudo class used to style the parent
+                when any of its children receives focus. For example focus
+                button in order to see how whole element (so this paragraph and
+                the button) gets bold font.
+            </p>
+            <button class="focusable">
+                Switch with tab to focus this button
+            </button>
+        </div>
+        <h1><code>:focus-visible</code></h1>
+        <p>
+            Focus is received when clicking the element (eg. button) as well, so
+            this property is used to show fucused style only when "truly"
+            focused, with, for example, tab button.
+        </p>
+        <button id="smart-focusable">
+            This button only will get new look when focused "visibly", not when
+            clicked
+        </button>
+
+        <h1><code>:link</code> and <code>:visited</code></h1>
+        <p>
+            Anchor elements can use <code>:link</code> and
+            <code>:visited</code> pseudo classes to style states, when the link
+            has been visited or not, see below example - the visited link goes
+            to google - click it to see visited anchor state.
+        </p>
+        <a href="http://notvisited.never/">Not visited link</a>
+        <a href="https://google.com/">Visited</a>
+    </body>
+</html>

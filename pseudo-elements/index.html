@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../index.js"></script>
+        <link href="./pseudo-elements.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <button class="main-page-button" onclick="goToMainPage()">
+            Go to main page
+        </button>
+        <h1><code>::first-letter</code></h1>
+        <p id="first-letter-example">
+            First letter of this paragraph is styled differently.
+        </p>
+
+        <h1><code>::first-line</code></h1>
+        <p id="first-line-example">
+            First line of this paragraph is styled differently. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit. Aenean diam justo,
+            auctor nec tincidunt ac, convallis non massa. Vivamus lacinia
+            sagittis efficitur. Suspendisse posuere pellentesque lectus vitae
+            posuere. Nam facilisis ornare mauris, ut lobortis ex tempor ut.
+            Praesent pulvinar augue dignissim leo aliquam, non lacinia dolor
+            varius. Nullam eget consectetur risus, in ullamcorper libero. Morbi
+            et efficitur urna. Aenean ornare gravida nibh et tempus. Vestibulum
+            a velit et lorem vestibulum dignissim. Vestibulum ante ipsum primis
+            in faucibus orci luctus et ultrices posuere cubilia curae; Integer
+            aliquet lacinia suscipit. Nunc in nibh finibus, elementum justo id,
+            euismod lectus.
+        </p>
+        <h1><code>::before</code> and <code>::after</code></h1>
+        <p id="before-and-after-example">
+            This paragraph has some content before it and after it.
+        </p>
+
+        <h1><code>::backdrop</code></h1>
+        <p>
+            This dialog uses <code>::backdrop</code> to color pink everything
+            else besides it.
+        </p>
+        <button id="showDialogBtn">Show a dialog</button>
+
+        <dialog id="favDialog">
+            <form method="dialog">
+                <p>
+                    The background shown outside of this dialog is a backdrop.
+                </p>
+                <button id="confirmBtn">Close the dialog</button>
+            </form>
+        </dialog>
+
+        <h1><code>::marker</code></h1>
+        <p>Used for example, to style the list</p>
+        <ol>
+            <li>I am the item</li>
+            <li>I am also some item</li>
+            <li>I am also some item</li>
+            <li>I am also some item</li>
+        </ol>
+
+        <h1><code>::selection</code></h1>
+        <p>It is used to style selected text, as in paragraph below:</p>
+        <p id="selection-example">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean diam
+            justo, auctor nec tincidunt ac, convallis non massa. Vivamus lacinia
+            sagittis efficitur. Suspendisse posuere pellentesque lectus vitae
+            posuere. Nam facilisis ornare mauris, ut lobortis ex tempor ut.
+            Praesent pulvinar augue dignissim leo aliquam, non lacinia dolor
+            varius. Nullam eget consectetur risus, in ullamcorper libero. Morbi
+            et efficitur urna. Aenean ornare gravida nibh et tempus. Vestibulum
+            a velit et lorem vestibulum dignissim. Vestibulum ante ipsum primis
+            in faucibus orci luctus et ultrices posuere cubilia curae; Integer
+            aliquet lacinia suscipit. Nunc in nibh finibus, elementum justo id,
+            euismod lectus.
+        </p>
+
+        <h1><code>::placeholder</code></h1>
+
+        <p>Used to style placeholder text for input. See below:</p>
+        <label for="email">Email address</label>
+        <input type="email" placeholder="E.G name@example.com" id="email" />
+
+        <script>
+            const showDialogBtn = document.getElementById('showDialogBtn')
+            const favDialog = document.getElementById('favDialog')
+
+            showDialogBtn.addEventListener('click', () => favDialog.showModal())
+        </script>
+    </body>
+</html>
