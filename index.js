@@ -1,3 +1,6 @@
+const BASE_DIR = 'C:/Users/MT/source/repos/css-practice'
+
+// Directories with particular sites.
 const FLEXBOX = '/layout/flexbox/'
 const GRID = '/layout/grid/'
 const LAYOUT = '/layout/'
@@ -10,7 +13,7 @@ const INDEX = 'index.html'
 const LOGICAL_PROPERTIES = '/logical-properties/'
 const PSEUDO_ELEMENTS = '/pseudo-elements/'
 const PSEUDO_CLASSES = '/pseudo-classes/'
-const BASE_DIR = 'C:/Users/MT/source/repos/css-practice'
+const BORDERS = '/borders/'
 
 function goTo(path) {
     window.location = path
@@ -24,6 +27,10 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToBorders() {
+    goToPage(BORDERS)
 }
 
 function goToPseudoClasses() {

@@ -1,0 +1,45 @@
+/* NOTE
+This is tragic way of styling with CSS, the slightest change would break
+all appearance, as nth-of-type selectors would no longer match correct 
+elements.
+This is done like this just for educational purposes.
+*/
+
+.example:after {
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean diam justo, auctor nec tincidunt ac, convallis non massa. Vivamus lacinia sagittis efficitur.';
+}
+
+body .example:first-of-type {
+    border-inline: 2px dotted red;
+    border-block: 3px double blue;
+}
+
+body .example:nth-of-type(2) {
+    border-width: 1px 2px 3px 4px;
+    border-style: solid dotted double dashed;
+    border-color: red green blue aqua;
+}
+
+body .example:nth-of-type(3) {
+    border: 1px solid black;
+    border-radius: 1em;
+    min-height: 4em;
+    min-width: 4em;
+}
+
+body .example:nth-of-type(4) {
+    border: 2px solid;
+    border-radius: 95px 155px 148px 103px / 48px 95px 130px 203px;
+    width: 250px;
+    height: 250px;
+}
+
+body .example:nth-of-type(5) {
+    width: 250px;
+    height: 250px;
+    border-image-source: url(https://assets.codepen.io/174183/border-image-frame.jpg);
+    border-image-slice: 61 58 51 48;
+    border-image-width: 20px 20px 20px 20px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: stretch stretch;
+}
