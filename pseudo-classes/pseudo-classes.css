@@ -25,3 +25,112 @@ a:link {
 a:visited {
     color: red;
 }
+
+.enabled-disabled:enabled {
+    color: green;
+    font-weight: bolder;
+}
+
+.enabled-disabled:disabled {
+    color: red;
+    font-weight: bold;
+}
+
+input[type='checkbox']:checked {
+    box-shadow: 0px 0px 5px 2px green;
+}
+
+input[type='checkbox']:indeterminate {
+    box-shadow: 0px 0px 5px 2px red;
+}
+
+input[type='email']:placeholder-shown {
+    box-shadow: 0px 0px 5px 2px red;
+}
+
+#in-range-example:in-range {
+    background-color: greenyellow;
+}
+
+#valid-invalid-example:valid {
+    border: 2px solid greenyellow;
+}
+
+#valid-invalid-example:invalid {
+    border: 2px solid red;
+}
+
+.required-example:required {
+    box-shadow: 2px 5px 2px 5px red;
+}
+
+.required-example:optional {
+    box-shadow: 2px 5px 2px 5px yellow;
+}
+
+#first-last-child-example :first-child {
+    background-color: aqua;
+}
+
+#first-last-child-example :last-child {
+    background: coral;
+}
+
+ul li:only-child {
+    background-color: bisque;
+    font-weight: bold;
+}
+
+#first-child-and-of-type-example div:first-child {
+    font-size: bolder;
+}
+
+#first-child-and-of-type-example p:first-child::before {
+    content: '(\2714)';
+    color: green;
+}
+
+#first-child-and-of-type-example div:first-of-type {
+    color: red;
+}
+
+#of-type-pseudo-classes-summary code:last-of-type {
+    background: aqua;
+    font-weight: bold;
+}
+
+#nth-child-example code:nth-of-type(2) {
+    background: salmon;
+}
+
+#nth-child-alternate-example code:nth-of-type(even) {
+    background-color: aquamarine;
+}
+
+#nth-child-with-pattern code:nth-of-type(3n + 2) {
+    background-color: aquamarine;
+}
+
+.only-type-example code:only-of-type {
+    background: lightgray;
+}
+
+#empty-example:empty::before {
+    content: 'I am empty';
+}
+
+#empty-example:empty {
+    border: 1px dotted red;
+}
+
+#is-and-not-example :is(h1, h2, h3, h4, h5, h6) {
+    text-decoration: underline;
+}
+
+#is-and-not-example :not(h1, h2, h3, h4, h5, h6) {
+    color: purple;
+}
+
+#target-example:target {
+    border: 2px dotted blue;
+}

@@ -53,5 +53,207 @@
         </p>
         <a href="http://notvisited.never/">Not visited link</a>
         <a href="https://google.com/">Visited</a>
+
+        <h1><code>:enabled</code> and <code>:disabled</code></h1>
+        <p>We can style also elements in disabled and enabled states:</p>
+        <button class="enabled-disabled">I am enabled</button>
+        <button class="enabled-disabled" disabled>I am disabled</button>
+
+        <h1><code>:checked</code> and <code>:indeterminate</code></h1>
+        <p>We can also style checkbox based on its state.</p>
+        <label>Check me <input id="checkbox-example" type="checkbox" /></label>
+
+        <button onclick="setIndeterminate()">
+            Set checkbox to indeterminate
+        </button>
+
+        <h1><code>:placeholder-shown</code></h1>
+        <p>
+            When placeholder is shown, for example, in input or textarea, this
+            pseudo class is used to style that state.
+        </p>
+        <input type="email" placeholder="EG. michal@turczyn.com" />
+
+        <h1>Validation states</h1>
+        <h2>
+            <code>:valid</code> and <code>:invalid</code> and
+            <code>:in-range</code>
+        </h2>
+
+        <label
+            >Enter number between 1 and 10 (and outside of bounds) to see
+            <code>:in-range</code> state cahnges.
+            <br />
+            <input id="in-range-example" type="number" min="1" max="10" />
+        </label>
+        <br />
+        <label
+            >Enter valid and invalid email to see how valid states change and
+            according styling.
+            <br />
+            <input
+                placeholder="EG. email@domain.com"
+                type="email"
+                id="valid-invalid-example"
+        /></label>
+
+        <h2><code>:required</code> and <code>:optional</code></h2>
+
+        <label
+            >Enter month (required)
+            <input class="required-example" required type="month" />
+        </label>
+
+        <label
+            >Enter month (optional)
+            <input class="required-example" optional type="month" />
+        </label>
+
+        <h1>Selecting elements by their index, order and occurrence</h1>
+
+        <h2><code>:first-child</code> and <code>:last-child</code></h2>
+
+        <div id="first-last-child-example">
+            <p>This is first paragraph</p>
+            <p>This is another paragraph</p>
+            <p>This is another paragraph</p>
+            <p>This is another paragraph</p>
+            <p>This is another paragraph</p>
+            <p>This is last paragraph</p>
+        </div>
+
+        <h2><code>:only-child</code></h2>
+
+        <p>
+            Allows styling the elements if the element is only child, as below:
+        </p>
+        <ul>
+            <li>Only item</li>
+        </ul>
+        <p>Below list has more items, thus is not styled:</p>
+        <ul>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+        </ul>
+
+        <h2><code>:first-child</code> and <code>:first-of-type</code></h2>
+
+        <p>
+            <code>div:first-child</code> is defined to have bold font, but is
+            not applied, as <code>div</code> is not first child.
+        </p>
+        <p>
+            But
+            <code>p</code> has defined before pseudo class matching
+            <code>p:first-child</code> selector, so it has checkmark, as it
+            <code>p</code> is first child.
+        </p>
+        <p>
+            Lastly, there is red color defined for
+            <code>div:first-of-type</code>, which is applied to first child,
+            which has type of <code>div</code>
+        </p>
+
+        <div class="bordered">
+            <label>Example</label>
+            <div id="first-child-and-of-type-example">
+                <p>This is first child, which is paragraph.</p>
+                <div>I am another child in the container, but I am div.</div>
+                <div>I am another div in the container.</div>
+            </div>
+        </div>
+
+        <p id="of-type-pseudo-classes-summary">
+            Similairly, we have <code>:last-of-type</code>, which works
+            analogically to its counterpart <code>:first-of-type</code>, as can
+            be just observed (here we have last child of type code).
+        </p>
+
+        <p>
+            Similairly we have <code>nth-child()</code> and
+            <code>nth-of-type()</code> pseudo classes to match exactly elements
+            at specified index.
+        </p>
+        <p id="nth-child-example">
+            For example, here we have list of words wrapped in code elements (C#
+            keywords): <code>using</code>, <code>class</code>,
+            <code>interface</code>, <code>record</code>. Here we used
+            <code>code:nth-of-type(2)</code>.
+        </p>
+        <p id="nth-child-alternate-example">
+            Interesting is use of even and odd keywords to match alternating
+            elements, for eample, using the same list of C# keywords:
+            <code>using</code>, <code>class</code>, <code>interface</code>,
+            <code>record</code>, <code>public</code>, <code>private</code>,
+            <code>protected</code>, <code>sealed</code>, <code>get</code>,
+            <code>set</code>. Every even occurence of code element gets style.
+        </p>
+        <p id="nth-child-with-pattern">
+            You can also specify the An+B microsyntax, which allows to specify
+            pattern, such as 3n+2, which will match every third item and start
+            at second item. Using the same list of C# keywords:
+            <code>using</code>, <code>class</code>, <code>interface</code>,
+            <code>record</code>, <code>public</code>, <code>private</code>,
+            <code>protected</code>, <code>sealed</code>, <code>get</code>,
+            <code>set</code>.
+        </p>
+
+        <p>
+            Below are two paragraphs, one having only one code element, and
+            thus, matches <code>:only-of-type</code> pseudo-class.
+        </p>
+        <div class="bordered">
+            <label>Example</label>
+            <p class="only-type-example">
+                This paragraph has only only one <code>code</code> element.
+            </p>
+            <p class="only-type-example">
+                This paragraph has not only only one <code>code</code> element,
+                but second <code>code</code>
+            </p>
+        </div>
+
+        <h2><code>:empty</code></h2>
+        <p>
+            We can also style empty elements with <code>:empty</code> pseudo
+            class. Below we add <code>I am empty</code>
+            <code>::before</code> pseudo element to empty element.
+        </p>
+        <div id="empty-example"></div>
+
+        <h2><code>:is()</code> and <code>:not()</code></h2>
+        <p>
+            We can also shorten syntax with
+            <code>.container :is(h2, p)</code> to include styles for only
+            <code>h2</code> and <code>p</code> elements inside the
+            <code>container</code>. For example:
+        </p>
+        <div id="is-and-not-example" class="bordered">
+            <label>Example</label>
+            <h1>This is example</h1>
+            <h2><code>:is</code> and <code>:not</code></h2>
+            <p>
+                Here we use <code>:is</code> pseudo-class to underline all
+                headers and <code>:not</code> pseudo-class to color all text
+                purple except for headers.
+            </p>
+        </div>
+
+        <h1 id="target-example"><code>:target</code></h1>
+        <p>
+            Above header has <code>target-example</code> id specified, and
+            selector <code>:target</code> matched above header when ID is
+            included in URL in form <code>{URL}#{ID}</code>, so we need to
+            <a href="#target-example">append <code>#target-example</code></a>
+            to URL
+        </p>
+
+        <script>
+            function setIndeterminate() {
+                let chckbx = document.getElementById('checkbox-example')
+                chckbx.indeterminate = true
+            }
+        </script>
     </body>
 </html>
