@@ -1,0 +1,54 @@
+#drop-shadow-example > img:nth-child(2) {
+    filter: drop-shadow(0px 0px 20px rgba(255, 0, 204, 0.995));
+}
+
+#drop-shadow-example > img {
+    max-height: 10em;
+}
+
+#drop-shadow-example {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+:is(h1, h2, h3, h4, h5, h6).multiple-text-shadow-element {
+    text-shadow: 3px 3px 3px blue, 10px 10px 10px red;
+}
+
+:is(h1, h2, h3, h4, h5, h6).multiple-text-shadow-element-2 {
+    text-shadow: 1px 1px 0px white, 2px 2px 0px firebrick;
+    color: darkslategray;
+}
+
+:is(h1, h2, h3, h4, h5, h6).text-shadow-element {
+    text-shadow: 5px 5px 5px hotpink;
+    color: rgb(128, 0, 128);
+}
+
+.box-shadow-element {
+    box-shadow: 5px 5px 20px 5px #000;
+}
+
+.inset-box-shadow-element {
+    box-shadow: inset 5px 5px 20px 5px #000;
+}
+
+.in-out-box-shadow-element {
+    box-shadow: 5px 5px 20px 5px #000, inset 5px 5px 20px 5px #0f0;
+}
+
+.inward-shadow-example {
+    width: 100px;
+    height: 100px;
+    margin-top: 1em;
+    padding: 1em;
+}
+
+#shadow-with-border-radius {
+    width: 20em;
+    border-radius: 95px 155px 148px 103px / 48px 95px 130px 203px;
+    margin: 1em;
+    padding: 1em;
+    height: 20em;
+    box-shadow: 5px 5px 20px 5px #000;
+}

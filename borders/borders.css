@@ -43,3 +43,11 @@ body .example:nth-of-type(5) {
     border-image-outset: 0px 0px 0px 0px;
     border-image-repeat: stretch stretch;
 }
+
+body .example:nth-of-type(6) {
+    width: 250px;
+    height: 250px;
+    border: 2px solid;
+    border-top-left-radius: 2em 4em;
+    border-top-right-radius: 2em;
+}

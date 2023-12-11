@@ -14,6 +14,9 @@ const LOGICAL_PROPERTIES = '/logical-properties/'
 const PSEUDO_ELEMENTS = '/pseudo-elements/'
 const PSEUDO_CLASSES = '/pseudo-classes/'
 const BORDERS = '/borders/'
+const SHADOWS = '/shadows/'
+const SELECTORS_AND_CASCADE = '/selectors-and-cascade/'
+const FOCUS = '/focus/'
 
 function goTo(path) {
     window.location = path
@@ -27,6 +30,18 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToFocus() {
+    goToPage(FOCUS)
+}
+
+function goToSelectorsAndCascade() {
+    goToPage(SELECTORS_AND_CASCADE)
+}
+
+function goToShadows() {
+    goToPage(SHADOWS)
 }
 
 function goToBorders() {

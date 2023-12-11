@@ -6,7 +6,7 @@
     </head>
 
     <body>
-        <button onclick='goTo("selectors-and-cascade/index.html")'>
+        <button onclick="goToSelectorsAndCascade()">
             Selectors and cascade
         </button>
         <button onclick="goToInheritance()">Inheritance</button>
@@ -17,17 +17,27 @@
         <button onclick="goToPseudoElements()">Pseudo elements</button>
         <button onclick="goToPseudoClasses()">Pseudo classes</button>
         <button onclick="goToBorders()">Borders</button>
+        <button onclick="goToShadows()">Shadows</button>
+        <button onclick="goToFocus()">Focus</button>
         <button onclick="goToTestArea()">Test area</button>
 
         <script>
-            ;(async function sampleFunc(arg) {
+            ;(async function sampleFunc() {
                 let promise = new Promise((resolve, reject) => {
-                    setTimeout(() => resolve('MICHAL'), 1000)
+                    setTimeout(() => {
+                        resolve(`Resolved: ${new Date()}`)
+                        printCurrentDate('FROM PROMISE')
+                    }, 1000)
                 })
+                printCurrentDate('AFTER STARTING PROMISE')
                 let resolvedValue = await promise
-                console.log(`hello ${arg}`)
-                console.log(`Resolved value ${resolvedValue}`)
+                console.log(resolvedValue)
             })('MICHAL')
+
+            function printCurrentDate(msg) {
+                msg = msg ? `${msg} | ${new Date()}` : `${new Date()}`
+                console.log(msg)
+            }
         </script>
     </body>
 </html>

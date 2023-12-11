@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../index.js"></script>
+        <link href="../styles.css" rel="stylesheet" />
+        <link href="shadows.css" rel="stylesheet" />
+    </head>
+    <body>
+        <button onclick="goToMainPage()">Go to main page</button>
+        <h1><code>box-shadow</code></h1>
+        <div class="box-shadow-element">
+            This box should have shadow going outwards.
+        </div>
+        <div class="inset-box-shadow-element inward-shadow-example">
+            This box should have shadow going inwards.
+        </div>
+        <div class="in-out-box-shadow-element inward-shadow-example">
+            This box has both shadows - outward (black) and inward (green).
+        </div>
+        <div id="shadow-with-border-radius">
+            <p>Shadow will adjust if border radius is specified.</p>
+        </div>
+
+        <h3>Overflow affecting shadow</h3>
+        <div id="overflow-example">
+            <p>
+                When ocntainer has overflow set to hidden, it will hide the
+                shadow. Switch overflow of parent between
+                <code>hidden</code> and <code>initial</code>.
+            </p>
+            <button onclick="switchOverflowInOverflowExample()">Switch</button>
+            <div class="box-shadow-element">This paragraph.</div>
+        </div>
+
+        <h2 class="text-shadow-element">Text shadow</h2>
+        <h2 class="text-shadow-element" style="color: rgba(128, 0, 128, 0.5)">
+            Text shadow with primary color being trasnparent.
+        </h2>
+        <h2 class="multiple-text-shadow-element">Text with multiple shadows</h2>
+        <h2 class="multiple-text-shadow-element-2">
+            Text with multiple shadows 2
+        </h2>
+
+        <p>
+            Below example shows how we can use <code>filter</code> CSS property
+            in order to add shadows even to picutres.
+        </p>
+        <p>Second image has added shadow to picture by defining</p>
+        <code class="block-code"
+            >filter: drop-shadow(0px 0px 20px rgba(0 0 0 / 0.5));</code
+        >
+        <figure>
+            <div id="drop-shadow-example">
+                <img
+                    src="../isolated-tshirt.webp"
+                    alt="A white t-shirt, isolated, on a hanger"
+                />
+                <img
+                    src="../isolated-tshirt.webp"
+                    alt="A white t-shirt, isolated, on a hanger"
+                />
+            </div>
+        </figure>
+        <script>
+            function switchOverflowInOverflowExample() {
+                const overflowExampleContainer =
+                    document.getElementById('overflow-example')
+                const currentOverflow = overflowExampleContainer.style.overflow
+
+                overflowExampleContainer.style.overflow =
+                    currentOverflow === 'hidden' ? 'initial' : 'hidden'
+            }
+        </script>
+    </body>
+</html>
