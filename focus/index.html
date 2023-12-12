@@ -4,8 +4,79 @@
         <script src="../index.js"></script>
         <link href="../styles.css" rel="stylesheet" />
         <link href="focus.css" rel="stylesheet" />
+        <script>
+            function focusNonFocusable() {
+                console.log('hello')
+                const el = document.getElementById('only-js-focus')
+                console.log('hello', el)
+                el.focus()
+            }
+        </script>
     </head>
     <body>
         <button onclick="goToMainPage()">Main page</button>
+        <p>
+            By defining <code>tabindex</code> attribute, it is focusable (for
+            example by navigating with tab), and gets visual effect when
+            focused.
+        </p>
+        <p>
+            Tab index can be any number higher or equal to -1. Numbers 1 and
+            above specify order by which focus will be received. Special are:
+        </p>
+        <ul>
+            <li>0 - it will follow global order of focus,</li>
+            <li>
+                -1 - it will not receive users navigation, and only accept
+                programmatic (JavaScript) navigation.
+                <button onclick="focusNonFocusable()">
+                    Focus non-focusable element (something does not work...)
+                </button>
+            </li>
+        </ul>
+
+        <h1 id="only-js-focus" tabindex="-1">Intro</h1>
+        <p tabindex="0">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+            tempus diam ut dolor pretium viverra. Proin malesuada turpis vel
+            varius maximus. Proin malesuada sem vitae elit fringilla iaculis.
+            Pellentesque mattis cursus erat in porta. Aliquam suscipit sed magna
+            non fringilla. Fusce vehicula metus at dui laoreet hendrerit eget
+            quis magna. Nam venenatis vestibulum justo, in aliquet diam aliquet
+            laoreet. Curabitur bibendum posuere lobortis. Integer ac efficitur
+            nibh. Quisque elementum augue at egestas gravida. Nullam sagittis,
+            lacus vitae posuere fringilla, lectus libero volutpat lacus, a
+            finibus odio urna sed ipsum. Integer lacinia tristique libero sit
+            amet bibendum. Mauris auctor, leo at egestas consequat, nisi augue
+            porta nisi, ac euismod purus ligula non massa. Proin non dolor quis
+            libero venenatis volutpat. Suspendisse condimentum vestibulum lacus
+            at fermentum. Phasellus porttitor, felis quis scelerisque lacinia,
+            erat ex lacinia tortor, eget porttitor quam augue in ligula.
+        </p>
+
+        <h1 tabindex="0">
+            Another section.. (I have <code>outilne-offset</code> increased)
+        </h1>
+        <p tabindex="0">
+            Quisque rutrum est sed arcu fringilla, id condimentum massa
+            scelerisque. Morbi semper pulvinar lectus, vel placerat ex gravida
+            vel. Suspendisse cursus mollis pretium. Interdum et malesuada fames
+            ac ante ipsum primis in faucibus. Etiam elementum eget tellus
+            bibendum pretium. Fusce congue rhoncus congue. Sed scelerisque
+            laoreet nulla vitae ultrices. Mauris maximus velit id nunc vulputate
+            tristique. Fusce porttitor feugiat tristique. Aliquam metus eros,
+            porttitor a eleifend vitae, laoreet molestie est.
+        </p>
+
+        <h1 tabindex="0">Yet another section..</h1>
+        <p tabindex="0">
+            Morbi scelerisque tincidunt mi, nec maximus eros molestie vitae.
+            Quisque mauris nisl, fringilla non ligula id, laoreet congue mauris.
+            Mauris eget ullamcorper orci. In pellentesque, metus eu aliquet
+            sodales, nisi mi pharetra eros, nec congue dolor ipsum ac tellus.
+            Etiam eget nunc eget lectus iaculis faucibus sed et enim. Mauris
+            nibh nisi, molestie nec dui eget, imperdiet interdum leo. Phasellus
+            eu libero id leo mollis sodales.
+        </p>
     </body>
 </html>
