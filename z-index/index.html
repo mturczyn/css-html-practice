@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../index.js"></script>
+        <link href="./z-index.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+
+        <script>
+            function switchPositionOfStaticExample() {
+                let el = document.getElementById(
+                    'static-position-affect-on-z-index'
+                )
+                el.style.position =
+                    el.style.position === 'static' ? 'relative' : 'static'
+            }
+        </script>
+    </head>
+    <body>
+        <button class="main-page-button" onclick="goToMainPage()">
+            Go to main page
+        </button>
+        <p>
+            When there are items stacked on top of each other, z-index is
+            following order of elements in document - last element is on top.
+        </p>
+        <div class="z-index-example">
+            <div class="red">First item</div>
+            <div class="green">Second item</div>
+            <div class="blue">Third item</div>
+        </div>
+        <p style="margin-top: 25rem">
+            Below we have example of static position on z-index - switch between
+            <code>position: static</code> and <code>position: relative</code>.
+        </p>
+        <button onclick="switchPositionOfStaticExample()">Switch</button>
+        <div class="z-index-example">
+            <div style="z-index: 1" class="red">First item</div>
+            <div style="z-index: 2" class="green">Second item</div>
+            <div style="z-index: 3" class="blue">Third item</div>
+
+            <div
+                id="static-position-affect-on-z-index"
+                style="
+                    z-index: 4;
+                    position: relative;
+                    background: gray;
+                    top: 2em;
+                "
+            >
+                I have the highest z-index!
+            </div>
+        </div>
+
+        <p style="margin-top: 10em">
+            To force element to sit behind, we can also specify negative number
+            for <code>z-index</code>. First items have default
+            <code>z-index</code>
+            and last one has it set to -1.
+        </p>
+        <div class="z-index-example">
+            <div class="red">First item</div>
+            <div class="green">Second item</div>
+            <div style="z-index: -1" class="blue">Third item</div>
+        </div>
+
+        <h1 style="margin-top: 10em">Stacking context example</h1>
+        <p>
+            Each container creates its own stacking context, so its childrens'
+            z-index will be respected only within the parent, outside of it, any
+            element with z-index greater than parent's z-index will be shown on
+            top of parent's children.
+        </p>
+        <div id="stacking-context-example">
+            <div style="z-index: 1" class="red">
+                I have z-index: 1
+                <p style="z-index: 999" class="bordered">
+                    Child paragraph: I have z-index: 999
+                </p>
+            </div>
+            <div style="z-index: 2; top: 1rem; padding-top: 4em" class="green">
+                I have z-index: 2
+                <p style="z-index: 2" class="bordered">
+                    Child paragraph: I have z-index: 2
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

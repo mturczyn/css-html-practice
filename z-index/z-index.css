@@ -1,0 +1,54 @@
+:root {
+    --example-radius: 6rem;
+    --opacity: 0.5;
+}
+.red {
+    background: rgba(256 0 0 / var(--opacity));
+    border: 2px solid red;
+}
+
+.green {
+    background: rgba(0 256 0 / var(--opacity));
+    border: 2px solid green;
+}
+
+.blue {
+    background: rgba(0 0 256 / var(--opacity));
+    border: 2px solid blue;
+}
+
+.z-index-example {
+    position: relative;
+}
+
+.z-index-example > div {
+    position: absolute;
+    width: calc(var(--example-radius) * 2);
+    height: calc(var(--example-radius) * 2);
+    border-radius: var(--example-radius);
+    align-content: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+.z-index-example > div.green {
+    left: var(--example-radius);
+}
+
+.z-index-example > div.blue {
+    left: calc(var(--example-radius) * 0.5);
+    top: var(--example-radius);
+}
+
+#stacking-context-example {
+    position: relative;
+}
+
+#stacking-context-example > * {
+    position: absolute;
+}
+
+#stacking-context-example > :is(.red, .blue, .green) {
+    width: calc(var(--example-radius) * 3);
+    height: calc(var(--example-radius) * 3);
+}

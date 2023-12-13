@@ -17,6 +17,7 @@ const BORDERS = '/borders/'
 const SHADOWS = '/shadows/'
 const SELECTORS_AND_CASCADE = '/selectors-and-cascade/'
 const FOCUS = '/focus/'
+const Z_INDEX = '/z-index/'
 
 function goTo(path) {
     window.location = path
@@ -30,6 +31,10 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToZIndex() {
+    goToPage(Z_INDEX)
 }
 
 function goToFocus() {
