@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../index.js"></script>
+        <link href="./functions.css" rel="stylesheet" />
+        <link href="./perspective-example.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+        <script>
+            let i = 0
+            function changeCustomProperty() {
+                document.body.style.setProperty(
+                    '--switchable-color',
+                    i % 2 ? 'tomato' : 'blue'
+                )
+                i++
+            }
+        </script>
+    </head>
+    <body>
+        <button class="main-page-button" onclick="goToMainPage()">
+            Go to main page
+        </button>
+        <h1>
+            I have color set with variable (with use of
+            <code>var()</code> function)
+        </h1>
+        <h1 class="invalid-custom-property">
+            My color is set from non-existing custom property
+        </h1>
+        <h1 class="invalid-custom-property-with-fallback">
+            My color is set from non-existing custom property, but I have
+            fallback
+        </h1>
+        <div class="color-change">
+            <h2>
+                It is possible to redefine custom property - if multiple
+                selectors define a property, one with highest specifity will
+                persist (of course, if element is child of the most specific
+                selector).
+            </h2>
+        </div>
+        <p>
+            Below button has background set to variable. Clicking it changes the
+            variable value.
+        </p>
+        <button
+            onclick="changeCustomProperty()"
+            style="
+                background: var(--switchable-color, blue);
+                color: white;
+                font-weight: bold;
+            "
+        >
+            Click
+        </button>
+        <h1><code>attr()</code> function</h1>
+        <p>
+            <code>attr()</code> can be used to fetch value of attribute, such as
+            <code>content: attr(href)</code>, placing such property in selector
+            <code>a::after</code> will place the URL after the link.
+        </p>
+        <div id="attr-function-example" class="bordered">
+            <a href="https://google.com/">Go to Google </a>
+            <a href="https://yahoo.com/">Go to Yahho </a>
+            <p>
+                Paragraphs below use <code>attr(id)</code> to place its id
+                before the content.
+            </p>
+            <p id="paragraph1">This is some paragraph.</p>
+            <p id="paragraph2">This is other paragraph.</p>
+        </div>
+
+        <h1><code>url()</code> function</h1>
+        <p>
+            <code>url()</code> can be used to insert URLs to resources, such as
+            images, for example
+            <code>background-image: url(../flowers.webp);</code>
+        </p>
+        <div id="url-function-example">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+                tempus diam ut dolor pretium viverra. Proin malesuada turpis vel
+                varius maximus. Proin malesuada sem vitae elit fringilla
+                iaculis. Pellentesque mattis cursus erat in porta. Aliquam
+                suscipit sed magna non fringilla. Fusce vehicula metus at dui
+                laoreet hendrerit eget quis magna. Nam venenatis vestibulum
+                justo, in aliquet diam aliquet laoreet. Curabitur bibendum
+                posuere lobortis. Integer ac efficitur nibh. Quisque elementum
+                augue at egestas gravida. Nullam sagittis, lacus vitae posuere
+                fringilla, lectus libero volutpat lacus, a finibus odio urna sed
+                ipsum. Integer lacinia tristique libero sit amet bibendum.
+                Mauris auctor, leo at egestas consequat, nisi augue porta nisi,
+                ac euismod purus ligula non massa. Proin non dolor quis libero
+                venenatis volutpat. Suspendisse condimentum vestibulum lacus at
+                fermentum. Phasellus porttitor, felis quis scelerisque lacinia,
+                erat ex lacinia tortor, eget porttitor quam augue in ligula.
+            </p>
+        </div>
+
+        <h1><code>calc()</code> function</h1>
+        <p>
+            <code>calc()</code> can be used to caluclate various values, such as
+            width, for example <code>width: calc(100%-2em)</code>
+        </p>
+        <div class="bordered">
+            <p
+                style="margin: 5px auto; width: calc(100% - 2rem)"
+                class="bordered"
+            >
+                I will take 100% of width, except for 2em
+            </p>
+        </div>
+
+        <h1><code>min()</code> and <code>max()</code></h1>
+
+        <h2><code>max()</code></h2>
+        <p>
+            <code>max()</code> funciton returns the greatest value from passed
+            arguments, various units can be mixed.
+        </p>
+        <div class="bordered">
+            I have 4rem width
+            <p
+                style="margin: 5px auto; width: max(100%, 4rem)"
+                class="bordered"
+            >
+                I have width of <code>max(100%, 4rem)</code>
+            </p>
+        </div>
+        <div class="bordered" style="width: 3rem">
+            I have 3rem width
+            <p
+                style="margin: 5px auto; width: max(100%, 4rem)"
+                class="bordered"
+            >
+                I have width of <code>max(100%, 4rem)</code>
+            </p>
+        </div>
+
+        <h2><code>min()</code></h2>
+        <p>
+            <code>min()</code> funciton returns the smallest value from passed
+            arguments, various units can be mixed.
+        </p>
+        <div class="bordered">
+            I have 4rem width
+            <p
+                style="margin: 5px auto; width: min(100%, 4rem)"
+                class="bordered"
+            >
+                I have width of <code>min(100%, 4rem)</code>
+            </p>
+        </div>
+        <div class="bordered" style="width: 3rem">
+            I have 3rem width
+            <p
+                style="margin: 5px auto; width: min(100%, 4rem)"
+                class="bordered"
+            >
+                I have width of <code>min(100%, 4rem)</code>
+            </p>
+        </div>
+
+        <h1><code>clamp()</code> function</h1>
+        <p>
+            This function will calculate it second argument, and return first
+            argument (min) if calculated value is lower than min, return thrid
+            argument (max), if calculated value is greater than max, returns
+            calculated value otherwise.
+        </p>
+        <div class="bordered">
+            <p style="margin: 5px auto" class="bordered" id="clamp-example">
+                This is clamp example that uses
+                <code>width: clamp(350px, 50%, 500px);</code>
+            </p>
+        </div>
+        <p>
+            One can go to dev tools, to computed values tab of CSS properties
+            and see how the value chages, as in the picture below:
+        </p>
+        <img
+            src="../computed-css-properties-in-dev-tools.png"
+            style="width: 50%; margin: 1em; border: 2px dotted goldenrod"
+        />
+
+        <h1>Shapes</h1>
+
+        <p>
+            The <code>clip-path</code>, <code>offset-path</code> and
+            <code>shape-outside</code> CSS properties use shapes to visually
+            clip your box or provide a shape for content to flow around.
+        </p>
+        <p>
+            There are shape functions that can be used with both of these
+            properties. Simple shapes such as <code>circle()</code>,
+            <code>ellipse()</code> and <code>inset()</code> take configuration
+            arguments to size them. More complex shapes, such as
+            <code>polygon()</code> take comma separated pairs of X and Y axis
+            values to create custom shapes.
+        </p>
+        <div id="shapes-example">
+            <h2><code>circle()</code></h2>
+            <div class="circle">
+                <img
+                    src="../abstract-image.jpg"
+                    alt="Mixture of paint colors"
+                />
+            </div>
+            <h2><code>polygon()</code></h2>
+            <div class="polygon">
+                <img
+                    src="../abstract-image.jpg"
+                    alt="Mixture of paint colors"
+                />
+            </div>
+            <h2><code>path()</code></h2>
+            <div class="path">
+                <img
+                    src="../abstract-image.jpg"
+                    alt="Mixture of paint colors"
+                />
+            </div>
+        </div>
+        <h1>Transforms</h1>
+        <h2>Rotations</h2>
+        <p>
+            We can use <code>rotateX()</code> function to rotate element around
+            X axis (analogically for Y and Z axes).
+            <code>rotate()</code> function will rotate an element on its center
+            axis.
+        </p>
+        <p>
+            Worth noting is <code>rotate3d()</code>, which rotates the elements
+            by a given point (first 3 arguments are X, Y, Z coordinates that
+            define the rotation center) and by a given angle (last argument). In
+            the example we have used
+            <code>transform: rotate3d(2, 2, 2, var(--rotate-angle));</code>
+        </p>
+        <label>Pick the angle (from 0 to 360)</label>
+        <input type="range" min="0" max="360" value="45" id="degree-input" />
+        <p>Current value: <span id="angle-value-span"></span></p>
+        <div id="rotate-reference-example" class="bordered">
+            I am not rotated, to compare with following items
+        </div>
+        <div class="rotate-elements-3d bordered">
+            <p style="font-weight: bolder">3D ROTATION</p>
+            I am rotated around all axes using <code>rotate3d()</code>
+        </div>
+        <div class="rotate-elements-X bordered">I am rotated around X axis</div>
+        <div class="rotate-elements-Y bordered">I am rotated around Y axis</div>
+        <div class="rotate-elements-Z bordered">I am rotated around Z axis</div>
+        <div class="rotate-elements bordered">
+            I am rotated around center axis using <code>rotate()</code>
+        </div>
+
+        <h2>Scale</h2>
+        <label>Pick the scale from -2 to 2</label>
+        <input
+            type="range"
+            min="-2"
+            max="2"
+            step="0.1"
+            value="1"
+            id="scale-input"
+        />
+        <p>Current value: <span id="scale-value-span"></span></p>
+        <div class="scale-element-X bordered">I am scaled along X axis</div>
+        <div class="scale-element-Y bordered">I am scaled along Y axis</div>
+        <div class="scale-element bordered">
+            I am scaled along with <code>scale()</code>
+        </div>
+        <div class=".scale3d-element bordered">
+            I am scaled along with <code>scale3d()</code>
+        </div>
+
+        <h2>Translate</h2>
+
+        <label>Pick the translate X from -200 to 200</label>
+        <input
+            type="range"
+            min="-200"
+            max="200"
+            value="1"
+            id="translate-x-input"
+        />
+        <br />
+        <label>Pick the translate Y from -200 to 200</label>
+        <input
+            type="range"
+            min="-200"
+            max="200"
+            value="1"
+            id="translate-y-input"
+        />
+        <br />
+
+        <p>Current X value: <span id="translate-x-value-span"></span></p>
+        <p>Current Y value: <span id="translate-y-value-span"></span></p>
+        <div class="translate-example">I am translated</div>
+
+        <h2>Skewing</h2>
+        <p><code>skew()</code> function accepts value in degrees.</p>
+
+        <label>Pick the skewness value from -50 to 50</label>
+        <input type="range" min="-50" max="50" value="0" id="skew-input" />
+        <p>Current skew value: <span id="skew-value-span"></span></p>
+        <div class="skew-X-example bordered">I am skewed along X axis</div>
+        <div class="skew-Y-example bordered">I am skewed along Y axis</div>
+
+        <h2><code>perspective</code></h2>
+        <p>
+            <code>perspective</code> property is used to alter the distance
+            between the used and the Z pane.
+        </p>
+        <p>
+            Both below examples have <code>transform: rotateY(30deg);</code>, so
+            <code>perspective</code> on a parent can take some visible effect.
+            First one is wrapped in container with
+            <code>perspective</code> defined, the second is not.
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr">
+            <div style="perspective: 100em">
+                <div
+                    style="
+                        background: red;
+                        width: 10em;
+                        height: 10em;
+                        transform: rotateY(30deg);
+                        font-weight: bold;
+                        color: white;
+                        padding: 10px;
+                    "
+                >
+                    I am wrapped in a parent that has defined
+                    <code>perspective: 100em</code>
+                </div>
+            </div>
+            <div
+                style="
+                    background: red;
+                    width: 10em;
+                    height: 10em;
+                    transform: rotateY(30deg);
+                    font-weight: bold;
+                    color: white;
+                    padding: 10px;
+                "
+            >
+                I am not wrapped in a parent with perspective defined, so I
+                don't have this effect.
+            </div>
+        </div>
+
+        <h3>Nice example of <code>perspective</code></h3>
+        <p>
+            Below is example showing how the property works,
+            <a
+                href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transforms/Using_CSS_transforms#setting_perspective"
+                >copied from here</a
+            >
+        </p>
+        <table>
+            <tbody>
+                <tr>
+                    <th><code>perspective: 250px;</code></th>
+                    <th><code>perspective: 350px;</code></th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="container">
+                            <div class="cube pers250">
+                                <div class="face front">1</div>
+                                <div class="face back">2</div>
+                                <div class="face right">3</div>
+                                <div class="face left">4</div>
+                                <div class="face top">5</div>
+                                <div class="face bottom">6</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="container">
+                            <div class="cube pers350">
+                                <div class="face front">1</div>
+                                <div class="face back">2</div>
+                                <div class="face right">3</div>
+                                <div class="face left">4</div>
+                                <div class="face top">5</div>
+                                <div class="face bottom">6</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><code>perspective: 500px;</code></th>
+                    <th><code>perspective: 650px;</code></th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="container">
+                            <div class="cube pers500">
+                                <div class="face front">1</div>
+                                <div class="face back">2</div>
+                                <div class="face right">3</div>
+                                <div class="face left">4</div>
+                                <div class="face top">5</div>
+                                <div class="face bottom">6</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="container">
+                            <div class="cube pers650">
+                                <div class="face front">1</div>
+                                <div class="face back">2</div>
+                                <div class="face right">3</div>
+                                <div class="face left">4</div>
+                                <div class="face top">5</div>
+                                <div class="face bottom">6</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <script>
+            setup('skew-input', 'deg', '--skew-angle', 'skew-value-span')
+            setup('degree-input', 'deg', '--rotate-angle', 'angle-value-span')
+
+            setup(
+                'translate-x-input',
+                'px',
+                '--translate-x-value',
+                'translate-x-value-span'
+            )
+
+            setup(
+                'translate-y-input',
+                'px',
+                '--translate-y-value',
+                'translate-y-value-span'
+            )
+
+            setupWithoutUnit('scale-input', '--scale-value', 'scale-value-span')
+
+            function setupWithoutUnit(inputId, customPropertyName, spanId) {
+                setup(inputId, '', customPropertyName, spanId)
+            }
+
+            function setup(inputId, unit, customPropertyName, spanId) {
+                let callback = getCallback(unit, customPropertyName, spanId)
+                let inputElement = document.getElementById(inputId)
+                addEventListenerToElement(inputId, 'input', callback)
+                callback({ target: { value: inputElement.value } })
+            }
+
+            function getCallback(unit, customPropertyName, spanId) {
+                return (e) => {
+                    let valueWithUnit = `${e.target.value}${unit}`
+                    setBodyStyleCustomProperty(
+                        customPropertyName,
+                        valueWithUnit
+                    )
+                    setElementInnerText(spanId, valueWithUnit)
+                }
+            }
+        </script>
+    </body>
+</html>

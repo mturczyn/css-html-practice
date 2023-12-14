@@ -1,0 +1,167 @@
+:root {
+    --text-color: goldenrod;
+    --redefined-color: red;
+    --skew-angle: 45deg;
+    --rotate-angle: 45deg;
+    --scale-value: 1;
+    --translate-x-value: 1;
+    --translate-y-value: 1;
+}
+
+div.color-change {
+    --redefined-color: green;
+}
+
+h2 {
+    color: var(--redefined-color);
+}
+
+h1 {
+    color: var(--text-color);
+}
+
+.invalid-custom-property {
+    color: var(--non-existent-color);
+}
+
+.invalid-custom-property-with-fallback {
+    color: var(--non-existent-color, rebeccapurple);
+}
+
+#attr-function-example {
+    display: flex;
+    flex-direction: column;
+}
+
+#attr-function-example > a::after {
+    content: attr(href);
+}
+
+#attr-function-example > p::before {
+    content: attr(id);
+}
+
+#url-function-example {
+    background-image: url(../flowers.webp);
+}
+
+#clamp-example {
+    width: clamp(350px, 50%, 500px);
+}
+
+#shapes-example .circle {
+    clip-path: circle(50%);
+}
+
+#shapes-example h2 {
+    color: black;
+}
+
+#shapes-example h2::after {
+    content: ' example';
+}
+
+#shapes-example .polygon {
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 75%,
+        75% 75%,
+        75% 100%,
+        50% 75%,
+        0% 75%
+    );
+}
+
+#shapes-example .path {
+    max-height: 20em;
+    clip-path: path(
+        'M  20  240 L  20  80 L 160  80 L 160  20 L 280 100 L 160 180 L 160 120 L  60 120 L  60 240 Z'
+    );
+}
+
+#shapes-example {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 500px;
+}
+
+.rotate-elements-X {
+    transform: rotateX(var(--rotate-angle));
+}
+
+.rotate-elements-Y {
+    transform: rotateY(var(--rotate-angle));
+}
+
+.rotate-elements-Z {
+    transform: rotateZ(var(--rotate-angle));
+}
+
+.rotate-elements-3d {
+    transform: rotate3d(2, 2, 2, var(--rotate-angle));
+}
+
+.rotate-elements {
+    transform: rotate(var(--rotate-angle));
+}
+
+:is(
+        .rotate-elements-X,
+        .rotate-elements-Y,
+        .rotate-elements-Z,
+        .rotate-elements,
+        .rotate-elements-3d,
+        #rotate-reference-example,
+        .scale-element-X,
+        .scale-element-Y,
+        .scale-element,
+        .scale3d-element,
+        .skew-X-example,
+        .skew-Y-example,
+
+    ) {
+    display: inline-block;
+    width: 10em;
+    height: 10em;
+}
+
+#angle-value-span {
+    font-weight: bolder;
+}
+
+.scale-element-X {
+    transform: scaleX(var(--scale-value));
+}
+
+.scale-element-Y {
+    transform: scaleY(var(--scale-value));
+}
+
+.scale-element {
+    transform: scale(var(--scale-value));
+}
+
+.scale3d-element {
+    transform: scale3d(
+        var(--scale-value),
+        var(--scale-value),
+        var(--scale-value)
+    );
+}
+
+.translate-example {
+    max-width: 10em;
+    background: rgba(218, 165, 32, 0.5);
+    transform: translateX(var(--translate-x-value))
+        translateY(var(--translate-y-value));
+}
+
+.skew-X-example {
+    transform: skewX(var(--skew-angle));
+}
+
+.skew-Y-example {
+    transform: skewY(var(--skew-angle));
+}

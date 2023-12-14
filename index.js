@@ -17,7 +17,20 @@ const BORDERS = '/borders/'
 const SHADOWS = '/shadows/'
 const SELECTORS_AND_CASCADE = '/selectors-and-cascade/'
 const FOCUS = '/focus/'
+const FUNCTIONS = '/functions/'
 const Z_INDEX = '/z-index/'
+
+function addEventListenerToElement(elementId, eventName, callback) {
+    document.getElementById(elementId).addEventListener(eventName, callback)
+}
+
+function setBodyStyleCustomProperty(name, value) {
+    document.body.style.setProperty(name, value)
+}
+
+function setElementInnerText(elementId, text) {
+    document.getElementById(elementId).innerText = text
+}
 
 function goTo(path) {
     window.location = path
@@ -31,6 +44,10 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToFunctions() {
+    goToPage(FUNCTIONS)
 }
 
 function goToZIndex() {
