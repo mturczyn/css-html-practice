@@ -1,28 +1,30 @@
-// const BASE_DIR = 'C:/Users/MT/source/repos/css-practice'
+// const BASE_DIR = 'C:/Users/MT/source/repos/css-practice/static/'
 // When hosted in nginx (and probably in other servers),
 // we don't need base directory, as we have base URL as
 // base directory.
 const BASE_DIR = ''
 
-// Directories with particular sites.
-const FLEXBOX = '/layout/flexbox/'
-const GRID = '/layout/grid/'
-const LAYOUT = '/layout/'
-const MAIN_PAGE = '/'
-const TEST_AREA = '/test-area/'
-const COLORS = '/colors/'
-const SPACING = '/spacing/'
-const INHERITANCE = '/inheritance/'
+// Mian page for each directory.
 const INDEX = 'index.html'
-const LOGICAL_PROPERTIES = '/logical-properties/'
-const PSEUDO_ELEMENTS = '/pseudo-elements/'
-const PSEUDO_CLASSES = '/pseudo-classes/'
-const BORDERS = '/borders/'
-const SHADOWS = '/shadows/'
-const SELECTORS_AND_CASCADE = '/selectors-and-cascade/'
-const FOCUS = '/focus/'
-const FUNCTIONS = '/functions/'
-const Z_INDEX = '/z-index/'
+
+// Directories with particular sites.
+const FLEXBOX = 'layout/flexbox/'
+const GRID = 'layout/grid/'
+const LAYOUT = 'layout/'
+const MAIN_PAGE = ''
+const TEST_AREA = 'test-area/'
+const COLORS = 'colors/'
+const SPACING = 'spacing/'
+const INHERITANCE = 'inheritance/'
+const LOGICAL_PROPERTIES = 'logical-properties/'
+const PSEUDO_ELEMENTS = 'pseudo-elements/'
+const PSEUDO_CLASSES = 'pseudo-classes/'
+const BORDERS = 'borders/'
+const SHADOWS = 'shadows/'
+const SELECTORS_AND_CASCADE = 'selectors-and-cascade/'
+const FOCUS = 'focus/'
+const FUNCTIONS = 'functions/'
+const Z_INDEX = 'z-index/'
 
 function addEventListenerToElement(elementId, eventName, callback) {
     document.getElementById(elementId).addEventListener(eventName, callback)
