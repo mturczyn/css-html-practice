@@ -1,7 +1,11 @@
 FROM nginx:alpine
 
-WORKDIR /app
+ENV CI=false
+ENV PORT=3000
 
-COPY . .
+COPY ./static /usr/share/nginx/html
 
-COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+
+# Containers run nginx with global directives and daemon off
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
