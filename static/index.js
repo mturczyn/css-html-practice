@@ -1,4 +1,8 @@
-const BASE_DIR = 'C:/Users/MT/source/repos/css-practice'
+// const BASE_DIR = 'C:/Users/MT/source/repos/css-practice'
+// When hosted in nginx (and probably in other servers),
+// we don't need base directory, as we have base URL as
+// base directory.
+const BASE_DIR = ''
 
 // Directories with particular sites.
 const FLEXBOX = '/layout/flexbox/'
