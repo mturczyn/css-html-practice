@@ -1,3 +1,10 @@
+addEventListenerToElement('perspective-input', 'input', (e) => {
+    let valueWithUnit = e.target.value + 'px'
+    setElementInnerText('prespecitve-input-value', valueWithUnit)
+    document.getElementsByClassName('pers250')[0].style.perspective =
+        valueWithUnit
+})
+
 setup('skew-input', 'deg', '--skew-angle', 'skew-value-span')
 setup('degree-input', 'deg', '--rotate-angle', 'angle-value-span')
 
