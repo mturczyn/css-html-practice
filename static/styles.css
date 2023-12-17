@@ -34,3 +34,15 @@ button:hover {
 .bordered {
     position: relative;
 }
+
+.main-container {
+    max-width: 30rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-container > * {
+    height: 3rem;
+    flex: 1 1 auto;
+    font-weight: bold;
+}
