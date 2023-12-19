@@ -1,8 +1,6 @@
-// const BASE_DIR = 'C:/Users/MT/source/repos/css-practice/static/'
 // When hosted in nginx (and probably in other servers),
 // we don't need base directory, as we have base URL as
 // base directory.
-const BASE_DIR = ''
 
 // Mian page for each directory.
 const INDEX = 'index.html'
@@ -43,7 +41,7 @@ function goTo(path) {
 }
 
 function getPagePath(whereTo) {
-    return `${BASE_DIR}${whereTo}${INDEX}`
+    return `${whereTo}${INDEX}`
 }
 
 function goToPage(pageDir) {
@@ -187,5 +185,5 @@ function getRelativePath(source, target) {
 }
 
 function getRelativePathToRoot(target) {
-    return getRelativePath(BASE_DIR, target)
+    return getRelativePath('', target)
 }
