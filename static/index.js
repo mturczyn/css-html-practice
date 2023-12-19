@@ -22,6 +22,7 @@ const SHADOWS = 'shadows/'
 const SELECTORS_AND_CASCADE = 'selectors-and-cascade/'
 const FOCUS = 'focus/'
 const FUNCTIONS = 'functions/'
+const GRADIENTS = 'gradients/'
 const Z_INDEX = 'z-index/'
 
 function addEventListenerToElement(elementId, eventName, callback) {
@@ -48,6 +49,10 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToGradients() {
+    goToPage(GRADIENTS)
 }
 
 function goToFunctions() {
