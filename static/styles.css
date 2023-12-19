@@ -2,6 +2,11 @@ code.block-code {
     display: block;
 }
 
+.square250 {
+    width: 250px;
+    height: 250px;
+}
+
 button {
     border-radius: 5px;
     padding: 5px;
