@@ -9,7 +9,6 @@
         "serve": "browser-sync start --server \"static\" --files \"static\""
     },
     "author": "Michal Turczyn",
-    "license": "ISC",
     "devDependencies": {
         "browser-sync": "^2.29.3"
     }
