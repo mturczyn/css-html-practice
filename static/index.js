@@ -6,8 +6,8 @@
 const INDEX = 'index.html'
 
 // Directories with particular sites.
-const FLEXBOX = 'layout/flexbox/'
-const GRID = 'layout/grid/'
+const FLEXBOX = 'flexbox/'
+const GRID = 'grid/'
 const LAYOUT = 'layout/'
 const MAIN_PAGE = ''
 const TEST_AREA = 'test-area/'
