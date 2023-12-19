@@ -1,0 +1,67 @@
+.multiple-various-gradients {
+    background: linear-gradient(-45deg, blue -30%, transparent 80%),
+        linear-gradient(
+            45deg,
+            darkred 20%,
+            crimson,
+            darkorange 60%,
+            gold,
+            bisque
+        );
+}
+
+.repeating-linear-gradient {
+    background: repeating-linear-gradient(
+        45deg,
+        red,
+        red 30px,
+        white 30px,
+        white 60px
+    );
+}
+
+.circular-gradient {
+    background: radial-gradient(crimson, darkorange, gold);
+}
+
+.conic-gradient-with-angle-and-center {
+    background: conic-gradient(from 45deg at 20% 30%, white, black);
+}
+
+.conic-gradient {
+    background: conic-gradient(white, black);
+}
+
+.circular-gradient-with-center {
+    background: radial-gradient(ellipse at 10%, crimson, darkorange, gold);
+}
+
+.linear-gradient {
+    background: linear-gradient(black, white);
+}
+
+.linear-gradient-multicolor {
+    background: linear-gradient(
+        blue,
+        lightblue,
+        white,
+        rgb(255, 136, 136),
+        red
+    );
+}
+
+.square250 {
+    width: 250px;
+    height: 250px;
+}
+
+.nice-warm-gradient-bg {
+    background: linear-gradient(
+        45deg,
+        darkred 20%,
+        crimson,
+        darkorange 60%,
+        gold,
+        bisque
+    );
+}
