@@ -19,6 +19,12 @@
     }
 }
 
+@keyframes color-animation-one-keyframe {
+    50% {
+        background: purple;
+    }
+}
+
 .color-animation-finite-with-delay {
     animation: bg-color-animation-kf 2000ms ease-in-out infinite alternate;
     animation-delay: 3s;
