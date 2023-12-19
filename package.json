@@ -1,0 +1,16 @@
+{
+    "name": "css-practice",
+    "version": "1.0.0",
+    "description": "css practice course",
+    "main": "index.html",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build:css": "npm run css:lint && npm run css:autoprefixer",
+        "serve": "browser-sync start --server \"static\" --files \"static\""
+    },
+    "author": "Michal Turczyn",
+    "license": "ISC",
+    "devDependencies": {
+        "browser-sync": "^2.29.3"
+    }
+}
