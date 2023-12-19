@@ -24,6 +24,7 @@ const FOCUS = 'focus/'
 const FUNCTIONS = 'functions/'
 const GRADIENTS = 'gradients/'
 const Z_INDEX = 'z-index/'
+const ANIMATIONS = 'animations/'
 
 function addEventListenerToElement(elementId, eventName, callback) {
     document.getElementById(elementId).addEventListener(eventName, callback)
@@ -53,6 +54,10 @@ function goToPage(pageDir) {
 
 function goToGradients() {
     goToPage(GRADIENTS)
+}
+
+function goToAnimations() {
+    goToPage(ANIMATIONS)
 }
 
 function goToFunctions() {
