@@ -5,11 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "chrome",
+            "command": "npm run serve",
+            "name": "Execute npm run serve",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "file:///C:/Users/MT/source/repos/css-practice/static/index.html",
-            "webRoot": "${workspaceFolder}"
+            "type": "node-terminal"
         }
     ]
 }
