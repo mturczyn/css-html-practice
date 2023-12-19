@@ -32,6 +32,13 @@ jobs:
         push: true
         tags: containerstests.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_d4740031e5994416830d0ca747f2dd7a }}/css-practice:${{ github.sha }}
         file: ./Dockerfile
+        
+    - name: Build and push container image to registry for container instance version.
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: containerstests.azurecr.io/css-practice:latest
+        file: ./Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
