@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="blend-modes.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+        <script src="../index.js"></script>
+    </head>
+    <body>
+        <button onclick="goToMainPage()">Main page</button>
+        <p>
+            Below we have image element inside div. The div element has pink
+            background, and the image has transparent background, so you can see
+            through it.
+        </p>
+        <div class="square250" style="background-color: mistyrose">
+            <img src="../images/isolated-tshirt.webp" class="square250" />
+        </div>
+        <p>
+            With use of
+            <code>mix-blend-mode: multiply; filter: brightness(110%)</code>
+        </p>
+        <div class="square250" style="background-color: mistyrose">
+            <img
+                src="../images/isolated-tshirt.webp"
+                style="mix-blend-mode: multiply; filter: brightness(110%)"
+                class="square250"
+            />
+        </div>
+
+        <img src="../images/square-pattern.jpg" class="square250" />
+        <img src="../images/blend-modes/background1.jpg" class="square250" />
+        <img src="../images/blend-modes/background2.jpg" class="square250" />
+
+        <h1>Different types of blend modes</h1>
+
+        <h1>multiply</h1>
+        <div style="display: flex">
+            <div class="square250" style="background: pink">
+                <img
+                    class="square250 mix-blend-mode-multiply-example"
+                    src="../images/square-pattern.jpg"
+                />
+            </div>
+            <div class="square250 images-stack-container">
+                <img src="../images/blend-modes/background2.jpg" />
+                <img
+                    src="../images/blend-modes/background1.jpg"
+                    class="mix-blend-mode-multiply-example"
+                />
+            </div>
+        </div>
+
+        <h1>overlay</h1>
+        <div style="display: flex">
+            <div class="square250" style="background: pink">
+                <img
+                    class="square250 mix-blend-mode-overlay-example"
+                    src="../images/square-pattern.jpg"
+                />
+            </div>
+            <div class="square250 images-stack-container">
+                <img
+                    class="mix-blend-mode-overlay-example"
+                    src="../images/blend-modes/background2.jpg"
+                />
+                <img src="../images/blend-modes/background1.jpg" />
+            </div>
+        </div>
+    </body>
+</html>

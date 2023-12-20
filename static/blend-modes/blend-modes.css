@@ -1,0 +1,20 @@
+.mix-blend-mode-overlay-example {
+    mix-blend-mode: overlay;
+}
+
+.mix-blend-mode-multiply-example {
+    mix-blend-mode: multiply;
+}
+
+.images-stack-container {
+    position: relative;
+}
+
+.images-stack-container > img:first-child {
+    position: absolute;
+}
+
+.square250 > img {
+    width: inherit;
+    height: inherit;
+}
