@@ -1,0 +1,13 @@
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+#examples-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+#examples-container p {
+    font-weight: bold;
+}

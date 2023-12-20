@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../index.js"></script>
+        <link href="filters.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <button class="main-page-button" onclick="goTo('../index.html')">
+            Main page
+        </button>
+        <div id="examples-container">
+            <div class="flex-column bordered">
+                <img class="square250" src="../isolated-tshirt.webp" />
+                <p>Without any filters applied</p>
+            </div>
+            <div class="flex-column">
+                <img
+                    style="filter: blur(0.2em)"
+                    class="square250"
+                    src="../isolated-tshirt.webp"
+                />
+                <p>With blur applied <code>filter: blur(0.2em)</code></p>
+            </div>
+            <div class="flex-column">
+                <img
+                    style="filter: brightness(80%)"
+                    class="square250"
+                    src="../isolated-tshirt.webp"
+                />
+                <p>
+                    With brightness applied <code>filter: brightness(80%)</code>
+                </p>
+            </div>
+
+            <div class="flex-column">
+                <img
+                    style="filter: contrast(150%)"
+                    class="square250"
+                    src="../isolated-tshirt.webp"
+                />
+                <p>With contrast applied <code>filter: contrast(150%)</code></p>
+            </div>
+        </div>
+
+        <h1>grayscale</h1>
+        <p>
+            With and without grayscale applied
+            <code>filter: grayscale(90%)</code>
+        </p>
+        <div class="flex-column">
+            <div class="flex-column">
+                <div style="flex-direction: row; display: flex">
+                    <img class="square250" src="../abstract-image.jpg" />
+                    <img
+                        style="filter: grayscale(90%)"
+                        class="square250"
+                        src="../abstract-image.jpg"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <h1>invert</h1>
+        <p>
+            With and without invert applied
+            <code>filter: invert(90%)</code>
+        </p>
+        <div class="flex-column">
+            <div class="flex-column">
+                <div style="flex-direction: row; display: flex">
+                    <img class="square250" src="../abstract-image.jpg" />
+                    <img
+                        style="filter: invert(90%)"
+                        class="square250"
+                        src="../abstract-image.jpg"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <h1>opacity</h1>
+        <p>
+            With and without opacity applied
+            <code>filter: opacity(30%)</code>
+        </p>
+        <div class="flex-column">
+            <div class="flex-column">
+                <div style="flex-direction: row; display: flex">
+                    <img class="square250" src="../abstract-image.jpg" />
+                    <img
+                        style="filter: opacity(30%)"
+                        class="square250"
+                        src="../abstract-image.jpg"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <h1>saturate</h1>
+        <p>
+            With and without saturate applied
+            <code>filter: saturate(200%)</code>
+        </p>
+        <div class="flex-column">
+            <div class="flex-column">
+                <div style="flex-direction: row; display: flex">
+                    <img class="square250" src="../abstract-image.jpg" />
+                    <img
+                        style="filter: saturate(200%)"
+                        class="square250"
+                        src="../abstract-image.jpg"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <h1>sepia</h1>
+        <p>
+            With and without sepia applied
+            <code>filter: sepia(70%)</code>
+        </p>
+        <div class="flex-column">
+            <div class="flex-column">
+                <div style="flex-direction: row; display: flex">
+                    <img class="square250" src="../abstract-image.jpg" />
+                    <img
+                        style="filter: sepia(70%)"
+                        class="square250"
+                        src="../abstract-image.jpg"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <h1>hue-rotate</h1>
+        <p>
+            This function shifts the hue of all the element's colors, changing
+            the part of the color wheel it references. If no arguments are
+            passed, it does nothing.
+        </p>
+        <p>
+            With and without hue-rotate applied
+            <code>filter: hue-rotate(120deg)</code>
+        </p>
+        <div class="flex-column">
+            <div class="flex-column">
+                <div style="flex-direction: row; display: flex">
+                    <img class="square250" src="../abstract-image.jpg" />
+                    <img
+                        style="filter: hue-rotate(120deg)"
+                        class="square250"
+                        src="../abstract-image.jpg"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <h1>drop-shadow</h1>
+        <p>
+            With and without drop-shadow applied
+            <code>filter: drop-shadow(5px 5px 10px orange);</code>
+        </p>
+        <div class="flex-column">
+            <div class="flex-column">
+                <div style="flex-direction: row; display: flex">
+                    <img class="square250" src="../abstract-image.jpg" />
+                    <img
+                        style="
+                            margin: 0 1em;
+                            filter: drop-shadow(5px 5px 10px orange);
+                        "
+                        class="square250"
+                        src="../abstract-image.jpg"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <h1>url</h1>
+
+        <!-- SVG Filter effect -->
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+            <defs>
+                <filter id="pink-filter" x="0" y="0" width="100%" height="100%">
+                    <feComponentTransfer>
+                        <feFuncR
+                            type="linear"
+                            slope="1"
+                            intercept="0.5"
+                        ></feFuncR>
+                        <feFuncG
+                            type="linear"
+                            slope="0.5"
+                            intercept="0.5"
+                        ></feFuncG>
+                        <feFuncB
+                            type="linear"
+                            slope="0"
+                            intercept="1"
+                        ></feFuncB>
+                    </feComponentTransfer>
+                </filter>
+            </defs>
+        </svg>
+
+        <p>
+            The <code>url</code> filter allows to apply an SVG filter from a
+            linked SVG element or file. More can be found
+            <a
+                href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter"
+                >here</a
+            >
+        </p>
+        <p>
+            With and without url applied
+            <code>filter: url(#pink-filter)</code>, where the
+            <code>pink-filter</code> is defined in HTML.
+        </p>
+        <div class="flex-column">
+            <div class="flex-column">
+                <div style="flex-direction: row; display: flex">
+                    <img class="square250" src="../isolated-tshirt.webp" />
+                    <img
+                        style="filter: url(#pink-filter)"
+                        class="square250"
+                        src="../isolated-tshirt.webp"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <h1>Backdrop filter</h1>
+
+        <p>
+            <code>backdrop-filter</code> works the same as
+            <code>filter</code> property and accepts the same values, but it is
+            applied to what is "behind" the element.
+        </p>
+        <div class="square250" style="background-image: url(../flowers.webp)">
+            <h1 style="backdrop-filter: brightness(200%)">CHECK THIS OUT</h1>
+            <p
+                style="
+                    font-size: large;
+                    font-weight: bold;
+                    backdrop-filter: brightness(200%);
+                "
+            >
+                I have <code>backdrop-filter: brightness(200%)</code>, so area
+                behind me will be different :)
+            </p>
+        </div>
+        <p>Without <code>backdrop-filter</code> applied.</p>
+        <div class="square250" style="background-image: url(../flowers.webp)">
+            <h1>CHECK THIS OUT</h1>
+        </div>
+    </body>
+</html>

@@ -25,6 +25,7 @@ const FUNCTIONS = 'functions/'
 const GRADIENTS = 'gradients/'
 const Z_INDEX = 'z-index/'
 const ANIMATIONS = 'animations/'
+const FILTERS = 'filters/'
 
 function addEventListenerToElement(elementId, eventName, callback) {
     document.getElementById(elementId).addEventListener(eventName, callback)
@@ -50,6 +51,10 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToFilters() {
+    goToPage(FILTERS)
 }
 
 function goToGradients() {
