@@ -11,14 +11,14 @@
         </button>
         <div id="examples-container">
             <div class="flex-column bordered">
-                <img class="square250" src="../isolated-tshirt.webp" />
+                <img class="square250" src="../images/isolated-tshirt.webp" />
                 <p>Without any filters applied</p>
             </div>
             <div class="flex-column">
                 <img
                     style="filter: blur(0.2em)"
                     class="square250"
-                    src="../isolated-tshirt.webp"
+                    src="../images/isolated-tshirt.webp"
                 />
                 <p>With blur applied <code>filter: blur(0.2em)</code></p>
             </div>
@@ -26,7 +26,7 @@
                 <img
                     style="filter: brightness(80%)"
                     class="square250"
-                    src="../isolated-tshirt.webp"
+                    src="../images/isolated-tshirt.webp"
                 />
                 <p>
                     With brightness applied <code>filter: brightness(80%)</code>
@@ -37,7 +37,7 @@
                 <img
                     style="filter: contrast(150%)"
                     class="square250"
-                    src="../isolated-tshirt.webp"
+                    src="../images/isolated-tshirt.webp"
                 />
                 <p>With contrast applied <code>filter: contrast(150%)</code></p>
             </div>
@@ -51,11 +51,11 @@
         <div class="flex-column">
             <div class="flex-column">
                 <div style="flex-direction: row; display: flex">
-                    <img class="square250" src="../abstract-image.jpg" />
+                    <img class="square250" src="../images/abstract-image.jpg" />
                     <img
                         style="filter: grayscale(90%)"
                         class="square250"
-                        src="../abstract-image.jpg"
+                        src="../images/abstract-image.jpg"
                     />
                 </div>
             </div>
@@ -69,11 +69,11 @@
         <div class="flex-column">
             <div class="flex-column">
                 <div style="flex-direction: row; display: flex">
-                    <img class="square250" src="../abstract-image.jpg" />
+                    <img class="square250" src="../images/abstract-image.jpg" />
                     <img
                         style="filter: invert(90%)"
                         class="square250"
-                        src="../abstract-image.jpg"
+                        src="../images/abstract-image.jpg"
                     />
                 </div>
             </div>
@@ -87,11 +87,11 @@
         <div class="flex-column">
             <div class="flex-column">
                 <div style="flex-direction: row; display: flex">
-                    <img class="square250" src="../abstract-image.jpg" />
+                    <img class="square250" src="../images/abstract-image.jpg" />
                     <img
                         style="filter: opacity(30%)"
                         class="square250"
-                        src="../abstract-image.jpg"
+                        src="../images/abstract-image.jpg"
                     />
                 </div>
             </div>
@@ -105,11 +105,11 @@
         <div class="flex-column">
             <div class="flex-column">
                 <div style="flex-direction: row; display: flex">
-                    <img class="square250" src="../abstract-image.jpg" />
+                    <img class="square250" src="../images/abstract-image.jpg" />
                     <img
                         style="filter: saturate(200%)"
                         class="square250"
-                        src="../abstract-image.jpg"
+                        src="../images/abstract-image.jpg"
                     />
                 </div>
             </div>
@@ -123,11 +123,11 @@
         <div class="flex-column">
             <div class="flex-column">
                 <div style="flex-direction: row; display: flex">
-                    <img class="square250" src="../abstract-image.jpg" />
+                    <img class="square250" src="../images/abstract-image.jpg" />
                     <img
                         style="filter: sepia(70%)"
                         class="square250"
-                        src="../abstract-image.jpg"
+                        src="../images/abstract-image.jpg"
                     />
                 </div>
             </div>
@@ -146,11 +146,11 @@
         <div class="flex-column">
             <div class="flex-column">
                 <div style="flex-direction: row; display: flex">
-                    <img class="square250" src="../abstract-image.jpg" />
+                    <img class="square250" src="../images/abstract-image.jpg" />
                     <img
                         style="filter: hue-rotate(120deg)"
                         class="square250"
-                        src="../abstract-image.jpg"
+                        src="../images/abstract-image.jpg"
                     />
                 </div>
             </div>
@@ -164,14 +164,14 @@
         <div class="flex-column">
             <div class="flex-column">
                 <div style="flex-direction: row; display: flex">
-                    <img class="square250" src="../abstract-image.jpg" />
+                    <img class="square250" src="../images/abstract-image.jpg" />
                     <img
                         style="
                             margin: 0 1em;
                             filter: drop-shadow(5px 5px 10px orange);
                         "
                         class="square250"
-                        src="../abstract-image.jpg"
+                        src="../images/abstract-image.jpg"
                     />
                 </div>
                 <p>
@@ -179,14 +179,17 @@
                     apply exact shadows to detected shapes.
                 </p>
                 <div style="flex-direction: row; display: flex">
-                    <img class="square250" src="../isolated-tshirt.webp" />
+                    <img
+                        class="square250"
+                        src="../images/isolated-tshirt.webp"
+                    />
                     <img
                         style="
                             margin: 0 1em;
                             filter: drop-shadow(5px 5px 10px orange);
                         "
                         class="square250"
-                        src="../isolated-tshirt.webp"
+                        src="../images/isolated-tshirt.webp"
                     />
                 </div>
             </div>
@@ -235,11 +238,14 @@
         <div class="flex-column">
             <div class="flex-column">
                 <div style="flex-direction: row; display: flex">
-                    <img class="square250" src="../isolated-tshirt.webp" />
+                    <img
+                        class="square250"
+                        src="../images/isolated-tshirt.webp"
+                    />
                     <img
                         style="filter: url(#pink-filter)"
                         class="square250"
-                        src="../isolated-tshirt.webp"
+                        src="../images/isolated-tshirt.webp"
                     />
                 </div>
             </div>
@@ -252,7 +258,10 @@
             <code>filter</code> property and accepts the same values, but it is
             applied to what is "behind" the element.
         </p>
-        <div class="square250" style="background-image: url(../flowers.webp)">
+        <div
+            class="square250"
+            style="background-image: url(../images/flowers.webp)"
+        >
             <h1 style="backdrop-filter: brightness(200%)">CHECK THIS OUT</h1>
             <p
                 style="
@@ -266,7 +275,10 @@
             </p>
         </div>
         <p>Without <code>backdrop-filter</code> applied.</p>
-        <div class="square250" style="background-image: url(../flowers.webp)">
+        <div
+            class="square250"
+            style="background-image: url(../images/flowers.webp)"
+        >
             <h1>CHECK THIS OUT</h1>
         </div>
     </body>
