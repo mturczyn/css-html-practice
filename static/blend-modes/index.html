@@ -7,6 +7,17 @@
     </head>
     <body>
         <button onclick="goToMainPage()">Main page</button>
+
+        <h3>Introduction</h3>
+        <p>
+            You can use most of the blend modes available in a design tool with
+            CSS, using the <code>mix-blend-mode</code> or the
+            <code>background-blend-mode</code> properties. The
+            <code>mix-blend-mode</code> applies blending to a whole element and
+            the <code>background-blend-mode</code> applies blending to the
+            background of an element.
+        </p>
+        <h3>Initial examples</h3>
         <p>
             Below we have image element inside div. The div element has pink
             background, and the image has transparent background, so you can see
@@ -27,16 +38,42 @@
             />
         </div>
 
+        <h2>Base images</h2>
+        <p>Below are images that will be used for presentation.</p>
+        <p>
+            First picture will be shown on the pink background, the second
+            picture will be dispalyed on top of the third picture.
+        </p>
         <img src="../images/square-pattern.jpg" class="square250" />
-        <img src="../images/blend-modes/background1.jpg" class="square250" />
         <img src="../images/blend-modes/background2.jpg" class="square250" />
+        <img src="../images/blend-modes/background1.jpg" class="square250" />
 
         <h1>Different types of blend modes</h1>
 
-        <h1>multiply</h1>
+        <p>
+            There are two different types of blend modes: separable and
+            non-separable.
+        </p>
+        <p>Separable</p>
+        <ul id="separable-modes-list"></ul>
+        <p>Non-separable</p>
+        <ul id="non-separable-modes-list"></ul>
+
+        <p>
+            First picture is inside element with pink background for
+            presentation purposes, to see the effect. The second picture is two
+            pictures stacked together, to see how it also mixes all sorts of
+            shapes.
+        </p>
+
+        <label>Select mix blend mode to display:</label>
+        <select id="blend-mode-select"></select>
+
+        <h1 id="selected-mix-blend-mode"></h1>
         <div style="display: flex">
             <div class="square250" style="background: pink">
                 <img
+                    id="picutre-with-pink-bg"
                     class="square250 mix-blend-mode-multiply-example"
                     src="../images/square-pattern.jpg"
                 />
@@ -45,26 +82,73 @@
                 <img src="../images/blend-modes/background2.jpg" />
                 <img
                     src="../images/blend-modes/background1.jpg"
-                    class="mix-blend-mode-multiply-example"
+                    id="picutre-with-other-img-bg"
                 />
             </div>
         </div>
 
-        <h1>overlay</h1>
-        <div style="display: flex">
-            <div class="square250" style="background: pink">
-                <img
-                    class="square250 mix-blend-mode-overlay-example"
-                    src="../images/square-pattern.jpg"
-                />
-            </div>
-            <div class="square250 images-stack-container">
-                <img
-                    class="mix-blend-mode-overlay-example"
-                    src="../images/blend-modes/background2.jpg"
-                />
-                <img src="../images/blend-modes/background1.jpg" />
-            </div>
-        </div>
+        <script>
+            const separableBlendModes = [
+                'initial',
+                'darken',
+                'exclusion',
+                'difference',
+                'lighten',
+                'overlay',
+                'screen',
+                'multiply',
+                'normal',
+            ]
+
+            const nonSeparableBlendModes = [
+                'hue',
+                'luminosity',
+                'saturation',
+                'color',
+            ]
+
+            const blendModes = [
+                ...separableBlendModes,
+                ...nonSeparableBlendModes,
+            ]
+
+            for (var mode of separableBlendModes) {
+                createElementAndAppendById('li', mode, 'separable-modes-list')
+            }
+
+            for (var mode of nonSeparableBlendModes) {
+                createElementAndAppendById(
+                    'li',
+                    mode,
+                    'non-separable-modes-list'
+                )
+            }
+
+            for (var mode of blendModes) {
+                createElementAndAppendById('option', mode, 'blend-mode-select')
+            }
+
+            addEventListenerToElement(
+                'blend-mode-select',
+                'change',
+                onMixBlendModeChange
+            )
+
+            function onMixBlendModeChange(e) {
+                const value = e.target.value
+                setMixBlendMode('picutre-with-pink-bg', value)
+                setMixBlendMode('picutre-with-other-img-bg', value)
+                setElementInnerText('selected-mix-blend-mode', value)
+            }
+
+            function setMixBlendMode(elementId, value) {
+                document.getElementById(elementId).style.mixBlendMode = value
+            }
+
+            const defaultBlendMode = blendModes[0]
+            document.getElementById('blend-mode-select').value =
+                defaultBlendMode
+            onMixBlendModeChange({ target: { value: defaultBlendMode } })
+        </script>
     </body>
 </html>
