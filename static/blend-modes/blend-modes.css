@@ -1,0 +1,12 @@
+.images-stack-container {
+    position: relative;
+}
+
+.images-stack-container > img:first-child {
+    position: absolute;
+}
+
+.square250 > img {
+    width: inherit;
+    height: inherit;
+}
