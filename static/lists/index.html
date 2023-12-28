@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="lists.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+        <script src="../index.js"></script>
+    </head>
+    <body>
+        <button onclick="goToMainPage()">Main page</button>
+        <p>Below is example ordered list:</p>
+        <ol class="bordered">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+
+        <p>
+            Below is example ordered list without markers, by changing items'
+            display to block:
+        </p>
+        <ol id="list-without-marker" class="bordered">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+
+        <p>Below is example unordered list:</p>
+        <ul class="bordered">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+
+        <p>Description list</p>
+        <dl class="bordered">
+            <dt>term (dt element)</dt>
+            <dd>description (dd element)</dd>
+            <dt>term (dt element)</dt>
+            <dd>description (dd element)</dd>
+        </dl>
+
+        <p>
+            Below is example unordered list, with
+            <code>list-style-position</code>:
+        </p>
+        <button id="switch-list-style-position">Switch inside/outside</button>
+        <ul id="list-style-position-example" class="bordered">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+
+        <p>
+            Below is example unordered list, with
+            <code>list-style-image</code>:
+        </p>
+        <ul id="list-style-image-example" class="bordered">
+            <li>Item 1</li>
+            <li style="list-style-image: none">
+                Item 2 - I have overriden the property
+            </li>
+            <li>Item 3</li>
+        </ul>
+
+        <p>
+            Markers also can be affected with use of
+            <code>::marker</code> pseudo element.
+        </p>
+        <ul id="marker-box-example">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+
+        <p id="list-item-display">
+            Other elements (such as this paragraph) also can be given
+            <code>display: list-item</code> and then have defined marker through
+            <code>::marker</code>
+        </p>
+
+        <script>
+            addEventListenerToElement(
+                'switch-list-style-position',
+                'click',
+                (e) => {
+                    let element = document.getElementById(
+                        'list-style-position-example'
+                    )
+                    let currentListStylePosition =
+                        element.style.listStylePosition
+
+                    element.style.listStylePosition =
+                        currentListStylePosition === 'inside'
+                            ? 'outside'
+                            : 'inside'
+                }
+            )
+        </script>
+    </body>
+</html>
