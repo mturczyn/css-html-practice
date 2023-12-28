@@ -1,0 +1,28 @@
+#list-without-marker > li {
+    display: block;
+}
+
+dl > dd::before {
+    content: '- ';
+}
+
+#list-style-position-example > li {
+    background: lightblue;
+}
+
+#list-style-image-example {
+    list-style-image: url(../favicon.ico);
+}
+
+#marker-box-example > li::marker {
+    color: plum;
+}
+
+#list-item-display::marker {
+    content: '🥕';
+}
+
+#list-item-display {
+    display: list-item;
+    margin-left: 1rem;
+}
