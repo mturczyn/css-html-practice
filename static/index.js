@@ -28,6 +28,8 @@ const ANIMATIONS = 'animations/'
 const FILTERS = 'filters/'
 const BLEND_MODES = 'blend-modes/'
 const LISTS = 'lists/'
+const TRANSITIONS = 'transitions/'
+const OVERFLOW = 'overflow/'
 
 function addEventListenerToElement(elementId, eventName, callback) {
     document.getElementById(elementId).addEventListener(eventName, callback)
@@ -53,6 +55,14 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToOverflow() {
+    goToPage(OVERFLOW)
+}
+
+function goToTransitions() {
+    goToPage(TRANSITIONS)
 }
 
 function goToLists() {
