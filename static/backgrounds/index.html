@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../index.js"></script>
+        <link href="backgrounds.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <button class="main-page-button" onclick="goTo('../index.html')">
+            Main page
+        </button>
+        <h1>Background color</h1>
+        <p>We can set background color</p>
+        <div class="square250" style="background: rebeccapurple"></div>
+
+        <h1>Background image</h1>
+        <p>We can also set image or gradient as background.</p>
+        <div
+            class="square250"
+            style="background-image: url(../images/abstract-image.jpg)"
+        >
+            <b style="font-size: 2em">I AM SOME MEANINGLESS TEXT</b>
+        </div>
+        <div
+            class="square250"
+            style="background-image: linear-gradient(white, black)"
+        >
+            <b style="font-size: 2em">I AM SOME MEANINGLESS TEXT</b>
+        </div>
+
+        <h1>Background repeat</h1>
+
+        <label
+            >Pick value for <code>background-repeat</code> (there are more
+            options)
+        </label>
+        <select id="background-repeat-select"></select>
+
+        <p>
+            If specified image/gradient won't be able to fill whole background,
+            with <code>background-repeat</code> property we can control how it
+            behaves.
+        </p>
+        <div
+            id="background-repeat-example"
+            class="square250 bordered"
+            style="background-image: url(../favicon.ico)"
+        >
+            <b style="color: black; font-size: 2em"
+                >I AM SOME MEANINGLESS TEXT</b
+            >
+        </div>
+
+        <h1>Background position</h1>
+        <p>
+            When image is used as background image and background repeat is set
+            to <code>no-repeat</code>, we can control the background image
+            position with <code>background-position</code> CSS property.
+        </p>
+
+        <label>Pick position</label>
+        <select id="background-position-select"></select>
+
+        <div
+            id="background-position-example"
+            class="bordered square250"
+            style="
+                background-image: url(../favicon.ico);
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+            "
+        >
+            <b style="color: black; font-size: 2em"
+                >I AM SOME MEANINGLESS TEXT</b
+            >
+        </div>
+
+        <h1>Background size</h1>
+        <p>
+            This allows to control how the background image will be behave if it
+            does not cover entire element area (when background repeat is set to
+            <code>no-repeat</code>).
+        </p>
+
+        <label>Pick background size</label>
+        <select id="background-size-select"></select>
+
+        <div
+            id="background-size-example"
+            class="bordered square250"
+            style="
+                background-image: url(../favicon.ico);
+                background-repeat: no-repeat;
+                background-size: auto;
+            "
+        >
+            <b style="color: black; font-size: 2em"
+                >I AM SOME MEANINGLESS TEXT</b
+            >
+        </div>
+
+        <h3>contain</h3>
+        <p>
+            If <code>background-size: contain</code> is defined, the background
+            image will resize to match wisth or height (whichever is smaller).
+            If space is left, the image is repeated.
+        </p>
+        <div
+            class="bordered square250"
+            style="
+                background-image: url(../images/flowers.webp);
+                background-size: auto;
+                background-size: contain;
+            "
+        >
+            <b style="color: black; font-size: 2em"
+                >I AM SOME MEANINGLESS TEXT</b
+            >
+        </div>
+
+        <h1>Background attachment</h1>
+        <p>
+            If we set <code>background-attachment: fixed;</code>, the image is
+            stretched over the viewport and this background seems to be
+            "scrolled over", stays fixed.
+        </p>
+        <div
+            class="bordered square250"
+            style="
+                background-image: url(../images/abstract-image.jpg);
+                background-size: auto;
+                background-attachment: fixed;
+                background-size: cover;
+            "
+        >
+            <b style="color: black; font-size: 2em"
+                >I AM SOME MEANINGLESS TEXT</b
+            >
+        </div>
+
+        <h1>Background origin</h1>
+        <p>
+            Determines to which sizing model background is aplied to. Possible
+            values are: border-box, padding-box, content-box.
+        </p>
+
+        <h1>Background clip</h1>
+
+        <label>Pick background clip</label>
+        <select id="background-clip-select"></select>
+
+        <div
+            id="background-clip-example"
+            class="bordered square250"
+            style="
+                background-image: url(../images/flowers.webp);
+                background-clip: padding-box;
+                padding: 10px;
+                margin: 10px;
+                border: 10px dashed rgba(255, 0, 0, 0.5);
+            "
+        >
+            <b style="color: white; font-size: 2em"
+                >I AM SOME MEANINGLESS TEXT</b
+            >
+        </div>
+    </body>
+    <script>
+        const backgroundPosition = [
+            '50% 50%',
+            'top',
+            'bottom',
+            'left 50%',
+            'top left',
+            'bottom right',
+            'top left 80%',
+            'top 80% left',
+            'top 80% left 80%',
+            'bottom 30% right 30%',
+        ]
+
+        const backgroundRepeatOptions = [
+            'repeat',
+            'no-repeat',
+            'round',
+            'space',
+            'repeat-x',
+        ]
+
+        const backgroundSizes = ['auto', 'cover', 'contain']
+
+        const backgroundClipModes = [
+            'padding-box',
+            'content-box',
+            'border-box',
+            'margin-box',
+        ]
+
+        setup(
+            'background-clip-select',
+            'background-clip-example',
+            'backgroundClip',
+            backgroundClipModes
+        )
+
+        setup(
+            'background-size-select',
+            'background-size-example',
+            'backgroundSize',
+            backgroundSizes
+        )
+
+        setup(
+            'background-position-select',
+            'background-position-example',
+            'backgroundPosition',
+            backgroundPosition
+        )
+
+        setup(
+            'background-repeat-select',
+            'background-repeat-example',
+            'backgroundRepeat',
+            backgroundRepeatOptions
+        )
+
+        function setup(selectId, exampleId, cssProperty, options) {
+            addEventListenerToElement(selectId, 'change', (e) => {
+                document.getElementById(exampleId).style[cssProperty] =
+                    e.target.value
+            })
+
+            for (let option of options) {
+                createElementAndAppendById('option', option, selectId, false)
+            }
+        }
+    </script>
+</html>
