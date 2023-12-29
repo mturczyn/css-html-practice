@@ -30,6 +30,7 @@ const BLEND_MODES = 'blend-modes/'
 const LISTS = 'lists/'
 const TRANSITIONS = 'transitions/'
 const OVERFLOW = 'overflow/'
+const BACKGROUND = 'backgrounds/'
 
 function addEventListenerToElement(elementId, eventName, callback) {
     document.getElementById(elementId).addEventListener(eventName, callback)
@@ -55,6 +56,10 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToBackgrounds() {
+    goToPage(BACKGROUND)
 }
 
 function goToOverflow() {
