@@ -1,0 +1,61 @@
+#transitions-example > button:first-child {
+    transition-property: all;
+    transition-duration: 1s;
+}
+
+#transitions-example > button:hover {
+    background: red;
+    width: 10rem;
+}
+
+#transitions-example > button:focus {
+    background: blue;
+    color: white;
+    height: 5rem;
+}
+
+#transitions-example > button {
+    width: 8rem;
+    height: 4rem;
+}
+
+#compound-transition-example:hover {
+    width: 15rem;
+    height: 15rem;
+}
+
+#compound-transition-example {
+    width: 10rem;
+    height: 10rem;
+    /* transition-property *-duration *-timing-function *-delay */
+    transition: all 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) 1s;
+}
+
+.bordered.square250:hover {
+    transform: rotate(225deg);
+    transition-property: transform;
+    transition-duration: 1s;
+    background: red;
+}
+
+.bordered.square250 {
+    font-weight: bolder;
+    margin: 2rem;
+    background: yellowgreen;
+}
+
+#enter-exit-transition {
+    background: red;
+    /* This transition is applied on the "exit" transition */
+    transition-property: background;
+    transition-duration: 2000ms;
+    transition-timing-function: ease-in;
+}
+
+#enter-exit-transition:hover {
+    background: blue;
+    /* This transition is applied on the "enter" transition */
+    transition-property: background;
+    transition-duration: 500ms;
+    transition-timing-function: ease;
+}

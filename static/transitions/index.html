@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../index.js"></script>
+        <link href="transitions.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <button class="main-page-button" onclick="goTo('../index.html')">
+            Main page
+        </button>
+        <h1>Foreword</h1>
+        <p>
+            When interacting with web page, many elements have state of some
+            sort, for example dropdown list can be opened or closed, buttons can
+            be focused or hovered.
+        </p>
+        <p>By default, CSS switches between states instantly.</p>
+        <p>
+            By using transitions, we can interpolate between the initial state
+            and the target state of the element.
+        </p>
+        <p>
+            To specify which property should be interpolated, property
+            <code>transition-property</code> should be specified. The easiest is
+            to write <code>transition-property: all</code>
+            to enable transitions for all properties.
+        </p>
+        <h3>Example</h3>
+        <p>
+            Hover over or focus buttons below to see transitions on first button
+            and compare with second button.
+        </p>
+        <div id="transitions-example">
+            <button>Transitions BTN</button>
+            <button>No transitions BTN</button>
+        </div>
+
+        <p>
+            There are also other properties to use,
+            <code>transition-duration</code> to specify duration of transition,
+            <code>transition-timing-function</code>, to specify the timing
+            function (linear, cubic, etc., same as for animations),
+            <code>transition-delay</code>, to delay the transition.
+        </p>
+        <p>
+            Below button has duration of 2s, delay of 1s and cubic timing
+            function.
+        </p>
+        <button id="compound-transition-example">EXAMPLE</button>
+
+        <h3>Transform example</h3>
+        <div class="bordered square250">TRANSITION</div>
+        <div style="transition-property: none" class="bordered square250">
+            NO TRANSITION
+        </div>
+
+        <h3>Enter and exit animations</h3>
+        <p>
+            When specifying transition on element and additionally transition on
+            element in particular state, so for example we specify transitions
+            for <code>.my-elem</code> and <code>.my-elem:hover</code>, we will
+            define enter and exit transitions, for example, below box changes
+            color quickly when hovered over, and then slowly changes its
+            background color back:
+        </p>
+        <div id="enter-exit-transition" class="square250">TRANSITION</div>
+    </body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../index.js"></script>
+        <link href="./overflow.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <button class="main-page-button" onclick="goToMainPage()">
+            Main page
+        </button>
+
+        <div style="display: flex">
+            <div class="bordered square150" style="margin-right: 7rem">
+                <h1 style="white-space: nowrap">visible overflow</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Quisque tempus diam ut dolor pretium viverra. Proin
+                    malesuada turpis vel varius maximus. Proin malesuada sem
+                    vitae elit fringilla iaculis.
+                </p>
+            </div>
+
+            <div style="overflow: scroll" class="bordered square150">
+                <h1 style="white-space: nowrap">scroll overflow</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Quisque tempus diam ut dolor pretium viverra. Proin
+                    malesuada turpis vel varius maximus. Proin malesuada sem
+                    vitae elit fringilla iaculis.
+                </p>
+            </div>
+
+            <div style="overflow: clip" class="bordered square150">
+                <h1 style="white-space: nowrap">clip overflow</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Quisque tempus diam ut dolor pretium viverra. Proin
+                    malesuada turpis vel varius maximus. Proin malesuada sem
+                    vitae elit fringilla iaculis.
+                </p>
+            </div>
+
+            <div class="bordered square150">
+                <h1
+                    style="
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    "
+                >
+                    clip overflow
+                </h1>
+                <p
+                    style="
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    "
+                >
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Quisque tempus diam ut dolor pretium viverra. Proin
+                    malesuada turpis vel varius maximus. Proin malesuada sem
+                    vitae elit fringilla iaculis.
+                </p>
+            </div>
+        </div>
+        <p style="margin-top: 10rem">
+            Below is the example of text overflowing its parent element, but the
+            parent has <code>text-overflow: ellipsis</code> defined.
+        </p>
+        <input
+            style="text-overflow: ellipsis; background: lightblue"
+            value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque"
+        />
+
+        <p>Below element has not text-overflow defined.</p>
+        <input
+            style="text-overflow: none; background: lightblue"
+            value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque"
+        />
+
+        <h3><code>overscroll</code></h3>
+
+        <p>
+            When there is nested scrollable element, when we reach end of
+            scrollable area, "overscroll" (more scrolling) is received by parent
+            element, causing it to scroll. But we can control this behavior with
+            <code>overscroll-behavior</code> CSS property, which should be
+            defined on inner element.
+        </p>
+
+        <label>Pick value for overscroll</label>
+        <select id="overscroll-select"></select>
+
+        <div
+            class="bordered square150"
+            style="
+                width: 200px;
+                overflow: auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            "
+        >
+            <div style="margin: 5px">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+                tempus diam ut dolor pretium viverra. Proin malesuada turpis vel
+                varius maximus. Proin malesuada sem vitae elit fringilla
+                iaculis.
+            </div>
+            <div
+                id="overscroll-example"
+                style="overflow: auto; margin: 5px; height: 100px"
+                class="bordered"
+            >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+                tempus diam ut dolor pretium viverra. Proin malesuada turpis vel
+                varius maximus. Proin malesuada sem vitae elit fringilla
+                iaculis.
+            </div>
+        </div>
+
+        <script>
+            const overscrollModes = ['auto', 'contain', 'none']
+
+            addEventListenerToElement('overscroll-select', 'change', (e) => {
+                document.getElementById(
+                    'overscroll-example'
+                ).style.overscrollBehavior = e.target.value
+            })
+
+            for (let mode of overscrollModes) {
+                createElementAndAppendById(
+                    'option',
+                    mode,
+                    'overscroll-select',
+                    false
+                )
+            }
+        </script>
+    </body>
+</html>
