@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../index.js"></script>
+        <link href="text-and-typography.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <button class="main-page-button" onclick="goTo('../index.html')">
+            Main page
+        </button>
+        <p>
+            Below code elements sometimes may be confused with examples, so to
+            tell them apart, they will have <code>GRAY BACKGROUND</code>
+        </p>
+        <h1>font-family</h1>
+        <p style="font-family: 'Courier New', Courier, monospace">
+            I have <code>font-family: 'Courier New', Courier, monospace</code>
+        </p>
+
+        <p style="font-style: normal">font-style: normal</p>
+        <p style="font-style: oblique">font-style: oblique</p>
+        <p style="font-style: italic">font-style: italic</p>
+
+        <h1>font-weight</h1>
+        <label
+            >100<input
+                type="range"
+                min="100"
+                max="900"
+                step="100"
+                id="font-boldness-select"
+            />900</label
+        >
+        <p id="boldness-example">
+            Change my boldness. current: <span id="boldness-value"></span>
+        </p>
+
+        <h1>font-size</h1>
+        <div class="bordered">
+            <p style="font-size: xx-small">xx-small</p>
+            <p style="font-size: x-small">x-small</p>
+            <p style="font-size: small">small</p>
+            <p style="font-size: medium">medium</p>
+            <p style="font-size: large">large</p>
+            <p style="font-size: x-large">x-large</p>
+            <p style="font-size: xx-large">xx-large</p>
+        </div>
+
+        <h1>line-height</h1>
+        <div style="display: flex">
+            <div>
+                <h1>line-height: normal</h1>
+                <p style="margin: 10px; line-height: normal">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Quisque tempus diam ut dolor pretium viverra. Proin
+                    malesuada turpis vel varius maximus. Proin malesuada sem
+                    vitae elit fringilla iaculis.
+                </p>
+            </div>
+
+            <div>
+                <h1>line-height: 2em</h1>
+                <p style="margin: 10px; line-height: 2em">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Quisque tempus diam ut dolor pretium viverra. Proin
+                    malesuada turpis vel varius maximus. Proin malesuada sem
+                    vitae elit fringilla iaculis.
+                </p>
+            </div>
+
+            <div>
+                <h1>line-height: 24px</h1>
+                <p style="margin: 10px; line-height: 24px">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Quisque tempus diam ut dolor pretium viverra. Proin
+                    malesuada turpis vel varius maximus. Proin malesuada sem
+                    vitae elit fringilla iaculis.
+                </p>
+            </div>
+        </div>
+
+        <h1>letter-spacing</h1>
+
+        <p style="letter-spacing: -0.1em">
+            I have <code>letter-spacing: -0.1em;</code>
+        </p>
+        <p style="letter-spacing: 0.1em">
+            I have <code>letter-spacing: 0.1em;</code>
+        </p>
+
+        <h1>word-spacing</h1>
+
+        <p style="word-spacing: 1ch">I have <code>word-spacing: 1ch</code></p>
+        <p style="word-spacing: 2ch">I have <code>word-spacing: 2ch</code></p>
+
+        <h1>font shorthand</h1>
+
+        <p style="font: normal normal bold 14px/1.4 serif">
+            font: normal normal bold 14px/1.4 serif
+        </p>
+        <p style="font: 20px cursive">font: 20px cursive</p>
+
+        <h1>Text casing</h1>
+
+        <p style="text-transform: normal">
+            I am normal. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit.
+        </p>
+
+        <p style="text-transform: capitalize">
+            I am capitilized. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit.
+        </p>
+
+        <p style="text-transform: uppercase">
+            I am uppercased. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit.
+        </p>
+
+        <p style="text-transform: lowercase">
+            I am lowercased. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit.
+        </p>
+
+        <h1>Underlines, overlines and through-lines</h1>
+
+        <p style="text-decoration: line-through; text-decoration-color: red">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+
+        <p style="text-decoration: underline; text-decoration-color: blue">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+
+        <p style="text-decoration: overline; text-decoration-color: green">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+
+        <h2>More examples of text decoration styling</h2>
+
+        <p
+            style="
+                text-decoration: underline;
+                text-decoration-color: blue;
+                text-decoration-style: double;
+            "
+        >
+            I have double udnerline
+        </p>
+
+        <p
+            style="
+                text-decoration: underline;
+                text-decoration-color: red;
+                text-decoration-style: wavy;
+            "
+        >
+            I have wavy udnerline
+        </p>
+
+        <h2>Text decoration thickness</h2>
+
+        <p
+            style="
+                text-decoration: underline;
+                text-decoration-color: red;
+                text-decoration-thickness: 1em;
+            "
+        >
+            I have very thick underline
+        </p>
+
+        <h2>Shorthand example</h2>
+
+        <p style="text-decoration: underline 8px dotted rgba(0, 0, 50, 0.5)">
+            text-decoration: underline 8px dotted rgba(0, 0, 50, 0.5);
+        </p>
+
+        <h1>text-indent</h1>
+
+        <p style="text-indent: 3em">
+            I have indent set to 3em. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit. Quisque tempus diam ut dolor pretium viverra. Proin
+            malesuada turpis vel varius maximus. Proin malesuada sem vitae elit
+            fringilla iaculis. Pellentesque mattis cursus erat in porta. Aliquam
+            suscipit sed magna non fringilla. Fusce vehicula metus at dui
+            laoreet hendrerit eget quis magna. Nam venenatis vestibulum justo,
+            in aliquet diam aliquet laoreet. Curabitur bibendum posuere
+            lobortis. Integer ac efficitur nibh. Quisque elementum augue at
+            egestas gravida. Nullam sagittis, lacus vitae posuere fringilla,
+            lectus libero volutpat lacus, a finibus odio urna sed ipsum. Integer
+            lacinia tristique libero sit amet bibendum. Mauris auctor, leo at
+            egestas consequat, nisi augue porta nisi, ac euismod purus ligula
+            non massa. Proin non dolor quis libero venenatis volutpat.
+            Suspendisse condimentum vestibulum lacus at fermentum. Phasellus
+            porttitor, felis quis scelerisque lacinia, erat ex lacinia tortor,
+            eget porttitor quam augue in ligula.
+        </p>
+
+        <h1>text-overflow</h1>
+
+        <div id="text-overflow-example" style="width: 350px" class="bordered">
+            <p style="text-overflow: clip">
+                My overflowing text is clipped. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit.
+            </p>
+            <p style="text-overflow: ellipsis">
+                Overflowing text is clipped with ellipsis. Lorem ipsum dolor sit
+                amet, consectetur adipiscing elit.
+            </p>
+        </div>
+
+        <h1>word-break</h1>
+
+        <div style="display: flex">
+            <div class="bordered" style="width: 100px">
+                <p style="word-break: normal">
+                    Word break is <code>normal</code>. Lorem ipsum dolor sit
+                    amet, consectetur adipiscing elit.
+                </p>
+            </div>
+            <div class="bordered" style="width: 100px">
+                <p style="word-break: break-all">
+                    Word break is <code>break-all</code>. Lorem ipsum dolor sit
+                    amet, consectetur adipiscing elit.
+                </p>
+            </div>
+        </div>
+
+        <h1>Text alignment</h1>
+
+        <p class="bordered" style="text-align: center">
+            I am in paragraph and I have text align set to <code>center</code>.
+        </p>
+
+        <p>Below paragraph is justified (indent for fun).</p>
+
+        <p style="text-align: justify; text-indent: 10ch">
+            I have indent set to 3em. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit. Quisque tempus diam ut dolor pretium viverra. Proin
+            malesuada turpis vel varius maximus. Proin malesuada sem vitae elit
+            fringilla iaculis. Pellentesque mattis cursus erat in porta. Aliquam
+            suscipit sed magna non fringilla. Fusce vehicula metus at dui
+            laoreet hendrerit eget quis magna. Nam venenatis vestibulum justo,
+            in aliquet diam aliquet laoreet. Curabitur bibendum posuere
+            lobortis. Integer ac efficitur nibh. Quisque elementum augue at
+            egestas gravida. Nullam sagittis, lacus vitae posuere fringilla,
+            lectus libero volutpat lacus, a finibus odio urna sed ipsum. Integer
+            lacinia tristique libero sit amet bibendum. Mauris auctor, leo at
+            egestas consequat, nisi augue porta nisi, ac euismod purus ligula
+            non massa. Proin non dolor quis libero venenatis volutpat.
+            Suspendisse condimentum vestibulum lacus at fermentum. Phasellus
+            porttitor, felis quis scelerisque lacinia, erat ex lacinia tortor,
+            eget porttitor quam augue in ligula.
+        </p>
+
+        <h1>Direction of text</h1>
+
+        <p>
+            To match writing modes of all languages, CSS supports text direction
+            through <code>direction</code> CSS property. See below - it has
+            right to left text direction. The text itself is not referesed, but
+            it starts at the right and punctuation marks are on the left side to
+            the text.
+        </p>
+
+        <p style="direction: rtl">
+            I am reversed text and I have right to left direction.
+        </p>
+
+        <h1>Flow of text</h1>
+
+        <p>
+            This specifies how the text flows. Direction of the text defines how
+            words can be read, while flow is how lines should be read, for
+            English it is top to bottom. But can be different in different
+            languages. Default value is
+            <code>writing-mode: horizontal-tb</code>, which represents writing
+            mode used in English.
+        </p>
+
+        <p style="writing-mode: vertical-lr; height: 300px">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+            tempus diam ut dolor pretium viverra. Proin malesuada turpis vel
+            varius maximus.
+        </p>
+
+        <h1>Text orientation</h1>
+
+        <p>
+            With this property orientation of text can be change. In above
+            example, when wiritng mode has changed, it left letters rotated.
+            Below example corrects that with
+        </p>
+
+        <p
+            style="
+                text-orientation: upright;
+                writing-mode: vertical-lr;
+                height: 300px;
+            "
+        >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+            tempus diam ut dolor pretium viverra. Proin malesuada turpis vel
+            varius maximus.
+        </p>
+
+        <h1>text-shadow</h1>
+        <h2
+            style="
+                background: rgb(255, 211, 218, 0.8);
+                padding: 10px;
+                color: white;
+                text-shadow: 3px 3px 6px black;
+            "
+        >
+            I have some black text shadow
+        </h2>
+
+        <h1>Variable fonts</h1>
+
+        <p>
+            Typically, "normal" fonts require importing different files for
+            different versions of the typeface, e.g. bold, italic, or condensed.
+            Variable fonts are fonts that can contain many different variants of
+            a typeface in one file.
+        </p>
+
+        <h1>Pseudo-elements</h1>
+
+        <h2><code>::first-letter</code></h2>
+
+        <p id="first-letter-example">
+            Used to affect first letter of element, as in this paragraph.
+        </p>
+
+        <h2><code>::first-line</code></h2>
+
+        <p id="first-line-example">
+            Used to affect first line of element, as in this paragraph. Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus
+            diam ut dolor pretium viverra. Proin malesuada turpis vel varius
+            maximus. Proin malesuada sem vitae elit fringilla iaculis.
+            Pellentesque mattis cursus erat in porta. Aliquam suscipit sed magna
+            non fringilla. Fusce vehicula metus at dui laoreet hendrerit eget
+            quis magna. Nam venenatis vestibulum justo, in aliquet diam aliquet
+            laoreet. Curabitur bibendum posuere lobortis. Integer ac efficitur
+            nibh. Quisque elementum augue at egestas gravida. Nullam sagittis,
+            lacus vitae posuere fringilla, lectus libero volutpat lacus, a
+            finibus odio urna sed ipsum. Integer lacinia tristique libero sit
+            amet bibendum. Mauris auctor, leo at egestas consequat, nisi augue
+            porta nisi, ac euismod purus ligula non massa. Proin non dolor quis
+            libero venenatis volutpat. Suspendisse condimentum vestibulum lacus
+            at fermentum. Phasellus porttitor, felis quis scelerisque lacinia,
+            erat ex lacinia tortor, eget porttitor quam augue in ligula.
+        </p>
+
+        <h2><code>::selection</code></h2>
+
+        <p id="selection-example">
+            Used to affect user-selected text, as in this paragraph. Select some
+            text to see effect.
+        </p>
+
+        <h1>font-variant</h1>
+
+        <p>
+            The <code>font-variant</code> property is a shorthand for a number
+            of CSS properties that let you choose font variants like
+            <code> small-caps</code> and <code>slashed-zero</code>. The CSS
+            properties this shorthand includes are
+            <code>font-variant-alternates</code>,
+            <code>font-variant-caps</code>,
+            <code>font-variant-east-asian</code>,
+            <code>font-variant-ligatures</code> and
+            <code>font-variant-numeric</code>.
+        </p>
+
+        <h2>font-variant-caps</h2>
+
+        <p style="font-variant-caps: small-caps">
+            I have small caps set (<code>font-variant-caps: small-caps</code>)
+        </p>
+
+        <p style="font-variant-caps: all-small-caps">
+            I have all small caps set (<code
+                >font-variant-caps: all-small-caps</code
+            >)
+        </p>
+
+        <p style="font-variant-caps: all-petite-caps">
+            I have all petite caps set (<code
+                >font-variant-caps: all-petite-caps</code
+            >)
+        </p>
+
+        <script>
+            addEventListenerToElement('font-boldness-select', 'input', (e) => {
+                document.getElementById('boldness-value').innerText =
+                    e.target.value
+                document.getElementById('boldness-example').style.fontWeight =
+                    e.target.value
+            })
+        </script>
+    </body>
+</html>
