@@ -1,0 +1,26 @@
+code {
+    background: #e8e8e8;
+    word-spacing: initial;
+    letter-spacing: initial;
+}
+
+#text-overflow-example p {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#first-line-example::first-line,
+#first-letter-example::first-letter {
+    font-weight: 900;
+    font-size: xx-large;
+    color: violet;
+}
+
+#selection-example {
+    font-weight: 900;
+}
+
+#selection-example::selection {
+    background: rgb(247, 149, 149, 0.5);
+    color: blue;
+}
