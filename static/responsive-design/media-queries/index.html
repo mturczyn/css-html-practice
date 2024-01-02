@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../../index.js"></script>
+        <link href="../../styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>Media queries</h1>
+        <button class="main-page-button" onclick="goToMainPage()">
+            Main page
+        </button>
+        <button
+            class="responsive-design-button"
+            onclick="goToResponsiveDesign()"
+        >
+            Responsive design
+            <!-- Below div is crucial for background and animation. -->
+            <div></div>
+        </button>
+
+        <p style="margin-top: 5rem">
+            Media queries allow developer to target different types of output.
+            Default is <code>all</code>. Both are equivalent:
+        </p>
+        <code class="block-code">body { ... }</code>
+        <code class="block-code">@media all { body { ... } }</code>
+
+        <p>
+            To target different outputs, we can do it by specifying link media
+            attribute:
+        </p>
+        <code class="block-code">
+            &lt;link rel="stylesheet" href="print.css" media="print" /&gt;
+        </code>
+        <p>Or directly in CSS:</p>
+        <code class="block-code"> @media print { body { ... }} </code>
+    </body>
+</html>

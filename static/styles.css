@@ -1,3 +1,59 @@
+:root {
+    --button-margin: 5px;
+    --page-width: 30rem;
+    --shadow-offset: 1px;
+}
+
+.responsive-design-button {
+    display: block;
+    position: fixed;
+    text-shadow: var(--shadow-offset) var(--shadow-offset) 0px lightgray,
+        calc(-1 * var(--shadow-offset)) calc(-1 * var(--shadow-offset)) 0px
+            lightgray,
+        calc(-1 * var(--shadow-offset)) var(--shadow-offset) 0px lightgray,
+        var(--shadow-offset) calc(-1 * var(--shadow-offset)) 0px lightgray;
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: 0 0 20px 5px rgb(70, 249, 255);
+    overflow: hidden;
+    margin: var(--button-margin);
+    width: calc(var(--page-width) - 3 * var(--button-margin));
+    min-height: 3rem;
+    font-weight: bold;
+    font-size: x-large;
+    letter-spacing: 0.5ch;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.responsive-design-button > div {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-image: url(images/responsive-design.jpg);
+    background-size: contain;
+    text-transform: uppercase;
+    transition: transform ease-in-out 600ms;
+}
+
+.responsive-design-button:hover {
+    cursor: pointer;
+}
+
+.responsive-design-button:hover > div,
+.responsive-design-button > div:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.responsive-design-button:hover {
+    box-shadow: 0 0 8px red;
+}
+
 code.block-code {
     display: block;
 }
@@ -15,7 +71,7 @@ code.block-code {
 button {
     border-radius: 5px;
     padding: 5px;
-    margin: 5px;
+    margin: var(--button-margin);
     box-shadow: 0 0 8px rgb(0, 100, 0);
 }
 
@@ -46,7 +102,7 @@ button:hover {
 }
 
 .main-container {
-    max-width: 30rem;
+    max-width: var(--page-width);
     display: flex;
     flex-wrap: wrap;
 }
