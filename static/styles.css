@@ -6,7 +6,7 @@
 
 .responsive-design-button {
     display: block;
-    position: fixed;
+    position: sticky;
     text-shadow: var(--shadow-offset) var(--shadow-offset) 0px lightgray,
         calc(-1 * var(--shadow-offset)) calc(-1 * var(--shadow-offset)) 0px
             lightgray,
@@ -17,7 +17,7 @@
     box-shadow: 0 0 20px 5px rgb(70, 249, 255);
     overflow: hidden;
     margin: var(--button-margin);
-    width: calc(var(--page-width) - 3 * var(--button-margin));
+    width: calc(var(--page-width) - 2 * var(--button-margin));
     min-height: 3rem;
     font-weight: bold;
     font-size: x-large;

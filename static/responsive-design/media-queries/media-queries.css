@@ -1,0 +1,19 @@
+@media (orientation: landscape) {
+    p.orientation-media-feature {
+        background: linear-gradient(gray, white);
+    }
+}
+
+@media (orientation: portrait) {
+    p.orientation-media-feature {
+        background: linear-gradient(lightblue, rgb(255, 130, 130));
+    }
+}
+
+@media (min-width: 400px) {
+    p.max-width-media-feature::first-letter {
+        text-transform: uppercase;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}

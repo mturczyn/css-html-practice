@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <script src="../../index.js"></script>
         <link href="../../styles.css" rel="stylesheet" />
+        <link href="media-queries.css" rel="stylesheet" />
     </head>
     <body>
         <h1>Media queries</h1>
@@ -18,7 +19,7 @@
             <div></div>
         </button>
 
-        <p style="margin-top: 5rem">
+        <p style="margin-top: 1rem">
             Media queries allow developer to target different types of output.
             Default is <code>all</code>. Both are equivalent:
         </p>
@@ -34,5 +35,44 @@
         </code>
         <p>Or directly in CSS:</p>
         <code class="block-code"> @media print { body { ... }} </code>
+
+        <h2>Query conditions</h2>
+        <p>
+            Also conditions can be added to medtia types. They are called media
+            queries. Syntax is:
+        </p>
+        <code class="block-code">@media type and (feature)</code>
+
+        <p>Media queries can also be used on a <code>link</code> element.</p>
+        <code class="block-code"
+            >&lt;link rel="stylesheet" href="specific.css" media="type and
+            (feature)"&gt;</code
+        >
+
+        <p>
+            For example, <code>orientation</code> media feature is used to apply
+            styles based on whether window is in landscape mode (the viewport is
+            greater than its height) or portrait mode (the viewport height is
+            greater than its width).
+        </p>
+
+        <p class="orientation-media-feature bordered">
+            In landscape mode, I have different background than in portrait
+            mode.
+        </p>
+
+        <p class="max-width-media-feature bordered">
+            And I will have first letter nicely styled, if the viewport width
+            exceeds 400px.
+        </p>
+
+        <p>
+            To prevent browser from scaling the page on different screen sizes,
+            we need to use below tag:
+        </p>
+        <code class="block-code">
+            &lt;meta name="viewport" content="width=device-width,
+            initial-scale=1"&gt;
+        </code>
     </body>
 </html>
