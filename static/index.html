@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <link rel="stylesheet" href="styles.css" />
         <script src="index.js"></script>
@@ -44,6 +44,16 @@
             </button>
             <button onclick="goToTestArea()">Test area</button>
         </main>
+
+        <button
+            class="responsive-design-button"
+            onclick="goToResponsiveDesign()"
+        >
+            Responsive design
+            <!-- Below div is crucial for background and animation. -->
+            <div></div>
+        </button>
+
         <script>
             ;(async function sampleFunc() {
                 let promise = new Promise((resolve, reject) => {

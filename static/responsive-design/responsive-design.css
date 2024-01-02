@@ -1,0 +1,23 @@
+#responsive-design-header:is(:focus, :target) {
+    border-top: 3px dotted lightblue;
+    border-left: 3px dotted lightblue;
+}
+
+#responsive-design-header:is(:focus, :hover, :target) {
+    text-shadow: 3px 3px 3px lightblue;
+    border-bottom: 4px solid lightblue;
+    line-height: 105%;
+}
+
+#responsive-design-header {
+    height: 3rem;
+    box-sizing: border-box;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.5s;
+    transition-property: border-bottom-width, line-height;
+    border-bottom: 2px solid lightblue;
+    background-image: url(../images/responsive-design.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+}

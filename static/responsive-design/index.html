@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="../index.js"></script>
+        <link href="responsive-design.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1 id="responsive-design-header">Responsive design</h1>
+
+        <p>
+            Brief concepts will be described here, more complex will have
+            separate subpage.
+        </p>
+
+        <h2>Internationalization (i18n)</h2>
+        <p>
+            Each HTML element can accept <code>lang</code> attribute, so, at
+            very least, it should be specified on <code>html</code> element.
+            There's also <code>hreflang</code>, indicating language of linked
+            resource, but this can go only on two elements:
+            <code>link</code> and <code>a</code>
+        </p>
+        <button class="main-page-button" onclick="goToMainPage()">
+            Main page
+        </button>
+        <button class="main-page-button" onclick="goToMediaQueries()">
+            Media queries
+        </button>
+    </body>
+</html>

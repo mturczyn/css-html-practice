@@ -32,6 +32,10 @@ const TRANSITIONS = 'transitions/'
 const OVERFLOW = 'overflow/'
 const BACKGROUND = 'backgrounds/'
 const TEXT_AND_TYPOGRAPHY = 'text-and-typography/'
+const RESPONSIVE_DESIGN = 'responsive-design/'
+
+// Responsive design subdirectories
+const MEDIA_QUERIES = 'media-queries/'
 
 function addEventListenerToElement(elementId, eventName, callback) {
     document.getElementById(elementId).addEventListener(eventName, callback)
@@ -53,10 +57,22 @@ function getPagePath(whereTo) {
     return `${whereTo}${INDEX}`
 }
 
+function goToResponsiveDesignPage(pageDir) {
+    goToPage(RESPONSIVE_DESIGN + pageDir)
+}
+
 function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToMediaQueries() {
+    goToResponsiveDesignPage(MEDIA_QUERIES)
+}
+
+function goToResponsiveDesign() {
+    goToPage(RESPONSIVE_DESIGN)
 }
 
 function goToTextAndTypography() {
