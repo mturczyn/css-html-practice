@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="../../index.js"></script>
+        <link href="images.css" rel="stylesheet" />
+        <link href="../../styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>Images</h1>
+        <button
+            style="grid-column-end: 2 span"
+            class="responsive-design-button"
+            onclick="goToResponsiveDesign()"
+        >
+            Responsive design
+            <!-- Below div is crucial for background and animation. -->
+            <div></div>
+        </button>
+        <h2>Constrain your images</h2>
+        <p>
+            Images have their own size, thus when there's not enough space,
+            image will overflow the viewport and won't be entirely visible. This
+            behavior can be changed with <code>max-inline-size</code> set to
+            <code>100%</code>.
+        </p>
+        <p>
+            First picture has the property set, the latter does not, and both
+            are inside 250px square element.
+        </p>
+        <div class="square250">
+            <img
+                style="max-inline-size: 100%"
+                src="..\..\images\flowers.webp"
+            />
+        </div>
+
+        <p>Overflow was hidden in below example:</p>
+
+        <div class="square250" style="overflow: auto">
+            <img src="..\..\images\flowers.webp" />
+        </div>
+
+        <h2><code>object-fit</code></h2>
+
+        <p>
+            For some reason below does not work, but first has
+            <code>object-fit: contain</code> and second
+            <code>object-fit: cover</code>
+        </p>
+        <div class="square250 bordered">
+            <img
+                style="max-inline-size: 100%; object-fit: contain"
+                src="..\..\images\flowers.webp"
+            />
+        </div>
+
+        <div class="square250 bordered">
+            <img
+                style="max-inline-size: 100%; object-fit: cover"
+                src="..\..\images\flowers.webp"
+            />
+        </div>
+
+        <h2>Sizing hints</h2>
+        <p>
+            If we know the image size up front, we can set those CSS properties
+            in order for the page to measure all the space correctly even before
+            image loads and gets measured.
+        </p>
+
+        <h2>Loading hints</h2>
+        <p>
+            Loading atribute can be used to delay loding the images:
+            <code>&lt;img loading="lazy" ...&gt;</code>. The browser won't load
+            lazy images until the user has scrolled far down enough that the
+            image is about to come into view. If the user never scrolls, the
+            image never loads. Default value for the attribute is
+            <code>eager</code>.
+        </p>
+
+        <h2>Fetch priority</h2>
+        <p>
+            We can prioritize fetching the image by setting
+            <code>fetchpriority="high"</code> in
+            <code
+                >&lt;link rel="preload" href="hero.jpg" as="image"
+                fetchpriority="high"&gt;</code
+            >, but this will deprioritize loading other resources.
+        </p>
+
+        <h2>Preload</h2>
+        <p>
+            By specifying <code>rel="preload"</code> in
+            <code
+                >&lt;link rel="preload" href="hero.jpg" as="image"
+                fetchpriority="high"&gt;</code
+            >
+            we can cause the browser to preload the image.
+        </p>
+
+        <h2><code>srcset</code></h2>
+        <p>
+            We can decide what images to load based on the desired size of the
+            image. This way, page will load smaller images, and not waste
+            network traffic to load huge image and scale it down.
+        </p>
+        <p>Below image has images in two sizes, and uses them</p>
+        <img
+            src="../../images/abstract-image-small.jpg"
+            srcset="
+                ../../images/abstract-image-small.jpg   500w,
+                ../../images/abstract-image-medium.jpg  850w,
+                ../../images/abstract-image-large.jpg  1200w
+            "
+        />
+
+        <h2>Background images</h2>
+        <p>
+            There is <code>image-set</code> function in CSS, which works a lot
+            like <code>srcset</code> attribute on <code>img</code> element. For
+            example:
+        </p>
+        <code class="block-code"
+            >h1 { background-image:<br />
+            image-set(<br />
+            ../../images/abstract-image-small.jpg 500w,<br />
+            ../../images/abstract-image-medium.jpg 850w,<br />
+            ../../images/abstract-image-large.jpg 1200w) <br />
+            }</code
+        >
+
+        <h2><code>picture</code> element</h2>
+        <p>
+            <source
+                srcset="../../images/abstract-image-large.jpg"
+                media="(min-width: 10em)"
+            />
+            <source
+                srcset="../../images/abstract-image-large.jpg"
+                media="(min-width: 15em)"
+            />
+            <img src="../../images/abstract-image-small.jpg" />
+        </p>
+    </body>
+</html>
