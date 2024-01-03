@@ -33,6 +33,7 @@ const OVERFLOW = 'overflow/'
 const BACKGROUND = 'backgrounds/'
 const TEXT_AND_TYPOGRAPHY = 'text-and-typography/'
 const RESPONSIVE_DESIGN = 'responsive-design/'
+const IMAGES = 'images/'
 
 // Responsive design subdirectories
 const MEDIA_QUERIES = 'media-queries/'
@@ -68,6 +69,10 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToImages() {
+    goToResponsiveDesignPage(IMAGES)
 }
 
 function goToResponsiveTypography() {

@@ -21,3 +21,33 @@
     background-size: contain;
     background-position: right;
 }
+
+button.menu {
+    color: blue;
+    background-color: var(--color-off-white);
+    border-color: var(--color-mid);
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.5em;
+    border-radius: 0.25em;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+}
+
+button.menu rect {
+    fill: blue;
+}
+
+button.menu:hover,
+button.menu:focus {
+    background-color: var(--color-light);
+    color: red;
+}
+
+button.menu:hover rect,
+button.menu:focus rect {
+    fill: red;
+}
