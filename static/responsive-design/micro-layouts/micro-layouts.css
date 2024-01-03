@@ -1,0 +1,12 @@
+.decorated-text {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1ch;
+}
+
+.decorated-text::before,
+.decorated-text::after {
+    content: ' ';
+    border-top: 0.1em double black;
+    align-self: center;
+}
