@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="../../index.js"></script>
+        <link href="typography.css" rel="stylesheet" />
+        <link href="../../styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>Typography</h1>
+        <button
+            style="grid-column-end: 2 span"
+            class="responsive-design-button"
+            onclick="goToResponsiveDesign()"
+        >
+            Responsive design
+            <!-- Below div is crucial for background and animation. -->
+            <div></div>
+        </button>
+
+        <h2>Scaling text</h2>
+        <p>
+            It's good to use combination of relative unit like
+            <code>em, rem, ch</code> and viewport size, like:
+        </p>
+        <code class="block-code"
+            >html { font-size: calc(0.75rem + 1.5vw); }</code
+        >
+
+        <h2>Clamping text</h2>
+        <p>
+            As per example above, the font size could grow or shrink without
+            limits, so here we can make use of <code>clamp</code> function.
+        </p>
+        <code class="block-code"
+            >html { font-size: clamp(1rem, 0.75rem + 1.5vw, 2rem); }</code
+        >
+
+        <h2>Line width and line height</h2>
+        <p>
+            Experts on typography say that 66 characters on the line is ideal,
+            and good is somewhere around 60-80 characters.
+        </p>
+        <p>
+            This means that relative units like <code>ch, rem, em</code> makes
+            most sense, and it's good practice to do so.
+        </p>
+        <p>So text containers should use rather relative units.</p>
+        <p>
+            Same goes for line height, it's good practice to define it like:
+            <code>line-height: 1.5</code> - which is
+            <bold>unitless</bold> value, but it makes this value relative, and
+            in this case it's recommended.
+        </p>
+
+        <h2>Fonts</h2>
+        <p>
+            Recommended web font is Roboto font, which can be downloaded from
+            internet.
+        </p>
+        <p>
+            We can specify <code>@font-face</code> in order to reference some
+            other font and use it in <code>font-family</code> CSS property.
+        </p>
+        <p>
+            It can take some time to load font, so in order to display default
+            font we can specify CSS property <code>font-display: swap;</code>.
+        </p>
+    </body>
+</html>

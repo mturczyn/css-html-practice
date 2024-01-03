@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="../../index.js"></script>
+        <link href="../../styles.css" rel="stylesheet" />
+        <link href="micro-layouts.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>Micro layouts</h1>
+        <button
+            style="grid-column-end: 2 span"
+            class="responsive-design-button"
+            onclick="goToResponsiveDesign()"
+        >
+            Responsive design
+            <!-- Below div is crucial for background and animation. -->
+            <div></div>
+        </button>
+
+        <h2>Grid</h2>
+        <p>
+            We could use grid layout to display decorations with text. For
+            example, this heading uses grid display to keep text in the middle
+            and adds <code>::before</code> and
+            <code>::after</code> pseudo-elements to fill 1st and 3rd column
+            (with widths set to <code>1fr</code>).
+        </p>
+
+        <h1 class="decorated-text">Heading</h1>
+        <p class="decorated-text">This is some paragraph.</p>
+
+        <h2>Flexbox</h2>
+        <p>
+            Flexbox can be used in similair way to grid for responsive design.
+        </p>
+
+        <h2>Container queries</h2>
+        <p>
+            We also can define query for container elements, when
+            <code>@media</code> is used, then it relates to viewport, but if we
+            specify <code>container-type: inline-size</code> (which will make an
+            element to act as container), then we can use query
+            <code>@container</code> query.
+        </p>
+    </body>
+</html>

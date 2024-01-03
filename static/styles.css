@@ -4,6 +4,22 @@
     --shadow-offset: 1px;
 }
 
+@font-face {
+    font-family: Roboto;
+    src: url('fonts/roboto-regular.woff2') format('woff2');
+}
+
+html {
+    font-family: Roboto, sans-serif;
+    font-size: calc(0.1rem + 1.5vw);
+    line-height: 1.5;
+}
+
+body {
+    max-width: 70ch;
+    margin: 0 auto;
+}
+
 .responsive-design-button {
     display: block;
     position: sticky;
@@ -54,7 +70,13 @@
     box-shadow: 0 0 8px red;
 }
 
+code {
+    background: #e8e8e8;
+    padding: 0.2ch;
+}
+
 code.block-code {
+    padding: 1ch;
     display: block;
 }
 

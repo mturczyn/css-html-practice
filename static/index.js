@@ -36,6 +36,9 @@ const RESPONSIVE_DESIGN = 'responsive-design/'
 
 // Responsive design subdirectories
 const MEDIA_QUERIES = 'media-queries/'
+const MACRO_LAYOUTS = 'macro-layouts/'
+const MICRO_LAYOUTS = 'micro-layouts/'
+const RESPONSIVE_TYPOGRAPHY = 'typography/'
 
 function addEventListenerToElement(elementId, eventName, callback) {
     document.getElementById(elementId).addEventListener(eventName, callback)
@@ -65,6 +68,18 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToResponsiveTypography() {
+    goToResponsiveDesignPage(RESPONSIVE_TYPOGRAPHY)
+}
+
+function goToMicroLayouts() {
+    goToResponsiveDesignPage(MICRO_LAYOUTS)
+}
+
+function goToMacroLayouts() {
+    goToResponsiveDesignPage(MACRO_LAYOUTS)
 }
 
 function goToMediaQueries() {

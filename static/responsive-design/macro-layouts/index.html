@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="../../index.js"></script>
+        <link href="../../styles.css" rel="stylesheet" />
+        <link href="macro-layouts.css" rel="stylesheet" />
+    </head>
+    <body>
+        <main>
+            <button
+                style="grid-column-end: 2 span"
+                class="responsive-design-button"
+                onclick="goToResponsiveDesign()"
+            >
+                Responsive design
+                <!-- Below div is crucial for background and animation. -->
+                <div></div>
+            </button>
+            <article>
+                <h1>How this works</h1>
+                <p>
+                    This page uses media query to display
+                    <code>main</code> element as grid (<code
+                        >grid-template-columns: 2fr 1fr</code
+                    >), when the viewport width is wider than <code>45em</code>.
+                </p>
+                <h1>My web page</h1>
+                <p>
+                    This is my web page. There are many like it but this one is
+                    mine.
+                </p>
+                <p>
+                    I`m using the HyperText Markup Language (<dfn>HTML</dfn>) to
+                    give structure to this page.
+                </p>
+                <p>
+                    For example, this text is inside a paragraph which is inside
+                    an article which is inside the main content.
+                </p>
+                <p>
+                    For the tangential information that follows, I`m using the
+                    <code>aside</code> element.
+                </p>
+            </article>
+            <aside>
+                <h2>History</h2>
+                <p>
+                    Did you know that
+                    <a href="http://info.cern.ch/hypertext/WWW/TheProject.html"
+                        >the first web page ever made</a
+                    >
+                    is still online at its original URL?
+                </p>
+                <p>
+                    The page was created by Tim Berners-Lee in the early 90s and
+                    it still works in a modern web browser.
+                </p>
+            </aside>
+        </main>
+
+        <h1>Using correct CSS instead of media queries</h1>
+
+        <p>
+            If we would have to create UI that displays cards, that cannot be
+            wider than 15em, we could try to write media queries with many
+            breakpoints, at 15em, 30em and so on, to account for all display
+            outputs, but instead we also can define correctly grid properties
+            alone:
+            <code
+                >grid-template-columns: repeat(auto-fill, minmax(15em,
+                1fr))</code
+            >.
+        </p>
+
+        <div class="cards">
+            <article class="card">
+                <h2>A card</h2>
+                <p>
+                    This is a card. There are many like it but this one is mine.
+                </p>
+                <p>
+                    A card might have all sorts of content inside it. This one
+                    happens to have two paragraphs of text.
+                </p>
+            </article>
+            <article class="card">
+                <h2>A card</h2>
+                <p>
+                    This is a card. There are many like it but this one is mine.
+                </p>
+                <p>
+                    A card might have all sorts of content inside it. This one
+                    happens to have two paragraphs of text.
+                </p>
+                <p>
+                    Actually, that’s not true. This particular card has three
+                    paragraphs.
+                </p>
+            </article>
+            <article class="card">
+                <h2>A card</h2>
+                <p>
+                    This is a card. There are many like it but this one is mine.
+                </p>
+                <p>
+                    A card might have all sorts of content inside it. This one
+                    happens to have two paragraphs of text.
+                </p>
+            </article>
+            <article class="card">
+                <h2>A card</h2>
+                <p>
+                    This is a card. There are many like it but this one is mine.
+                </p>
+                <p>
+                    A card might have all sorts of content inside it. This one
+                    happens to have two paragraphs of text.
+                </p>
+            </article>
+            <article class="card">
+                <h2>A card</h2>
+                <p>
+                    This is a card. There are many like it but this one is mine.
+                </p>
+                <p>
+                    A card might have all sorts of content inside it. This one
+                    happens to have two, no three, paragraphs of text.
+                </p>
+                <p>
+                    Notice how all the cards in a row automatically have the
+                    same height?
+                </p>
+            </article>
+            <article class="card">
+                <h2>A card</h2>
+                <p>
+                    This is a card. There are many like it but this one is mine.
+                </p>
+                <p>
+                    A card might have all sorts of content inside it. This one
+                    happens to have two paragraphs of text.
+                </p>
+            </article>
+        </div>
+        <h2>Summary</h2>
+        <p>
+            By applying some smart rules in flexbox or grid, it's possible to
+            design dynamic macro layouts with minimal CSS and without any media
+            queries. That's less work for you—you're making the browser do the
+            calculations instead. To see some examples of modern CSS layouts
+            that are fluid without requiring media queries, see
+            <a href="https://1linelayouts.glitch.me">1linelayouts.com</a>.
+        </p>
+        <h3>Example: super centered</h3>
+        <p>
+            Content below will be centered in its parent, which has
+            <code>style="display: grid; place-items: center"</code>
+        </p>
+        <div
+            style="display: grid; place-items: center"
+            class="square250 bordered"
+        >
+            <p class="bordered" style="font-weight: bold; font-size: x-large">
+                :-)
+            </p>
+        </div>
+    </body>
+</html>
