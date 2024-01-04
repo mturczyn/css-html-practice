@@ -1,0 +1,41 @@
+@media (hover: none) {
+    div.hover-example {
+        border: 2px solid black;
+    }
+}
+
+@media (hover: hover) {
+    div.hover-example {
+        border: 2px dotted red;
+        transition: background-color 0.5s ease-in;
+    }
+
+    div.hover-example:hover {
+        background: rgba(100, 10, 200, 0.4);
+    }
+}
+
+@media (pointer: fine) {
+    button.adaptive {
+        padding: 0.5em 1em;
+    }
+}
+
+@media (pointer: coarse) {
+    button.adaptive {
+        padding: 1em 2em;
+        width: 100%;
+    }
+}
+
+@media (any-pointer: fine) {
+    button.adaptive2 {
+        padding: 0.5em 1em;
+    }
+}
+
+@media (any-pointer: coarse) {
+    button.adaptive2 {
+        padding: 1em 2em;
+    }
+}

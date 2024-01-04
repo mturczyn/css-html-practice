@@ -35,6 +35,12 @@
             <button class="main-page-button" onclick="goToImages()">
                 Images
             </button>
+            <button class="main-page-button" onclick="goToTheming()">
+                Theming
+            </button>
+            <button class="main-page-button" onclick="goToInteraction()">
+                Interaction
+            </button>
         </div>
 
         <h2>Internationalization (i18n)</h2>
@@ -106,5 +112,165 @@
             </svg>
             Menu
         </button>
+
+        <h2>Embedding manifest file</h2>
+        <p>
+            To each website, <code>manifest.json</code> file should be added to
+            website to provide additional metadata, such as theme color, name or
+            short name.
+        </p>
+        <p>Sample file:</p>
+        <code class="block-code">
+            {<br />
+            "short_name": "Clearleft",<br />
+            "name": "Clearleft design agency",<br />
+            "start_url": "/",<br />
+            "background_color": "#00D494",<br />
+            "theme_color": "#00D494",<br />
+            "display": "standalone"<br />
+            }
+        </code>
+
+        <h2>Accessibility (a11y)</h2>
+        <p>
+            There are number of difficulties that people might have, tritanopia
+            (no blue color). In order to do that, there are couple of good
+            practices to keep in mind, to make the site more accessible:
+        </p>
+        <ol>
+            <li>
+                ARIA - accessible rich internet applications - it provides
+                vocabulary to provide semantic information when there is not a
+                suitable HTML element available, in other words - if we are
+                creating new UI elements, which are not yet available in HTML,
+                we need to keep in mind ARIA standards,
+            </li>
+            <li>
+                check with different visions types - in Firefox there's
+                "accessibility tab", Chrome DevTools have "emulate vision
+                deficiencies",
+            </li>
+            <li>
+                when using anchor elements (links), do not rely solely on color,
+                but also on different font weight or text decoration (such as
+                underline),
+            </li>
+            <li>
+                do not specify color of the element only, but also specify
+                background color together, to assure correct contrast,
+            </li>
+            <li>
+                adjust to different contrast modes, there's media feature query
+                <code>prefers-contrast</code>, which can take three values:
+                <code>no-preference, less, more</code>. This can be set in the
+                browser, or even through system settings. Also colors might be
+                inverted.
+            </li>
+            <li>
+                in order to mimic different font-size, it also can be set in
+                system settings or in browser settings,
+            </li>
+            <li>
+                page can be tested by setting page zoom to 200% or less than
+                100%,
+            </li>
+            <li>
+                use tab to navigate through webpage, if it has good UX, to test
+                for people using only keyboard (Firefox offers tool to show
+                tabbing order),
+            </li>
+            <li>
+                adjust to reduced motion preferences, there's media feature
+                query
+                <code>prefers-reduced-motion</code>, which allows detecting when
+                user prefers reduced motion,
+            </li>
+            <li>
+                <bold>voice</bold> - make sure website is well-written also for
+                screen readers (that blind people might use),
+            </li>
+            <li>
+                use meaningful HTML elements, don't use
+                <code>&lt;div&gt;</code> everywhere, instead use
+                <code
+                    >&lt;h1&gt;, ..., &lt;h6&gt;, &lt;main&gt;, &lt;nav&gt;,
+                    &lt;aside&gt;, &lt;header&gt;, &lt;footer&gt;</code
+                >, also use <code>&lt;label&gt;</code> element,
+            </li>
+            <li>
+                always provide <code>alt</code> attirbute to
+                <code>img</code> elements, even empty attribute means
+                "presentational picture", when non specified, means nothing
+            </li>
+        </ol>
+
+        <h2>User Interface patterns</h2>
+        <p>
+            There's neat feature, which forces entire elements into view, when
+            scroll is possible. This pattern is especially useful in carousel
+            views.
+        </p>
+
+        <div id="example-of-scroll-snap">
+            <h3>Example from developer.mozilla.org</h3>
+            <div class="holster">
+                <div class="container x mandatory-scroll-snapping" dir="ltr">
+                    <div>X Mand. LTR</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                </div>
+                <div class="container x proximity-scroll-snapping" dir="ltr">
+                    <div>X Prox. LTR</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                </div>
+                <div class="container y mandatory-scroll-snapping" dir="ltr">
+                    <div>Y Mand. LTR</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                </div>
+                <div class="container y proximity-scroll-snapping" dir="ltr">
+                    <div>Y Prox. LTR</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                </div>
+                <div class="container x mandatory-scroll-snapping" dir="rtl">
+                    <div>X Mand. RTL</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                </div>
+                <div class="container x proximity-scroll-snapping" dir="rtl">
+                    <div>X Prox. RTL</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                </div>
+                <div class="container y mandatory-scroll-snapping" dir="rtl">
+                    <div>Y Mand. RTL</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                </div>
+                <div class="container y proximity-scroll-snapping" dir="rtl">
+                    <div>Y Prox. RTL</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
