@@ -74,5 +74,130 @@
             &lt;meta name="viewport" content="width=device-width,
             initial-scale=1"&gt;
         </code>
+
+        <h2>Media types</h2>
+        <p>These are optional in media query.</p>
+        <p>There are only four:</p>
+        <ul>
+            <li><code>all</code> (default)</li>
+            <li><code>screen</code></li>
+            <li><code>print</code></li>
+            <li><code>speech</code></li>
+        </ul>
+
+        <h2>Media features</h2>
+        <p>This are required in media query.</p>
+        <p>
+            These are lots of them and they have expaned greatly over the years.
+        </p>
+        <ul>
+            <li>
+                viewport dimensions
+                <ul>
+                    <li>
+                        <code
+                            >min-width, max-width, min-height, max-height</code
+                        >
+                        which can take numeric values, such as 250px,
+                    </li>
+                    <li>
+                        <code
+                            >min-aspect-ratio, max-aspect-ratio,
+                            aspect-ratio</code
+                        >
+                        which can be compared against, for example, 16/9,
+                    </li>
+                    <li>
+                        <code>orientation</code>, which can take value
+                        <code>portrait</code>
+                        or
+                        <code>landscape</code>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                displays
+                <ul>
+                    <li>
+                        <code>min-resolution, max-resolution, resolution</code>
+                        - can be compared against, for example, 400dpi (dots per
+                        inch).
+                    </li>
+                    <li>
+                        <code>update</code> - which is refresh rate of the
+                        device, can take one of the values:
+                        <code>none, slow, fast</code>,
+                    </li>
+                    <li>
+                        <code>display-mode</code> whcih can take values
+                        <code>fullscreen, standalone, minimm-ui, browser</code>
+                        (value comes from manifest file),
+                    </li>
+                </ul>
+            </li>
+            <li>
+                color
+                <ul>
+                    <li>
+                        <code>monochrome</code> - usage
+                        <code>@media (monochrome)</code> - true if the device
+                        only outputs shades of gray
+                    </li>
+                    <li>
+                        <code>color</code> - usage:
+                        <code>@media (color)</code> - true if the device
+                        displays all colors,
+                    </li>
+                    <li>
+                        <code>color-gamut, color-index, dynamic-range</code> -
+                        all of them report specific details about the color
+                        capabilities of the screen,
+                    </li>
+                </ul>
+            </li>
+            <li>
+                interaction
+                <ul>
+                    <li>
+                        <code>hover</code> and <code>any-hover</code> - which
+                        can take values <code>hover</code> and <code>none</code>
+                    </li>
+                    <li>
+                        <code>pointer</code> and <code>any-pointer</code> -
+                        which can take values <code>fine</code>,
+                        <code>coarse</code> and <code>none</code>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                preferences
+                <ul>
+                    <li><code>prefers-color-scheme</code></li>
+                    <li><code>prefers-contrast</code></li>
+                    <li><code>prefers-reduced-motion</code></li>
+                </ul>
+            </li>
+            <li>
+                more media features
+                <ul>
+                    <li>
+                        <code>forced-colors</code> - tells if the device uses
+                        restricted colors pallette
+                    </li>
+                    <li>
+                        <code>inverted-colors</code> - tells if the device uses
+                        inverted colors pallette
+                    </li>
+                    <li>
+                        <code>scripting</code> - tells if JavaScript is enabled
+                    </li>
+                    <li>
+                        <code>prefers-reduced-data</code> - tells if users
+                        prefer less bandwidth (network traffic), so the page
+                        could load, for example, less images,
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </body>
 </html>

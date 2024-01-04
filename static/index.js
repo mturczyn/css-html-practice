@@ -40,6 +40,8 @@ const MEDIA_QUERIES = 'media-queries/'
 const MACRO_LAYOUTS = 'macro-layouts/'
 const MICRO_LAYOUTS = 'micro-layouts/'
 const RESPONSIVE_TYPOGRAPHY = 'typography/'
+const THEMING = 'theming/'
+const INTERACTION = 'interaction/'
 
 function addEventListenerToElement(elementId, eventName, callback) {
     document.getElementById(elementId).addEventListener(eventName, callback)
@@ -69,6 +71,14 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToInteraction() {
+    goToResponsiveDesignPage(INTERACTION)
+}
+
+function goToTheming() {
+    goToResponsiveDesignPage(THEMING)
 }
 
 function goToImages() {

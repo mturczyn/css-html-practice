@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="../../styles.css" />
+        <link rel="stylesheet" href="theming.css" />
+        <script src="../../index.js"></script>
+    </head>
+    <body>
+        <h1>Theming</h1>
+        <button
+            style="grid-column-end: 2 span"
+            class="responsive-design-button"
+            onclick="goToResponsiveDesign()"
+        >
+            Responsive design
+            <!-- Below div is crucial for background and animation. -->
+            <div></div>
+        </button>
+
+        <p>
+            This page is about theming. This site uses
+            <code>@media (prefers-color-scheme: dark)</code> in order to apply
+            different CSS rules to elements in this page, when user has dark
+            mode.
+        </p>
+
+        <p>
+            We can also use <code>picture</code> element in order to swap images
+            entirely based on user's theme.
+        </p>
+        <p>Below image uses following HTML structure:</p>
+        <code class="block-code"
+            >&lt;picture&gt;<br />
+            &lt;source srcset="..." media="(prefers-color-scheme: dark)"
+            /&gt;<br />
+            &lt;img src="..." alt="..." /&gt;<br />
+            &lt;/picture&gt;</code
+        >
+
+        <picture style="text-align: center; display: block; margin-top: 1em">
+            <source
+                srcset="
+                    https://storage.googleapis.com/web-dev-uploads/image/KT4TDYaWOHYfN59zz6Rc0X4k4MH3/yNbeZfMBON7NXVNrKxdU.png
+                "
+                media="(prefers-color-scheme: dark)"
+            />
+            <img
+                src="https://storage.googleapis.com/web-dev-uploads/image/KT4TDYaWOHYfN59zz6Rc0X4k4MH3/0pcgZdZTp6GfwQecxMKz.png"
+                alt="A map of Brooklyn."
+            />
+        </picture>
+
+        <h2>Forms</h2>
+        <p>
+            For forms, browser also provides default styling. We need to let the
+            browser know that site offers more themes (for example: dark and
+            light).
+        </p>
+        <p>
+            In order to add supported color theme, to let the browser know, we
+            can do it in two ways:
+        </p>
+        <ul>
+            <li>through CSS: <code>html { color-scheme: light; }</code></li>
+            <li>
+                through <code>meta</code> element:
+                <code class="block-code"
+                    >&lt;meta name="supported-color-schemes" content="light
+                    dark"&gt;</code
+                >
+            </li>
+        </ul>
+
+        <p>
+            Also <code>accent-color</code> should be specified, in order to
+            provide more style to checkboxes and some other form fields.
+        </p>
+    </body>
+</html>

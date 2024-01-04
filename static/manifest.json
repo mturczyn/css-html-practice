@@ -1,0 +1,8 @@
+{
+    "short_name": "css-practice",
+    "name": "Learning CSS course from web.dev",
+    "start_url": "/",
+    "background_color": "#add8e6",
+    "theme_color": "#add8e6",
+    "display": "standalone"
+}

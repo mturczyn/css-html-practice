@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="../../styles.css" />
+        <link rel="stylesheet" href="interaction.css" />
+        <script src="../../index.js"></script>
+    </head>
+    <body>
+        <h1>Interaction</h1>
+
+        <button
+            style="grid-column-end: 2 span"
+            class="responsive-design-button"
+            onclick="goToResponsiveDesign()"
+        >
+            Responsive design
+            <!-- Below div is crucial for background and animation. -->
+            <div></div>
+        </button>
+
+        <p>
+            Various devices can be used to display the page, and so different
+            devices are used to interact with website. One example is pointer -
+            on mobile phones the pointer is not as exact as in computer.
+        </p>
+
+        <h2>
+            <code>pointer</code> and <code>any-pointer</code> media feature
+            queries
+        </h2>
+
+        <p>
+            To adapt the CSS to pointer used, we can use media feature query
+            <code>pointer</code> and <code>any-pointer</code>.
+        </p>
+
+        <p>
+            To see the results of examples, go to DevTools, switch to mobile
+            phone view (toggle the device toolbar), so different pointer will be
+            reported to browser:
+        </p>
+        <img
+            src="../../images/device-toolbar-toggle.png"
+            style="max-height: 15em; margin: 0 auto; display: block"
+        />
+
+        <p>
+            Below button will have different width and padding, making it easier
+            for devices with touch screens <code>(pointer: coarse)</code>.
+        </p>
+        <button class="adaptive">Click me</button>
+
+        <p>
+            Below button will have different padding, making it easier for
+            devices with touch screens <code>(any-pointer: coarse)</code>. For
+            example, when laptop has touch screen (so has coarse and fine
+            pointers), coarse is returned.
+        </p>
+        <button class="adaptive2">Click me</button>
+
+        <h2>
+            <code>hover</code> and <code>any-hover</code> media feature query
+        </h2>
+
+        <p>Reports whether hovering is possible (so not in touch screens).</p>
+        <p>
+            Usage: <code>@media (hover: hover)</code>, other value it can take
+            is <code>none</code>.
+        </p>
+
+        <div class="hover-example">
+            <p>
+                I will have red dotter border if hover is possible on this
+                device.
+            </p>
+            <p>Also I have hover effect.</p>
+        </div>
+
+        <p>
+            <code>hover</code> will report whether primary device is capable of
+            hovering, while <code>any-hover</code> will report true if any of
+            the devices is capable of hovering.
+        </p>
+
+        <h2>Virtual keyboards</h2>
+
+        <p>
+            To control how to virtual keyboard appears (for example on-screen
+            keyboard on smart phones). This is especially relevant when it comes
+            to <code>input</code> elements. There are attributes to control that
+            behavior: <code>type</code>, <code>inputmode</code> and
+            <code>autocomplete</code>.
+        </p>
+
+        <h3><code>inputmode</code> and <code>type</code></h3>
+        <p>For example:</p>
+        <code class="block-code"
+            >&lt;label for="age"&gt;Age&lt;/label&gt;<br />
+            &lt;input type="number" id="age" inputmode="numeric"&gt;</code
+        >
+        <p>or to allow decimal values</p>
+        <code class="block-code"
+            >&lt;label for="price"&gt;Price&lt;/label&gt;<br />
+            &lt;input type="number" id="price" inputmode="decimal"&gt;</code
+        >
+
+        <h3><code>autocomplete</code></h3>
+        <p>
+            Attribute <code>autocomplete</code> can be used with many options to
+            enhance autocomplete in inputs, for example
+        </p>
+        <code class="block-code"
+            >&lt;label for="email"&gt;Email&lt;/label&gt;<br />
+            &lt;input type="text" id="email" autocomplete="email"&gt;</code
+        >
+    </body>
+</html>
