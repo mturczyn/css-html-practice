@@ -29,6 +29,9 @@
             <li>
                 <a href="#links-and-js">Links and JS</a>
             </li>
+            <li>
+                <a href="#lists">Lists</a>
+            </li>
         </ul>
 
         <h1 id="document-structure">Document structure</h1>
@@ -235,5 +238,74 @@
         >
             Get first link on the page
         </button>
+
+        <h1 id="lists">Lists</h1>
+        <p>
+            Lists can be unordered or ordered. Ordered lists can have numbers,
+            letters or other indicators
+        </p>
+
+        <div
+            style="
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                border: 1px solid black;
+            "
+        >
+            <ul>
+                <li>item</li>
+                <li>item</li>
+                <li>item</li>
+            </ul>
+
+            <ol>
+                <li>item</li>
+                <li>item</li>
+                <li>item</li>
+            </ol>
+
+            <ol type="A">
+                <li>item</li>
+                <li>item</li>
+                <li>item</li>
+            </ol>
+
+            <ol type="I">
+                <li>item</li>
+                <li>item</li>
+                <li>item</li>
+            </ol>
+        </div>
+
+        <p>Reversed order:</p>
+        <ol reversed>
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+        </ol>
+
+        <p>
+            Even more weird indicators of ordered lists with
+            <code>list-style-type</code> CSS property
+        </p>
+        <ol style="list-style-type: cjk-decimal">
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+        </ol>
+
+        <p>
+            Here we alter numbers with <code>start</code> attribute on
+            <code>ol</code> element and <code>value</code> attribute on
+            <code>li</code> element.
+        </p>
+        <ol start="33">
+            <li>
+                start at 33 (<code>start</code> attribute on <code>ol</code>)
+            </li>
+            <li>item</li>
+            <li value="7">reset to seven with <code>value</code> attribute</li>
+            <li>item</li>
+        </ol>
     </body>
 </html>
