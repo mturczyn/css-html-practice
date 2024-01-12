@@ -43,6 +43,9 @@ const RESPONSIVE_TYPOGRAPHY = 'typography/'
 const THEMING = 'theming/'
 const INTERACTION = 'interaction/'
 
+// HTML directory and subdirectories
+const HTML = 'html/'
+
 function addEventListenerToElement(elementId, eventName, callback) {
     document.getElementById(elementId).addEventListener(eventName, callback)
 }
@@ -71,6 +74,10 @@ function goToPage(pageDir) {
     let pagePath = getPagePath(pageDir)
     let targetPath = getRelativePath(window.location.href, pagePath)
     goTo(targetPath)
+}
+
+function goToHtml() {
+    goToPage(HTML)
 }
 
 function goToInteraction() {

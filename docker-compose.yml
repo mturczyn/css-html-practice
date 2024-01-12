@@ -2,11 +2,11 @@ version: '3.9'
 
 services:
     app:
-        container_name: css-practice
-        image: css-practice
+        container_name: css-html-practice
+        image: css-html-practice
         build:
             context: .
             dockerfile: Dockerfile
         restart: always
         ports:
-            - '3000:80'
+            - '3001:80'

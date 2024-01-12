@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="../styles.css" />
+        <link rel="stylesheet" href="./html.css" />
+        <script src="../index.js"></script>
+    </head>
+    <body>
+        <button onclick="goToMainPage()">Main</button>
+        <h1>HTML - table of contents</h1>
+        <ul>
+            <li><a href="#document-structure">Document structure</a></li>
+            <li>
+                <a href="#contenteditableelement"
+                    >Element that can be edited directly in the document</a
+                >
+            </li>
+            <li>
+                <a href="#labels-and-inputs"
+                    >Labels and inputs, grouping inputs in
+                    <code>fieldset</code></a
+                >
+            </li>
+            <li><a href="#custom-attributes">Custom attributes</a></li>
+            <li><a href="#html-entities">HTML entities</a></li>
+            <li>
+                <a href="#anchor-tag"><code>a</code> tag</a>
+            </li>
+            <li>
+                <a href="#links-and-js">Links and JS</a>
+            </li>
+        </ul>
+
+        <h1 id="document-structure">Document structure</h1>
+        <p>
+            Worth noting is importance of <code>&lt;!DOCTYPE html&gt;</code> -
+            it instructs the browser to render the page in
+            <code>no-quirks</code> mode, without it, page can render page with
+            <code>quirks</code> mode truned on.
+        </p>
+        <p>HTML elements can be of three types:</p>
+        <ul>
+            <li>
+                replaced - it gets replaced visually in the document (such as
+                <code>button</code>)
+            </li>
+            <li>
+                not-repalced - those aren't replaced visually, and so, require
+                styling to get proper look (such as <code>p</code>)
+            </li>
+            <li>
+                void (self-closing) - elements that cannot contain any child
+                items (<code>meta</code>, <code>link</code>, etc.)
+            </li>
+        </ul>
+
+        <h2 id="contenteditableelement">
+            Element that can be edited directly in the document
+        </h2>
+        <p>
+            By adding <code>contenteditable</code> we make the element editable,
+            so by modifying the style (for example <code>display: block</code>),
+            to make it visible, we can achieve interesting results, such as
+            below - we made the "style" element visible and editable. Change and
+            see how it affects following elements.
+        </p>
+        <style
+            contenteditable
+            style="
+                display: block;
+                font-family: monospace;
+                white-space: pre;
+                background: #aaa;
+            "
+        >
+            :root {
+                --theme-color: #226daa;
+            }
+
+            #contenteditableresults {
+                display: block;
+                border: 10px dotted black;
+                background: var(--theme-color);
+            }
+
+            #contenteditableresults * {
+                color: rgb(175, 113, 237);
+                font-weight: 900;
+            }
+        </style>
+        <div id="contenteditableresults">
+            <h1>Here are results of the above snippet.</h1>
+            <p>Alter the snippet to see the results.</p>
+        </div>
+
+        <h1 id="labels-and-inputs">
+            Labels and inputs, grouping inputs in <code>fieldset</code>
+        </h1>
+        <p>
+            When using radio buttons or checkboxes with the same names, we
+            should wrap then in <code>fieldset</code>, such as below:
+        </p>
+        <code class="block-code">
+            &lt;form&gt;<br />
+            &lt;legend&gt;Pick one option&lt;/legend&gt;<br />
+            &lt;input id="option1" type="radio" name="example" /&gt;&lt;label<br />
+            for="option1"<br />
+            &gt;<br />
+            option 1&lt;/label<br />
+            &gt;<br />
+            &lt;input id="option2" type="radio" name="example" /&gt;&lt;label<br />
+            for="option2"<br />
+            &gt;<br />
+            option 2&lt;/label<br />
+            &gt;<br />
+            &lt;/form&gt;
+        </code>
+
+        <p>Below is example how it looks like:</p>
+
+        <form>
+            <legend>Pick one option</legend>
+            <input id="option1" type="radio" name="example" /><label
+                for="option1"
+            >
+                option 1</label
+            >
+            <input id="option2" type="radio" name="example" /><label
+                for="option2"
+            >
+                option 2</label
+            >
+        </form>
+
+        <p>
+            Specifying <code>label</code>'s <code>for</code> attribute let's
+            focus/select related input.
+        </p>
+
+        <h1 id="custom-attributes">Custom attributes</h1>
+        <p>
+            IN HTML, we can specify own attributes. While HTML is very
+            forgiving, there are rules to how custom attributes should be named.
+            They have to start with <code>data-</code> prefix, and following
+            characters should be lowercase letters or dash, not starting with
+            <code>xml</code> nor containing <code>:</code>, for example
+            <code>data-name</code> or <code>data-first-name</code>.
+        </p>
+        <p>
+            If the convention is kept, then those values can be accessed in JS
+            with <code>dataset[name]</code> (name needs to be converted to camel
+            case though). Below button has
+            <code>data-is-button-wonderful="certainly"</code> set, clicking on
+            it will invoke getting
+            <code>dataset['isButtonWonderful']</code> from button HTML element.
+        </p>
+        <button
+            id="custom-attr-btn"
+            data-is-button-wonderful="certainly"
+            onclick="alert(document.getElementById('custom-attr-btn').dataset['isButtonWonderful'])"
+        >
+            Click
+        </button>
+
+        <h1 id="html-entities">HTML entities</h1>
+        <p>
+            In the document we can use HTML entites instead of characters, for
+            example we can't use simple less than character, as it opens HTML
+            tag and would break the document. So, to display &lt; character, we
+            use <code class="letterSpacing">& l t ;</code> sequence.
+        </p>
+        <p>Other HTM entities</p>
+        <div
+            class="letterSpacing"
+            style="
+                display: grid;
+                grid-template-rows: repeat(auto-fit, 4rem);
+                grid-template-columns: auto 1fr;
+            "
+        >
+            <span style="margin: 1ch">Character</span>
+            <span style="margin: 1ch">HTML entity</span>
+
+            <span>&#x336;</span>
+            <code>& # x 3 3 6 ;</code>
+
+            <span>&#x33C;</span>
+
+            <code>& # x 3 3 C ;</code>
+
+            <span>&#x356;</span>
+
+            <code>& # x 3 5 6 ;</code>
+
+            <span>&tcedil;</span>
+
+            <code>& t c e d i l ;</code>
+        </div>
+
+        <h1 id="anchor-tag"><code>a</code> tag</h1>
+
+        <p>
+            <code>href</code> attribute speicfies where link takes the user - if
+            it starts with protocol, it is absoulte path. Protocol can be
+            speicified as <code>//</code>, which means "use current protocol".
+            One can also specify relative path to another site in the same
+            domain.
+        </p>
+        <a href="#"
+            >This link has <code>href="#"</code>, whcih takes user to top of the
+            page.</a
+        >
+        <p>
+            Setting target to <code>_blank</code> will cause new tab on each
+            load, but we can specify there also custom string, which will be
+            used for tab name (all browsers have that), and consecutive clicks
+            will only refresh named tab, instead opening new ones.
+        </p>
+        <a href="https://google.com/" target="_blank"
+            >Go to google <code>target="_blank"</code></a
+        ><br />
+        <a href="https://google.com/" target="googletab"
+            >Go to google <code>target="googletab"</code></a
+        >
+        <h2 id="links-and-js">Links and JS</h2>
+        <p>
+            The <code>links</code> property of the <code>document</code> objects
+            returns all links in the document:
+        </p>
+        <code class="block-code">
+            let a = document.links[0]; // obtain the first link in the document
+        </code>
+    </body>
+</html>

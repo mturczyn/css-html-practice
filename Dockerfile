@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
 ENV CI=false
-ENV PORT=3000
+ENV PORT=3001
 
 COPY ./static /usr/share/nginx/html
 
