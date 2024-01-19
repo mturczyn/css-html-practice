@@ -104,13 +104,17 @@
             image. This way, page will load smaller images, and not waste
             network traffic to load huge image and scale it down.
         </p>
-        <p>Below image has images in two sizes, and uses them</p>
+        <p>Below image has images in two sizes, and uses them.</p>
+        <p>
+            Go to devtools and observe fetching images with
+            <code>abstract-image-example1-</code> prefix.
+        </p>
         <img
             src="../../images/abstract-image-small.jpg"
             srcset="
-                ../../images/abstract-image-small.jpg   500w,
-                ../../images/abstract-image-medium.jpg  850w,
-                ../../images/abstract-image-large.jpg  1200w
+                ../../images/abstract-image-example1/abstract-image-example1-small.jpg   500w,
+                ../../images/abstract-image-example1/abstract-image-example1-medium.jpg  850w,
+                ../../images/abstract-image-example1/abstract-image-example1-large.jpg  1200w
             "
         />
 
@@ -130,16 +134,22 @@
         >
 
         <h2><code>picture</code> element</h2>
-        <p>
+        <picture>
             <source
-                srcset="../../images/abstract-image-large.jpg"
+                srcset="
+                    ../../images/abstract-image-example2/abstract-image-example2-medium.jpg
+                "
                 media="(min-width: 10em)"
             />
             <source
-                srcset="../../images/abstract-image-large.jpg"
+                srcset="
+                    ../../images/abstract-image-example2/abstract-image-example2-large.jpg
+                "
                 media="(min-width: 15em)"
             />
-            <img src="../../images/abstract-image-small.jpg" />
-        </p>
+            <img
+                src="../../images/abstract-image-example2/abstract-image-example2-small.jpg"
+            />
+        </picture>
     </body>
 </html>

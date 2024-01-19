@@ -32,6 +32,7 @@
             <li>
                 <a href="#lists">Lists</a>
             </li>
+            <li><a href="#forms">Forms</a></li>
         </ul>
 
         <h1 id="document-structure">Document structure</h1>
@@ -307,5 +308,41 @@
             <li value="7">reset to seven with <code>value</code> attribute</li>
             <li>item</li>
         </ol>
+
+        <p>Last type of list is data list <code>dl</code>:</p>
+        <dl>
+            <dt>first term</dt>
+            <dd>first definition</dd>
+            <dt>second term</dt>
+            <dd>second definition</dd>
+        </dl>
+
+        <table>
+            <caption>
+                Table's caption - HTML table example
+            </caption>
+            <colgroup></colgroup>
+            <thead>
+                <th>first header</th>
+                <th>second header</th>
+            </thead>
+            <tbody>
+                <td>first table data</td>
+                <td>second table data</td>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+
+        <h1 id="forms">Forms</h1>
+
+        <p>
+            There are various input types, for exapmle <code>file</code>,
+            together with <code>capture</code> attribute, can be used to collect
+            data through microphone/camera.
+        </p>
+        <label
+            >Your recent photo:
+            <input capture="environment" accept="image/*" type="file"
+        /></label>
     </body>
 </html>
