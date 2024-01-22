@@ -33,9 +33,12 @@
                 <a href="#lists">Lists</a>
             </li>
             <li><a href="#forms">Forms</a></li>
+            <li><a href="#lazy-images">Lazy loading images</a></li>
         </ul>
 
-        <h1 id="document-structure">Document structure</h1>
+        <h1 id="document-structure">
+            Document structure <a href="#">Back to top</a>
+        </h1>
         <p>
             Worth noting is importance of <code>&lt;!DOCTYPE html&gt;</code> -
             it instructs the browser to render the page in
@@ -98,7 +101,8 @@
         </div>
 
         <h1 id="labels-and-inputs">
-            Labels and inputs, grouping inputs in <code>fieldset</code>
+            Labels and inputs, grouping inputs in <code>fieldset</code
+            ><a href="#">Back to top</a>
         </h1>
         <p>
             When using radio buttons or checkboxes with the same names, we
@@ -141,7 +145,9 @@
             focus/select related input.
         </p>
 
-        <h1 id="custom-attributes">Custom attributes</h1>
+        <h1 id="custom-attributes">
+            Custom attributes<a href="#">Back to top</a>
+        </h1>
         <p>
             IN HTML, we can specify own attributes. While HTML is very
             forgiving, there are rules to how custom attributes should be named.
@@ -166,7 +172,7 @@
             Click
         </button>
 
-        <h1 id="html-entities">HTML entities</h1>
+        <h1 id="html-entities">HTML entities<a href="#">Back to top</a></h1>
         <p>
             In the document we can use HTML entites instead of characters, for
             example we can't use simple less than character, as it opens HTML
@@ -201,7 +207,7 @@
             <code>& t c e d i l ;</code>
         </div>
 
-        <h1 id="anchor-tag"><code>a</code> tag</h1>
+        <h1 id="anchor-tag"><code>a</code> tag<a href="#">Back to top</a></h1>
 
         <p>
             <code>href</code> attribute speicfies where link takes the user - if
@@ -240,7 +246,7 @@
             Get first link on the page
         </button>
 
-        <h1 id="lists">Lists</h1>
+        <h1 id="lists">Lists<a href="#">Back to top</a></h1>
         <p>
             Lists can be unordered or ordered. Ordered lists can have numbers,
             letters or other indicators
@@ -309,6 +315,7 @@
             <li>item</li>
         </ol>
 
+        <h2>Description list</h2>
         <p>Last type of list is data list <code>dl</code>:</p>
         <dl>
             <dt>first term</dt>
@@ -317,6 +324,7 @@
             <dd>second definition</dd>
         </dl>
 
+        <h2>HTML table</h2>
         <table>
             <caption>
                 Table's caption - HTML table example
@@ -333,7 +341,7 @@
             <tfoot></tfoot>
         </table>
 
-        <h1 id="forms">Forms</h1>
+        <h1 id="forms">Forms<a href="#">Back to top</a></h1>
 
         <p>
             There are various input types, for exapmle <code>file</code>,
@@ -344,5 +352,19 @@
             >Your recent photo:
             <input capture="environment" accept="image/*" type="file"
         /></label>
+
+        <h1 id="lazy-images">Lazy loading images<a href="#">Back to top</a></h1>
+        <p>
+            In order to save network data, there's technique to load image only
+            if it becomes visible. This part of the website should be far at the
+            bottom and below picture is fetched (observe in Dev Tools - Netowrk
+            tab) only when scrolled to. To use that feature, we need to specify:
+            <code>&lt;img loading="lazy" ... /&gt;</code>
+        </p>
+        <img
+            loading="lazy"
+            style="margin: 0 auto; display: block"
+            src="../images/lazy-image.jpg"
+        />
     </body>
 </html>

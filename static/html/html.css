@@ -3,3 +3,21 @@ div.letterSpacing code {
     letter-spacing: -0.5ch;
     margin: 1ch;
 }
+
+h1 > a {
+    font-size: x-large;
+}
+
+h1:has(a) {
+    background-image: linear-gradient(to right, white, #aaa);
+    padding: 0 1ch;
+    border-top: 2px solid #aaa;
+    border-bottom: 2px solid #aaa;
+}
+
+h1 > a::before {
+    content: '\1f517';
+    font-weight: normal;
+    font-size: large;
+    margin: 0 0 0 1.5ch;
+}
