@@ -35,6 +35,11 @@
             <li><a href="#forms">Forms</a></li>
             <li><a href="#lazy-images">Lazy loading images</a></li>
             <li><a href="#audio-video">Audio and video</a></li>
+            <li>
+                <a href="#template-slot-shadow"
+                    >HTML template, slot and shadow</a
+                >
+            </li>
         </ul>
 
         <h1 id="document-structure">
@@ -112,12 +117,12 @@
         <code class="block-code">
             &lt;form&gt;<br />
             &lt;legend&gt;Pick one option&lt;/legend&gt;<br />
-            &lt;input id="option1" type="radio" name="example" /&gt;&lt;label<br />
+            &lt;input id="option1" type="radio" name="example" /&gt;label<br />
             for="option1"<br />
             &gt;<br />
             option 1&lt;/label<br />
             &gt;<br />
-            &lt;input id="option2" type="radio" name="example" /&gt;&lt;label<br />
+            &lt;input id="option2" type="radio" name="example" /&gt;label<br />
             for="option2"<br />
             &gt;<br />
             option 2&lt;/label<br />
@@ -430,5 +435,179 @@
                 src="vtt/subtitles-fr.vtt" /&gt;<br /></b
             >&lt;/video&gt;
         </code>
+
+        <h1 id="template-slot-shadow">
+            HTML template, slot and shadow<a href="#">Back to top</a>
+        </h1>
+
+        <p>
+            Using <code>template</code> element one can create reusable
+            components - write HTML once and reuse everywhere.
+        </p>
+        <p>
+            In order to do that, we need to create
+            <code>template</code> element (below in HTML code, and also below
+            visually):
+        </p>
+
+        <template id="star-rating-template">
+            <form>
+                <fieldset>
+                    <legend>Rate your experience</legend>
+                    <rating>
+                        <input
+                            type="radio"
+                            name="rating"
+                            value="1"
+                            aria-label="1 star"
+                            required
+                        />
+                        <input
+                            type="radio"
+                            name="rating"
+                            value="2"
+                            aria-label="2 star"
+                        />
+                        <input
+                            type="radio"
+                            name="rating"
+                            value="3"
+                            aria-label="3 star"
+                        />
+                        <input
+                            type="radio"
+                            name="rating"
+                            value="4"
+                            aria-label="4 star"
+                        />
+                        <input
+                            type="radio"
+                            name="rating"
+                            value="5"
+                            aria-label="5 star"
+                        />
+                    </rating>
+                </fieldset>
+                <button type="reset">Reset</button>
+                <button type="submit">Submit</button>
+            </form>
+        </template>
+
+        <code class="block-code">
+            &lt;template id="star-rating-template"&gt;<br />
+            &lt;form&gt;<br />
+            &lt;fieldset&gt;<br />
+            &lt;legend&gt;<br />Rate your experience&lt;/legend&gt;<br />
+            &lt;rating&gt;<br />
+            &lt;input type="radio" name="rating" value="1" aria-label="1 star"
+            required /&gt;<br />
+            &lt;input type="radio" name="rating" value="2" aria-label="2 star"
+            /&gt;<br />
+            &lt;input type="radio" name="rating" value="3" aria-label="3 star"
+            /&gt;<br />
+            &lt;input type="radio" name="rating" value="4" aria-label="4 star"
+            /&gt;<br />
+            &lt;input type="radio" name="rating" value="5" aria-label="5 star"
+            /&gt;<br />
+            &lt;/rating&gt;<br />
+            &lt;/fieldset&gt;<br />
+            &lt;button type="reset"&gt;<br />Reset&lt;/button&gt;<br />
+            &lt;button type="submit"&gt;<br />Submit&lt;/button&gt;<br />
+            &lt;/form&gt;<br />
+            &lt;/template&gt;<br />
+        </code>
+
+        <p>
+            In order to use this template, we need to write small JS: we need to
+            get the template by ID and insert its content (HTML content) into
+            the document.
+        </p>
+        <p id="star-rating-template-paragraph">
+            Below is the template's content:
+        </p>
+
+        <script>
+            const appendAfterElement = document.getElementById(
+                'star-rating-template-paragraph'
+            )
+            const template = document.getElementById('star-rating-template')
+
+            appendAfterElement &&
+                template &&
+                appendAfterElement.after(template.content)
+        </script>
+
+        <h2><code>slot</code> element</h2>
+
+        <p>
+            <code>template</code> can include <code>slot</code> element, which
+            will be "replaceable" content within the template. It will have own
+            children (HTML elements), that will be rendered in the template by
+            default. If we want to insert HTML in the slot, we need to pass
+            element with <code>slot</code> attribute, that matches
+            <code>name</code> of the slot. Additionally, we need to use some JS,
+            in order to create new HTML element (custom component), so we can
+            use slots' feature. Below we have HTML as well as JS (in HTML code)
+            - visually, the example is right below:
+        </p>
+
+        <template id="custom-template-with-slot-template">
+            <div style="border: 1px solid black">
+                <p>
+                    This is template with border, this description and below we
+                    have <code>slot</code>:
+                </p>
+                <slot name="message-in-the-bottle">
+                    <h2>Here we have SLOT - this is default content.</h2>
+                </slot>
+            </div>
+        </template>
+
+        <script>
+            customElements.define(
+                'template-with-slot',
+                class extends HTMLElement {
+                    constructor() {
+                        super()
+                        let template = document.getElementById(
+                            'custom-template-with-slot-template'
+                        )
+                        this.attachShadow({ mode: 'open' }).appendChild(
+                            template.content.cloneNode(true)
+                        )
+                    }
+                }
+            )
+        </script>
+
+        <template-with-slot></template-with-slot>
+        <template-with-slot>
+            <h5 slot="message-in-the-bottle">
+                Customized message, smaller heading.
+            </h5>
+        </template-with-slot>
+
+        <p>
+            As with other elements, custom components can be styled with CSS,
+            regular selector with name of the component would suffice:
+            <code>custom-component { ... }</code>. Also, we can style component
+            by adding <code>style</code> element inside the template - it won't
+            spill out and affect elements outside the template.
+        </p>
+        <p>
+            In order to style "external" elements to template, we can use
+            <code>host</code> pseudo class in order to style element, that hosts
+            the template.
+        </p>
+        <p>
+            <code>::slotted()</code> pseudo element allows styling elements,
+            that are used as <code>slot</code> contents.
+        </p>
+        <p>
+            To style specific parts of template, we have to define
+            <code>part</code> attribute on the elements inside the template,
+            then in CSS (global) we can specify: <code>::part()</code> with
+            parameter matching <code>part</code> attribute's value.
+        </p>
     </body>
 </html>
