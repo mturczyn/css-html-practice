@@ -34,6 +34,7 @@
             </li>
             <li><a href="#forms">Forms</a></li>
             <li><a href="#lazy-images">Lazy loading images</a></li>
+            <li><a href="#audio-video">Audio and video</a></li>
         </ul>
 
         <h1 id="document-structure">
@@ -366,5 +367,68 @@
             style="margin: 0 auto; display: block"
             src="../images/lazy-image.jpg"
         />
+
+        <h1 id="audio-video">Audio and video<a href="#">Back to top</a></h1>
+
+        <p>
+            With <code>video</code> element, we can embed video in HTML
+            document.
+        </p>
+        <p>
+            Below video has <code>poster</code> attribute set to show
+            placeholder image, while the video is loaded and not yet played.
+            Here we used some flowers image from this site's assets.
+        </p>
+        <video
+            style="display: block; margin: auto"
+            src="../videos/flower.webm"
+            poster="../images/flowers.webp"
+            controls
+        ></video>
+        <p>
+            We can also nest inside <code>video</code> element other elements,
+            such as <code>source</code> or <code>track</code>.
+        </p>
+        <p>
+            <code>source</code> is used to specify fallback sources of video,
+            for example depenending on video format (maybe primary video format
+            is not supported in user's browser, thus, in need of fallback):
+        </p>
+        <code class="block-code">
+            &lt;video controls poster="..."&gt;<br />
+            &lt;source src="videos/machines.webm" type="video/webm"&gt;<br />
+            &lt;source src="videos/machines.mp4" type="video/mp4"&gt;<br />
+            &lt;source src="videos/machines.ogv" type="video/ogg"&gt;<br />
+            &lt;/video&gt;
+        </code>
+        <p>
+            To even further optimize, while not fully supported, we can specify
+            codecs in <code>source</code> <code>type</code> attribute:
+        </p>
+        <code class="block-code">
+            &lt;video controls poster="..."&gt;<br />
+            &lt;source src="videos/machines.webm"
+            type="video/webm;codecs=vp8,vorbis"&gt;<br />
+            &lt;source src="videos/machines.mp4"
+            type="video/mp4;codecs=avc1.4d002a"&gt;<br />
+            &lt;source src="videos/machines.ogv" type="video/ogg"&gt;<br />
+            &lt;/video&gt;
+        </code>
+
+        <p>
+            <code>track</code> element allows to provide subtitles for video. It
+            is specified as follows:
+        </p>
+
+        <code class="block-code">
+            &lt;video controls poster="..."&gt;<br />
+            &lt;source src="videos/machines.webm" type="video/webm"&gt;<br />
+            <b
+                >&lt;track label="English" kind="subtitles" srclang="en"
+                src="vtt/subtitles-en.vtt" default /&gt;<br />&lt;track
+                label="Français" kind="subtitles" srclang="fr" lang="fr-fr"
+                src="vtt/subtitles-fr.vtt" /&gt;<br /></b
+            >&lt;/video&gt;
+        </code>
     </body>
 </html>
