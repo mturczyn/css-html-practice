@@ -20,3 +20,58 @@ h1 > a::before {
     font-size: large;
     margin: 0 0 0 1.5ch;
 }
+
+#show-active-element {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1ch;
+    background: #ddd;
+    font-weight: bold;
+}
+
+#show-active-element:hover {
+    cursor: pointer;
+}
+
+#focusable-paragraph:focus,
+#table-of-contents:focus {
+    outline: 2px dotted red;
+}
+
+#styled-details-container details summary::marker {
+    content: none;
+}
+
+#styled-details-container details summary::before {
+    display: inline-block;
+    content: '+';
+    transition: transform ease-in-out 1s;
+    margin-right: 1ch;
+}
+
+#styled-details-container details[open] summary::before {
+    transform: rotateZ(495deg);
+}
+
+#styled-details-container details[open] summary {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#styled-details-container details[open] {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#styled-details-container details[open] + details[open] {
+    border-top: 0px solid black;
+}
+
+#dialog::backdrop {
+    background-image: linear-gradient(rebeccapurple, red);
+    opacity: 0.5;
+}
+
+#dialog {
+    background-image: linear-gradient(red, rebeccapurple);
+}

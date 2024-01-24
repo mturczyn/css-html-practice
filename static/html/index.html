@@ -8,7 +8,13 @@
     <body>
         <button onclick="goToMainPage()">Main</button>
         <h1>HTML - table of contents</h1>
-        <ul>
+        <p>
+            Below table of contents has <code>autofocus</code> attribute, which
+            focuses below list at the page load (<code>tabindex</code> needed
+            also to be set to -1). Click outside to loose focus from the
+            element.
+        </p>
+        <ul id="table-of-contents" autofocus tabindex="-1">
             <li><a href="#document-structure">Document structure</a></li>
             <li>
                 <a href="#contenteditableelement"
@@ -40,6 +46,12 @@
                     >HTML template, slot and shadow</a
                 >
             </li>
+            <li><a href="#focus">Focus</a></li>
+            <li><a href="#other-inline-elements">Other inline elements</a></li>
+            <li>
+                <a href="#details-and-summary">Details and summary elements</a>
+            </li>
+            <li><a href="#dialog-notes">Dialog</a></li>
         </ul>
 
         <h1 id="document-structure">
@@ -609,5 +621,304 @@
             then in CSS (global) we can specify: <code>::part()</code> with
             parameter matching <code>part</code> attribute's value.
         </p>
+
+        <h1 id="focus">Focus <a href="#">Back to top</a></h1>
+
+        <p>
+            If document has focues element, it will be accessible through
+            <code>document.activeElement</code> property, as below example
+            demonstrates:
+        </p>
+
+        <p
+            style="background: #eee; padding: 1ch"
+            id="focusable-paragraph"
+            tabindex="-1"
+        >
+            I will receive focus upon clicking following button:
+            <span role="button" id="show-active-element"
+                >Show active element</span
+            >
+        </p>
+        <p>
+            Also, browser scrolls focused elements into view, unless
+            <code>focus({ preventScroll: true })</code> is called, instead of
+            just <code>focus()</code>
+        </p>
+        <button onclick="focusTableOfContents(true)">
+            Focus table of contents at the top
+        </button>
+        <button onclick="focusTableOfContents(false)">
+            Focus table of contents at the top <b>without scroll</b>
+        </button>
+
+        <p>
+            There are also ways to prevent element getting focus - by disabling
+            them (<code>disbale</code> attribute), or by making them inert
+            (<code>inert</code> attribute).
+        </p>
+        <p>
+            Disabling elements is making them non-focusable, enables uses of
+            <code>:disabled</code> pseudo class (in pair with
+            <code>:enabled</code>), and has some default styles to make visual
+            distinction of that state.
+        </p>
+        <p>
+            Inert elements don't have any pseudo-class for styling, neither they
+            have any default visual distinction - it's developer's duty to take
+            care of that.
+        </p>
+        <p>Below are buttons with the same click handler:</p>
+        <ul>
+            <li>
+                regular button:
+                <button onclick="alert('Hello world')">
+                    Click me and show alert
+                </button>
+            </li>
+            <li>
+                disabled button:
+                <button disabled onclick="alert('Hello world')">
+                    Click me and show alert
+                </button>
+            </li>
+            <li>
+                inert button:
+                <button inert onclick="alert('Hello world')">
+                    Click me and show alert
+                </button>
+            </li>
+        </ul>
+
+        <script>
+            function focusTableOfContents(scrollIntoView) {
+                document
+                    .getElementById('table-of-contents')
+                    .focus({ preventScroll: !scrollIntoView })
+            }
+
+            document
+                .getElementById('show-active-element')
+                .addEventListener('click', () => {
+                    document.getElementById('focusable-paragraph').focus()
+                    // Give time for browser to really focus element (also
+                    // apply visual effects) before showing alert.
+                    setTimeout(() => alert(document.activeElement), 10)
+                })
+        </script>
+
+        <h1 id="other-inline-elements">
+            Other inline elements <a href="#">Back to top</a>
+        </h1>
+
+        <p>
+            <code>pre</code> element can be used to present the text exactly as
+            it was formatted in source code, so for example, no need for
+            spamming <code>br</code> elements in blocks of code:
+        </p>
+        <pre><code class="block-code"
+>public class ThisIsFun {
+    public string Message { get; set; }
+}</code></pre>
+        <p>We have more inline elements:</p>
+        <ul>
+            <li>
+                <code>data</code> for example (bold font added with style):
+                <data style="font-weight: bold" value="398"
+                    >This has value of 398</data
+                >
+            </li>
+            <li>
+                <code>time</code> for example: The concert starts at
+                <time datetime="20:00">20:00</time>
+            </li>
+            <li>
+                <code>samp</code> used to display sample output, for example:
+                <samp>I am the output</samp>
+            </li>
+            <li>
+                <code>kbd</code> used to provide instruction about keyboard, for
+                example: Please press <kbd>SHIFT</kbd> key.
+            </li>
+            <li>
+                <code>var</code> can be used for math expressions (MathML is a
+                option, if plenty of maths is written) or programming variables,
+                for example: I like to name my variables in vague way:
+                <var>integerValue</var>
+            </li>
+            <li>
+                <code>sup</code> for exapmle: <var>x</var><sup>2</sup>+<var
+                    >y</var
+                ><sup>2</sup>=<var>z</var><sup>2</sup>
+            </li>
+            <li><code>sub</code> for example: H<sub>2</sub>O</li>
+            <li><code>del</code> indicates text that has been removed</li>
+            <li><code>ins</code> indicates text that has been inserted</li>
+            <li><code>abbr</code></li>
+            <li><code>dfn</code></li>
+            <li><code>bdi</code></li>
+            <li><code>bdo</code></li>
+            <li><code>ruby</code></li>
+            <li>
+                <code>em</code> used to emphasize span of text, for example:
+                This is <em>emphasis</em>
+            </li>
+            <li>
+                <code>mark</code> used to mark, highlight span of text, for
+                example: This is <mark>marked text</mark>
+            </li>
+            <li>
+                <code>strong</code> used to identify text of strong importance,
+                for example: <strong>This is important information.</strong>
+            </li>
+            <li>
+                <code>cite</code> used to mark the titles of books or other
+                sources, or other, such as ISBN book number, for example (source
+                website is enclosed in the <code>cite</code>): This site and its
+                notes were made based on <cite>web.dev</cite> site,
+                <a href="https://web.dev">link</a>
+            </li>
+            <li><code>i</code> - not recommended, use CSS instead</li>
+            <li><code>u</code> - not recommended, use CSS instead</li>
+            <li><code>b</code> - not recommended, use CSS instead</li>
+            <li><code>br</code> - break line (force new line)</li>
+            <li>
+                <code>hr</code> - horizontal separator, for example (its
+                semantic meaning is <code>separator</code>):
+                <hr />
+            </li>
+            <li>
+                <code>wbr</code> - it is a hint, where the browser might break
+                the text, if it overflows; DOES NOT ADD HYPHEN
+            </li>
+        </ul>
+
+        <h1 id="details-and-summary">
+            Details and summary elements <a href="#">Back to top</a>
+        </h1>
+
+        <p>
+            In HTML (it's one of latest additons), there are semantic elements
+            to display accordion controls, those are <code>details</code> and
+            <code>summary</code>
+        </p>
+
+        <details>
+            <summary>Michał Turczyn</summary>
+            <p>Person, human, quite old, quite grumpy</p>
+        </details>
+
+        <details>
+            <summary>Wonder Woman</summary>
+            <p>Person, superhuman, cool and fun.</p>
+        </details>
+
+        <p>
+            If we expand element, <code>details</code> elements received
+            <code>open</code> attribute, which then can be used to specify CSS
+            rules for the element, where we can adjust appearance. Selector
+            would be <code>detailas[open]</code>. Some styled element:
+        </p>
+        <div id="styled-details-container">
+            <details>
+                <summary>Red</summary>
+                <p>
+                    Not so nice, irritating color with RGB value close to
+                    #FF0000
+                </p>
+            </details>
+            <details>
+                <summary>Green</summary>
+                <p>Very nice, calming color with RGB value close to #00FF00</p>
+            </details>
+            <details>
+                <summary>Blue</summary>
+                <p>Very nice, calming color with RGB value close to #0000FF</p>
+            </details>
+        </div>
+
+        <p>
+            The <code>summary</code> element must come first in
+            <code>details</code> element and should contain caption or legend
+            for the rest of the contents of <code>details</code>.
+            <code>summary</code> can contain any content - plain text or other
+            HTML tags.
+        </p>
+        <p>
+            If <code>summary</code> element is not provided in
+            <code>details</code>, the browser have default "Details" label, in
+            user's agent's language of course. For example:
+        </p>
+        <details>
+            <p>
+                This description is about summary, that does not exists here :)
+            </p>
+        </details>
+
+        <h1 id="dialog-notes">Dialog <a href="#">Back to top</a></h1>
+
+        <p>
+            Dialog is used to show popup dialog to get the user's focus. It can
+            be shown in modal way (rest of page is covered with semitransparent
+            layer and is made inert) or non-modal way, so rest of page is still
+            interactive.
+        </p>
+        <p>
+            When opened as modal, there's backdrop that covers rest of page and
+            this can be styled with <code>::backdrop</code> pseudo element.
+        </p>
+        <p>
+            When opened as modal, also <kbd>ESC</kbd> key can close the modal.
+        </p>
+        <p>
+            Main method to close the <code>dialog</code> is to use JS method on
+            that element: <code>close()</code>. Other method to close the dialog
+            WITHOUT JS is using <code>form</code> element and
+            <code>button</code>, with correct attributes (open the dialog and
+            see).
+        </p>
+        <dialog id="dialog">
+            <h1>Congratulations!</h1>
+            <h3>You've just opened the dialog :)</h3>
+            <p>
+                Try clicking outside of this dialog box - depending if the
+                dialog was shown as modal or not, rest of the page can remain
+                interactive or not.
+            </p>
+            <button onclick="document.getElementById('dialog').close()">
+                Close me
+            </button>
+            <p>
+                Other methods to close the dialog WITHOUT JS, using
+                <code>form</code> element and <code>button</code>, with correct
+                attributes
+            </p>
+            <form method="dialog">
+                <button type="submit" autofocus>close</button>
+            </form>
+            <form>
+                <button formmethod="dialog" autofocus>close</button>
+            </form>
+        </dialog>
+
+        <label>
+            <input type="checkbox" id="show-dialog-as-modal" /> Show dialog as
+            modal
+        </label>
+        <button onclick="showDialog()">Show dialog</button>
+
+        <script>
+            function showDialog() {
+                let asModal = document.getElementById(
+                    'show-dialog-as-modal'
+                ).checked
+                let dialog = document.getElementById('dialog')
+                if (asModal) {
+                    dialog.showModal()
+                } else {
+                    dialog.show()
+                }
+            }
+        </script>
     </body>
 </html>
