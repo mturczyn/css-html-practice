@@ -46,6 +46,9 @@ const INTERACTION = 'interaction/'
 // HTML directory and subdirectories
 const HTML = 'html/'
 
+// Forms directory and subdirectories
+const FORMS = 'forms/'
+
 function addEventListenerToElement(elementId, eventName, callback) {
     document.getElementById(elementId).addEventListener(eventName, callback)
 }
@@ -60,6 +63,10 @@ function setElementInnerText(elementId, text) {
 
 function goTo(path) {
     window.location = path
+}
+
+function goToForms() {
+    goToPage(FORMS)
 }
 
 function getPagePath(whereTo) {

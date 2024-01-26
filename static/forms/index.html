@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="../styles.css" />
+        <link rel="stylesheet" href="./forms.css" />
+        <script src="../index.js"></script>
+    </head>
+    <body>
+        <button onclick="goToMainPage()">Main</button>
+
+        <p>
+            Forms are used to collect data from user. There are HTML tags for
+            that purpose: <code>form</code>, <code>input</code>,
+            <code>textarea</code>, etc.
+        </p>
+        <h3>How the data is processed?</h3>
+        <p>
+            Submitting form (with <code>submit</code> type of input - button),
+            invokes HTTP request with form data. By default, HTTP GET request is
+            performed with current's page URL. This can be changed with
+            <code>action</code> attribute.
+        </p>
+        <p>
+            Example form, with changed <code>action</code> and
+            <code>method</code> (see the dev tools' network tab to see what
+            requests are made and how form data is submitted).
+        </p>
+        <p>
+            <code>name</code> attribute on <code>input</code> element sets the
+            name that will be used in HTTP request, for example in query string
+            (again, see the requests being made).
+        </p>
+        <p>
+            Also, form will be submitted when user clicks <kbd>ENTER</kbd> key.
+        </p>
+        <p>
+            <code>fieldset</code> element should be used to group inputs, and
+            it's first child should be <code>legend</code> element.
+        </p>
+
+        <label
+            >Enter URL to submit data to:
+            <select id="form-action">
+                <option value="">Empty</option>
+                <option>https://google.com/</option>
+            </select></label
+        ><br />
+        <label
+            >Enter HTTP method
+            <select id="form-method">
+                <option>GET</option>
+                <option>POST</option>
+            </select></label
+        >
+
+        <script>
+            document
+                .getElementById('form-action')
+                .addEventListener('input', (e) => {
+                    document
+                        .getElementById('example-form')
+                        .setAttribute('action', e.target.value)
+                })
+
+            document
+                .getElementById('form-method')
+                .addEventListener('change', (e) => {
+                    document
+                        .getElementById('example-form')
+                        .setAttribute('method', e.target.value)
+                })
+        </script>
+
+        <form id="example-form" style="border: 2px dotted black; padding: 2ch">
+            <legend>EXAMPLE FORM</legend>
+            <label for="animal">What is your favorite animal?</label>
+            <input type="text" id="animal" name="animal" />
+            <hr />
+            <label>
+                Enter email (having correct input type, browser should suggest
+                autocomplete here)<input
+                    type="email"
+                    name="userEmail"
+                    autocomplete="true"
+                />
+            </label>
+            <hr />
+            <label
+                >This is <code>required</code> field with
+                <code>minlength</code> set to 8
+                <input type="text" minlength="8" required
+            /></label>
+
+            <div>
+                <label for="name"
+                    >Name (instant validation on loosing focus)</label
+                >
+                <input
+                    required
+                    minlength="10"
+                    type="text"
+                    id="name"
+                    name="name"
+                    aria-describedby="name-validation"
+                />
+                <span
+                    id="name-validation"
+                    aria-live="assertive"
+                    style="color: red"
+                ></span>
+
+                <br />
+
+                <label for="name"
+                    >Second Name (custom validation message - need to correctly
+                    fill form input prior to this)</label
+                >
+                <input
+                    required
+                    minlength="10"
+                    type="text"
+                    id="second-name"
+                    name="name"
+                    aria-describedby="name-validation"
+                />
+            </div>
+
+            <script>
+                const nameInput = document.getElementById('second-name')
+
+                nameInput.addEventListener('invalid', () => {
+                    nameInput.setCustomValidity(
+                        'Pretty pleaseeeee enter your name.'
+                    )
+                })
+
+                document.getElementById('name').addEventListener(
+                    'blur',
+                    function (event) {
+                        console.log(event)
+                        // Validate the field
+                        const isValid = event.target.validity.valid
+                        const message = event.target.validationMessage
+                        const connectedValidationId =
+                            event.target.getAttribute('aria-describedby')
+                        const connectedValidation = connectedValidationId
+                            ? document.getElementById(connectedValidationId)
+                            : false
+
+                        if (connectedValidation && message && !isValid) {
+                            connectedValidation.innerText = message
+                        } else {
+                            connectedValidation.innerText = ''
+                        }
+                    },
+                    true
+                )
+            </script>
+
+            <hr />
+            <p>
+                Below are two ways of allowing user to submit data - with
+                <code>button</code> or <code>input</code>
+            </p>
+            <button>Save</button>
+            <input type="submit" value="Save" />
+
+            <p>
+                Every button inside form works as submit button, unless
+                <code>type="button"</code> is defined.
+            </p>
+            <button type="button">This does nothing</button>
+        </form>
+
+        <h1 id="user-fav-animal" tabindex="0">You have entered</h1>
+
+        <script>
+            let urlParams = new URLSearchParams(window.location.search)
+            let favAnimal = urlParams.get('animal')
+
+            if (favAnimal) {
+                document.getElementById('user-fav-animal').focus()
+            }
+
+            document
+                .getElementById('user-fav-animal')
+                .appendChild(document.createTextNode(' ' + favAnimal))
+        </script>
+    </body>
+</html>
