@@ -78,10 +78,52 @@
             <hr />
             <label>
                 Enter email (having correct input type, browser should suggest
-                autocomplete here)<input
+                autocomplete here and there will be visuall indication when
+                autocomplete is used due to <code>:autofill</code> pseudo
+                class)<input
                     type="email"
                     name="userEmail"
                     autocomplete="true"
+                />
+            </label>
+            <p>
+                When autofill is not desired,
+                <code>autocomplete="off"</code> should be used.
+            </p>
+            <hr />
+            <p>
+                Below inputs offer autocomplete, with custom hints
+                <code>autocomplete="gmail email"</code>. Fill with separate
+                emails and see that autofill suggestion will differ.
+            </p>
+            <p>
+                <b>BUT</b> apparently <code>name</code> attribute has more power
+                here :)
+            </p>
+            <label>
+                Enter gmail email<input
+                    name="gmailEmail"
+                    type="email"
+                    autocomplete="gmail email"
+                />
+            </label>
+            <label>
+                Enter non-gmail email<input
+                    name="nonGmailEmail"
+                    type="email"
+                    autocomplete="nongmail email"
+                />
+            </label>
+            <hr />
+            <p>
+                By using <code>autocomplete="new-password"</code> we can
+                leverage browser's built-in feature for password generation:
+            </p>
+            <label>
+                Password<input
+                    name="secret-password"
+                    type="password"
+                    autocomplete="new-password"
                 />
             </label>
             <hr />

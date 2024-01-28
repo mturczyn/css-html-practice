@@ -3,6 +3,10 @@
     animation: flowing-background 500ms ease-in-out;
 }
 
+:autofill {
+    border: 3px dashed orange;
+}
+
 :required {
     border: 3px dotted black;
 }
