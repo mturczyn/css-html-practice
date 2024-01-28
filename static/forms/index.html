@@ -71,7 +71,11 @@
                 })
         </script>
 
-        <form id="example-form" style="border: 2px dotted black; padding: 2ch">
+        <form
+            id="example-form"
+            style="border: 2px dotted black; padding: 2ch"
+            enctype="multipart/form-data"
+        >
             <legend>EXAMPLE FORM</legend>
             <label for="animal">What is your favorite animal?</label>
             <input type="text" id="animal" name="animal" />
@@ -200,12 +204,46 @@
             </script>
 
             <hr />
+
+            <h3>Files</h3>
+
             <p>
-                Below are two ways of allowing user to submit data - with
-                <code>button</code> or <code>input</code>
+                Use <code>type="file"</code> in order to collect files from
+                users. Use <code>multiple</code> attribute to allow multiple
+                files.
             </p>
-            <button>Save</button>
-            <input type="submit" value="Save" />
+            <p>
+                In order to allow submitting form data with files (with POST
+                HTTP method, obviously, otherwise it owuld be hard to include
+                file in URL), we need to define <code>enctype</code> on the
+                <code>form</code> element as
+                <code>enctype="multipart/form-data"</code> (default is
+                <code>enctype="application/x-www-form-urlencoded"</code>).
+            </p>
+
+            <label
+                >Please, select file to upload
+                <input type="file" />
+            </label>
+            <br />
+            <label
+                >Please, select multiple file to upload
+                <input type="file" multiple />
+            </label>
+
+            <hr />
+            <p>
+                Below are three ways of allowing user to submit data
+                <ul>
+                    <li>with <code>button</code></li>
+                    <li>with <code>input</code> with <code>type</code> attrbiute set to <code>submit</code></li>
+                    <li>with <code>input</code> with <code>type</code> attrbiute set to <code>submit</code></li>
+                </ul>
+            </p>
+            <p>Respectively to above are button examples:</p>
+            <button>Save (button)</button>
+            <input type="submit" value="Save (input)" />
+            <input type="image" alt="Save" src="..\images\submit.jpg" />
 
             <p>
                 We can also specify URL (action) to submit form data directly on
