@@ -373,6 +373,32 @@
 
             <hr />
 
+            <h3><code>appearance</code> CSS property to style inputs</h3>
+            <p>
+                We can change appearance of form controls with
+                <code>appearance: none</code>, compare below two dropdowns:
+            </p>
+            <label
+                >I have changed my display:<select
+                    name="none-appearance-example"
+                    style="appearance: none"
+                >
+                    <option>op1</option>
+                    <option>op2</option>
+                    <option>op3</option>
+                </select></label
+            >
+            <br />
+            <label
+                >I display normal:
+                <select name="appearance-example">
+                    <option>op1</option>
+                    <option>op2</option>
+                    <option>op3</option>
+                </select></label
+            >
+            <hr />
+
             <p>Below are three ways of allowing user to submit data</p>
             <ul>
                 <li>with <code>button</code></li>
@@ -403,7 +429,9 @@
             <button type="button">This does nothing</button>
         </form>
 
-        <h1 id="user-fav-animal" tabindex="0">You have entered</h1>
+        <h1 id="user-fav-animal" tabindex="0">
+            Your favorite animal is (entered in the form)
+        </h1>
 
         <script>
             let urlParams = new URLSearchParams(window.location.search)
