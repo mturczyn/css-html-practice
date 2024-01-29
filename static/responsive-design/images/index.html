@@ -98,7 +98,9 @@
             we can cause the browser to preload the image.
         </p>
 
-        <h2><code>srcset</code></h2>
+        <h2>
+            Descriptive syntaxes - <code>srcset</code> and <code>sizes</code>
+        </h2>
         <p>
             We can decide what images to load based on the desired size of the
             image. This way, page will load smaller images, and not waste
@@ -118,22 +120,33 @@
             "
         />
 
-        <h2>Background images</h2>
         <p>
-            There is <code>image-set</code> function in CSS, which works a lot
-            like <code>srcset</code> attribute on <code>img</code> element. For
-            example:
+            We can further instruct the browser which image to pick with
+            <code>sizes</code> attribute: accepts a comma-separated set of
+            candidates for the rendered size of the image, just like
+            <code>srcset</code> accepts comma-separated candidates for image
+            sources. Those conditions use the familiar media query syntax. This
+            syntax is first-match: as soon as a media condition matches, the
+            browser stops parsing the <code>sizes</code> attribute, and the
+            value specified is applied.
         </p>
-        <code class="block-code"
-            >h1 { background-image:<br />
-            image-set(<br />
-            ../../images/abstract-image-small.jpg 500w,<br />
-            ../../images/abstract-image-medium.jpg 850w,<br />
-            ../../images/abstract-image-large.jpg 1200w) <br />
-            }</code
-        >
+        <p>
+            For example, using media queries and also
+            <code>calc</code> function:
+        </p>
+        <pre aria-describedby="sizes-para"><code class="block-code">&lt;img
+    sizes="(min-width: 1200px) calc(80vw - 2em), 100vw"
+    srcset="small.jpg 600w, medium.jpg 1200w, large.jpg 2000w"
+    src="fallback.jpg"
+    alt="..."&gt;</code></pre>
 
-        <h2><code>picture</code> element</h2>
+        <p id="sizes-para">
+            This roughly means that as long as viewport width greater than
+            1200px, use <code>calc(80vw - 2em)</code>, otherwise, use just
+            <code>100vw</code>.
+        </p>
+
+        <h2>Prescriptive syntaxes and <code>picture</code> element</h2>
         <picture>
             <source
                 srcset="
@@ -151,5 +164,20 @@
                 src="../../images/abstract-image-example2/abstract-image-example2-small.jpg"
             />
         </picture>
+
+        <h2>Background images</h2>
+        <p>
+            There is <code>image-set</code> function in CSS, which works a lot
+            like <code>srcset</code> attribute on <code>img</code> element. For
+            example:
+        </p>
+        <code class="block-code"
+            >h1 { background-image:<br />
+            image-set(<br />
+            ../../images/abstract-image-small.jpg 500w,<br />
+            ../../images/abstract-image-medium.jpg 850w,<br />
+            ../../images/abstract-image-large.jpg 1200w) <br />
+            }</code
+        >
     </body>
 </html>
