@@ -232,14 +232,159 @@
             </label>
 
             <hr />
+
+            <h3>Multiline input with <code>textarea</code></h3>
+
             <p>
-                Below are three ways of allowing user to submit data
-                <ul>
-                    <li>with <code>button</code></li>
-                    <li>with <code>input</code> with <code>type</code> attrbiute set to <code>submit</code></li>
-                    <li>with <code>input</code> with <code>type</code> attrbiute set to <code>submit</code></li>
-                </ul>
+                To collect multiline input use <code>textarea</code>, by default
+                it is resizable. Set CSS property <code>resize: none</code> to
+                prevent it.
             </p>
+
+            <label
+                >Enter you fav story
+                <textarea name="multiline-input"></textarea>
+            </label>
+            <br />
+            <label
+                >Enter you fav story - no resize
+                <textarea
+                    style="resize: none"
+                    name="multiline-input"
+                ></textarea>
+            </label>
+
+            <hr />
+
+            <h3><code>select</code> (dropdown) and multiselect</h3>
+
+            <label
+                >Pick (multiple) option(s):
+                <select multiple name="multiselect-input">
+                    <option>OpOne</option>
+                    <option>OpTwo</option>
+                    <option>OpThree</option>
+                </select></label
+            >
+            <br />
+            <label
+                >Pick one option:
+                <select name="singleselect-input">
+                    <option>OpOne</option>
+                    <option>OpTwo</option>
+                    <option selected>OpThree</option>
+                </select></label
+            >
+
+            <h3><code>datalist</code></h3>
+            <label
+                ><code>datalist</code> can be used for editable dropdown</label
+            >
+            <input list="browsers" name="browser" />
+            <datalist id="browsers">
+                <option value="Internet Explorer"></option>
+                <option value="Firefox"></option>
+                <option value="Chrome"></option>
+                <option value="Opera"></option>
+                <option value="Safari"></option>
+            </datalist>
+
+            <hr />
+
+            <p>
+                On mobile devies, there's on-screen keyboard shown, when input
+                is focues. Browser decides what keyboard to display based on
+                attributes: <code>type</code>, <code>inputmode</code> and
+                <code>enterkeyhint</code>
+            </p>
+            <label
+                >Enter some number <code>type="number"</code><br /><input
+                    type="number"
+                    name="numinput" /></label
+            ><br />
+            <label
+                >Enter some number <code>inputmode="numeric"</code><br /><input
+                    type="number"
+                    name="numinput2"
+                    inputmode="numeric" /></label
+            ><br />
+            <label
+                >Enter some number <code>enterkeyhint="next"</code><br /><input
+                    type="number"
+                    name="numinput3"
+                    enterkeyhint="next" /></label
+            ><br />
+            <label
+                >Enter some number <code>enterkeyhint="done"</code><br /><input
+                    type="number"
+                    name="numinput4"
+                    enterkeyhint="done"
+            /></label>
+
+            <hr />
+
+            <h3>Getting the value from input with JS</h3>
+            <label
+                >Enter some example value
+                <input
+                    name="getting-value-example"
+                    id="getting-value-example"
+                    type="text"
+                    value="INIT VALUE"
+                />
+            </label>
+            <p>There are two ways of getting value of an input</p>
+            <ul>
+                <li>
+                    with <code>getAttribute</code> - <b>BUT</b> it returns
+                    initial value that was set in HTML code,
+                </li>
+                <li>
+                    accessing with <code>value</code> input property, which
+                    returns live value,
+                </li>
+            </ul>
+            <button
+                type="button"
+                onclick="alert(document.getElementById('getting-value-example').getAttribute('value'))"
+            >
+                <code>getAttribute</code>
+            </button>
+            <button
+                type="button"
+                onclick="alert(document.getElementById('getting-value-example').value)"
+            >
+                <code>value</code>
+            </button>
+
+            <hr />
+            <h3><code>placeholder</code></h3>
+            <p>We can use placeholder for hints:</p>
+
+            <label
+                >Enter some example value
+                <input
+                    name="placeholder-example"
+                    id="placeholder-example"
+                    type="text"
+                    placeholder="placeholder VALUE"
+                />
+            </label>
+
+            <hr />
+
+            <p>Below are three ways of allowing user to submit data</p>
+            <ul>
+                <li>with <code>button</code></li>
+                <li>
+                    with <code>input</code> with <code>type</code> attrbiute set
+                    to <code>submit</code>
+                </li>
+                <li>
+                    with <code>input</code> with <code>type</code> attrbiute set
+                    to <code>submit</code>
+                </li>
+            </ul>
             <p>Respectively to above are button examples:</p>
             <button>Save (button)</button>
             <input type="submit" value="Save (input)" />
