@@ -147,6 +147,24 @@
         </p>
 
         <h2>Prescriptive syntaxes and <code>picture</code> element</h2>
+
+        <p>
+            In addition to <code>srcset</code> and <code>sizes</code> attributes
+            on <code>img</code> element, we have <code>picture</code> that
+            allows to do even more optimized image fetching:
+        </p>
+        <pre><code class="block-code">&lt;picture&gt;
+   &lt;source 
+        media="(min-width: 800px)" 
+        srcset="high-bp-1600.jpg 1600w, high-bp-1000.jpg 1000w"&gt;
+   &lt;source 
+        srcset="lower-bp-1200.jpg 1200w, lower-bp-800.jpg 800w"&gt;
+   &lt;img 
+        src="fallback.jpg" 
+        alt="…" 
+        sizes="calc(100vw - 2em)"&gt;
+&lt;/picture&gt;</code></pre>
+
         <picture>
             <source
                 srcset="
