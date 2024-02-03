@@ -52,6 +52,27 @@
                 <a href="#details-and-summary">Details and summary elements</a>
             </li>
             <li><a href="#dialog-notes">Dialog</a></li>
+            <li>
+                <a href="#perf-notes-general"
+                    >Note on performance - general browser hints in
+                    <code>link</code></a
+                >
+            </li>
+            <li>
+                <a href="#perf-notes-videos">Note on performance - videos</a>
+            </li>
+            <li><a href="#perf-notes-fonts">Note on performance - fonts</a></li>
+            <li>
+                <a href="#perf-notes-lazyload-iframes"
+                    >Note on performance - lazy load <code>iframes</code></a
+                >
+            </li>
+            <li>
+                <a href="#perf-notes-prefetch-prerender"
+                    >Note on performance - prefetch and prerender pages</a
+                >
+            </li>
+            <li><a href="#web-worker-notes">Web worker</a></li>
         </ul>
 
         <h1 id="document-structure">
@@ -919,6 +940,265 @@
                     dialog.show()
                 }
             }
+        </script>
+
+        <h1 id="perf-notes-general">
+            Note on performance - general browser hints in <code>link</code
+            ><a href="#">Back to top</a>
+        </h1>
+
+        <p>
+            We can hint the browser to enhance fetching resources with
+            <code>link</code> element's attributes.
+        </p>
+
+        <h3><code>preconnect</code></h3>
+        <p>
+            It tells the browser to establish connection to a server, from which
+            we will fetch resources, ahead of time. If the origin is different,
+            <code>crossorigin</code> must be added, for example:
+        </p>
+        <code class="block-code">
+            &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;<br />
+            &lt;link rel="preconnect" href="https://fonts.gstatic.com"
+            crossorigin&gt;
+        </code>
+
+        <h3><code>dns-prefetch</code></h3>
+        <p>
+            This tells browser to perform DNS lookup for the server, that we
+            will fetch resources from.
+        </p>
+
+        <h3><code>preload</code></h3>
+        <p>
+            Tells the browser to initiate fetching the resource. Should be used
+            only with late-discovered resources (such as styles imported with
+            <code>@import</code> declarations or CSS
+            <code>background-image</code>).
+        </p>
+        <p>
+            It also must contain <code>crossorigin</code> attribute for servers
+            in different origins.
+        </p>
+        <p>
+            Also, to prevent double fetching, <code>as</code> attribute must be
+            correctly specified.
+        </p>
+        <code class="block-code">
+            &lt;link rel="preload" href="/font.woff2" as="font" crossorigin&gt;
+        </code>
+
+        <h3><code>prefetch</code></h3>
+        <p>
+            Similair to <code>preload</code>, but it is very speculative - it
+            initiates very low priority fetch, for resources that might be
+            needed or not.
+        </p>
+
+        <h3><code>fetchpriority</code> attribute</h3>
+        <p>
+            Can be used to with elements: <code>link</code>,
+            <code>img</code> and <code>script</code>. It can take values:
+            <code>high</code>, <code>low</code> and <code>auto</code>.
+        </p>
+
+        <h1 id="perf-notes-videos">
+            Note on performance - videos<a href="#">Back to top</a>
+        </h1>
+
+        <p>
+            <code>video</code> element supports <code>source</code> element,
+            similairly to picture (it also works the same way - first match get
+            used):
+        </p>
+        <pre><code class='block-code'>&lt;video&gt;
+  &lt;source src="video.webm" type="video/webm"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+
+        <p>
+            The <code>video</code> element also has
+            <code>preload</code> attribute which can take values:
+        </p>
+        <ul>
+            <li>
+                <code>none</code> informs the browser that none of the video's
+                contents should be preloaded
+            </li>
+            <li>
+                <code>metadata</code> informs the browser to preload video's
+                metadata
+            </li>
+        </ul>
+
+        <p>
+            When using <code>poster</code> attribute to display image
+            placeholder for the video, it is worth to include
+            <code>link</code> for that picture with
+            <code>type="preconnect"</code> to optimize fetching the picture.
+        </p>
+
+        <h1 id="perf-notes-fonts">
+            Note on performance - fonts<a href="#">Back to top</a>
+        </h1>
+        <p>We can declare font family with <code>@font=family</code>:</p>
+        <pre><code class='block-code'>@font-face {
+  font-family: "Open Sans";
+  src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+}</code></pre>
+        <p>
+            Browser will download the font, if it sees that it will be used (so
+            the download is necessary). But this wil happen only after browser
+            download whole CSS and detects the declaration and usage of the font
+            in current layout.
+        </p>
+        <p>
+            We can tell the browser to preload the font with
+            <code>link</code> element as follows:
+        </p>
+        <pre><code class="block-code">&lt;!-- The `crossorigin` attribute is required for fonts—even
+self-hosted ones, as fonts are considered CORS resources. --&gt;
+&lt;link 
+    rel="preload" 
+    as="font" 
+    href="/fonts/OpenSans-Regular-webfont.woff2" 
+    crossorigin&gt;</code></pre>
+
+        <p>
+            <code>font-display</code> property can be used to inform the browser
+            how to render the fonts. It an take values:
+        </p>
+        <ul>
+            <li><code>block</code></li>
+            - blocks rendering of the text, until font is downloaded
+            <li>
+                <code>swap</code> - tells the browser to diisplay default,
+                fallback font, once desired font is loaded, the text is swapped
+            </li>
+            <li>
+                <code>fallback</code> - it blocks the rendering of the page for
+                a short while, if the desired font is not yet loaded, the
+                fallback is shown and then swapped, once the desired font is
+                loaded,
+            </li>
+            <li>
+                <code>optional</code> - it tells the browser to wait for 100ms
+                for the desired font, if not loaded in that time, the browser
+                uses fallback font, while keeping download of the desired font -
+                once loaded, the font is places in cache for later use (<em
+                    >but the text is not swapped</em
+                >).
+            </li>
+        </ul>
+
+        <h1 id="perf-notes-lazyload-iframes">
+            Note on performance - lazy load <code>iframes</code
+            ><a href="#">Back to top</a>
+        </h1>
+
+        <p>
+            <code>iframes</code> also supports <code>loading</code> attribute
+            with <code>eager</code> and <code>lazy</code> values. Just as
+            <code>img</code> element does.
+        </p>
+        <p>
+            Similairly to <code>img</code> element, it should have
+            <code>width</code> and <code>height</code> attriburtes set to
+            prevent layout shifts.
+        </p>
+
+        <h1 id="perf-notes-prefetch-prerender">
+            Note on performance - prefetch and prerender pages<a href="#"
+                >Back to top</a
+            >
+        </h1>
+        <p>
+            As already discussed, we use
+            <code>&lt;link rel="prefetch" href="/page" as="document"&gt;</code>
+            to prefetch resources, and with <code>as="document"</code>, browser
+            will load the page with all its JS and other.
+        </p>
+        <p>In Chromium browsers we can Speculation Rules API:</p>
+        <pre><code class="block-code">&lt;script type="speculationrules"&gt;
+{
+  "prefetch": [{
+    "source": "list",
+    "urls": ["/page-a", "/page-b"]
+  }]
+}
+&lt;/script&gt;</code></pre>
+
+        <p>
+            Note the <code>type="speculationrules"</code> on
+            <code>script</code> element. The key of this JSON is an action -
+            <code>prefetch</code> or <code>prerender</code>, and its value is
+            list of pages to perform the action on.
+        </p>
+
+        <p>Similairly it can be used with <code>prerender</code></p>
+        <pre><code class="block-code">&lt;script type="speculationrules"&gt;
+{
+  "prefetch": [{
+    "source": "list",
+    "urls": ["/page-a", "/page-b"]
+  }]
+}
+&lt;/script&gt;</code></pre>
+
+        <p>
+            Chrome also supports using prerender on <code>link</code> elements:
+            <code>&lt;link rel="prerender" href="page"&gt;</code>
+        </p>
+
+        <p>
+            While both a prefetch and a prerender for a page gets a page and all
+            of its subresources, a prefetch only retrieves the page and all of
+            its resources while a prerender goes one step further by rendering
+            the entire page the background until the user navigates to it.
+        </p>
+
+        <h1 id="web-worker-notes">Web worker<a href="#">Back to top</a></h1>
+        <p>
+            JS usually uses one thread - browser's main thread. In order to
+            enable more threads to be involved, we need to use
+            <code>Worker</code> class, referred to as web wroker. This let's us
+            use more than one thread!
+        </p>
+        <p>Example usage:</p>
+        <code class="block-code"
+            >const myWebWorker = new Worker('my-web-worker.js');</code
+        >
+        <p>Benefits come at cost though:</p>
+        <ul>
+            <li>web workers can not directly access the DOM,</li>
+            <li>
+                there can be soem sort of message pipeline for web worker to
+                communicate indirectly with the DOM,
+            </li>
+            <li>
+                the web worker scope is <code>self</code>, rather than
+                <code>window</code>.
+            </li>
+        </ul>
+
+        <p>
+            Pipeline for the webworker can be created by adding event listeners
+            for <code>message</code> event for the web worker as well as
+            <code>window</code>.
+        </p>
+
+        <p>Message from web worker: <span id="web-worker-message"></span></p>
+        <script>
+            // Creates the web worker:
+            const myWebWorker = new Worker('my-web-worker.js')
+
+            // Adds an event listener on the web worker instance that listens for messages:
+            myWebWorker.addEventListener('message', ({ data }) => {
+                // Echoes "Hello, window!" to the console from the worker.
+                console.log('Web worker data sent: ' + data)
+                document.getElementById('web-worker-message').innerText = data
+            })
         </script>
     </body>
 </html>
