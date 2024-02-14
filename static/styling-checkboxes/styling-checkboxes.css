@@ -1,0 +1,58 @@
+.c-custom-checkbox {
+    cursor: pointer;
+
+    display: flex;
+    align-items: flex-start;
+
+    --checked-state-bg-color: hsl(350, 95%, 58%);
+    --checked-state-check-color: #fff;
+    --outline-color: var(--checked-state-bg-color);
+    --outline-offset: 2px;
+}
+
+/* hide the checkbox accessibly */
+.c-custom-checkbox input[type='checkbox'] {
+    /* remove the checkbox from the page flow, positioning it on top of the SVG */
+    position: absolute;
+    /* set same dimensions as the SVG */
+    width: 1em;
+    height: 1em;
+    /* hide it */
+    opacity: 0.00001;
+}
+
+/* basic styles for the svg */
+.c-custom-checkbox svg {
+    /* set SVG dimensions in ems; i.e. relative to the font size so that it scales with the size of the font. */
+    width: 1em;
+    height: 1em;
+
+    margin-right: 0.5em;
+    margin-top: 0.1em;
+
+    /* apply a transition to the elements inside the svg */
+    * {
+        transition: all 0.1s linear;
+    }
+}
+
+/* style changes inside the svg when the checkbox is checked */
+.c-custom-checkbox input[type='checkbox']:checked + svg {
+    .checkbox__background {
+        fill: var(--checked-state-bg-color);
+        stroke: var(--checked-state-bg-color);
+    }
+
+    .checkbox__checkmark {
+        stroke: var(--checked-state-check-color);
+    }
+}
+
+.c-custom-checkbox input[type='checkbox']:focus + svg {
+    outline: 3px solid var(--outline-color);
+    outline-offset: var(--outline-offset);
+}
+
+.c-custom-checkbox input[type='checkbox']:focus:not(:focus-visible) + svg {
+    outline: none;
+}

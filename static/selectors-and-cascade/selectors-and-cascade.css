@@ -10,6 +10,23 @@ the attribute.*/
     color: red;
 }
 
+#sass-like-selector {
+    h1 {
+        color: green;
+        font-style: normal;
+        text-decoration: underline;
+    }
+    p {
+        font-style: normal;
+
+        &::first-letter {
+            font-size: xx-large;
+            font-weight: bold;
+            color: red;
+        }
+    }
+}
+
 #firstOfTypeExample {
     border: 5px solid red;
     padding: 5px;

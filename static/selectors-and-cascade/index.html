@@ -159,5 +159,30 @@
                 selector than one above.
             </p>
         </div>
+
+        <div class="bordered" id="sass-like-selector">
+            <h1>SASS like styles? This header should be styled</h1>
+            <p>
+                This section exists only to test styling with SASS like syntax:
+            </p>
+            <pre>
+                <code style="font-style: normal;" class="block-code">#sass-like-selector {
+    h1 {
+        color: green;
+        font-style: normal;
+        text-decoration: underline;
+    }
+    p {
+        font-style: normal;
+
+        &::first-letter {
+            font-size: xx-large;
+            font-weight: bold;
+            color: red;
+        }
+    }
+}</code>
+            </pre>
+        </div>
     </body>
 </html>

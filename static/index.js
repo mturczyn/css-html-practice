@@ -34,6 +34,7 @@ const BACKGROUND = 'backgrounds/'
 const TEXT_AND_TYPOGRAPHY = 'text-and-typography/'
 const RESPONSIVE_DESIGN = 'responsive-design/'
 const IMAGES = 'images/'
+const STYLING_CHECKBOXES = 'styling-checkboxes'
 
 // Responsive design subdirectories
 const MEDIA_QUERIES = 'media-queries/'
@@ -63,6 +64,10 @@ function setElementInnerText(elementId, text) {
 
 function goTo(path) {
     window.location = path
+}
+
+function goToStylingCheckboxes() {
+    goTo(STYLING_CHECKBOXES)
 }
 
 function goToForms() {
