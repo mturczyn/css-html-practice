@@ -1,13 +1,15 @@
+:root {
+    --checked-state-bg-color: hsl(350, 95%, 58%);
+    --checked-state-check-color: #fff;
+    --outline-color: var(--checked-state-bg-color);
+    --outline-offset: 2px;
+}
+
 .c-custom-checkbox {
     cursor: pointer;
 
     display: flex;
     align-items: flex-start;
-
-    --checked-state-bg-color: hsl(350, 95%, 58%);
-    --checked-state-check-color: #fff;
-    --outline-color: var(--checked-state-bg-color);
-    --outline-offset: 2px;
 }
 
 /* hide the checkbox accessibly */
@@ -23,7 +25,8 @@
 
 /* basic styles for the svg */
 .c-custom-checkbox svg {
-    /* set SVG dimensions in ems; i.e. relative to the font size so that it scales with the size of the font. */
+    /* set SVG dimensions in ems; i.e. relative to the font 
+    size so that it scales with the size of the font. */
     width: 1em;
     height: 1em;
 
