@@ -7,7 +7,6 @@
 
 .c-custom-checkbox {
     cursor: pointer;
-
     display: flex;
     align-items: flex-start;
 }
@@ -29,10 +28,8 @@
     size so that it scales with the size of the font. */
     width: 1em;
     height: 1em;
-
     margin-right: 0.5em;
     margin-top: 0.1em;
-
     /* apply a transition to the elements inside the svg */
     * {
         transition: all 0.1s linear;
