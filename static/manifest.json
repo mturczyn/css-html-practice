@@ -1,8 +1,32 @@
 {
     "short_name": "css-html-practice",
-    "name": "Learning CSS course from web.dev",
+    "description": "Michał Turczyn - notes from courses regarding HTML and CSS.",
+    "name": "Learning HTML, CSS and PWA course from web.dev",
     "start_url": "/",
     "background_color": "#add8e6",
     "theme_color": "#add8e6",
-    "display": "standalone"
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "maskable_icon.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "favicon.ico",
+            "sizes": "64x64 32x32 24x24 16x16",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "logo192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "logo512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
 }

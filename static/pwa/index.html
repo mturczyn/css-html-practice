@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="../index.js"></script>
+        <link href="./pwa.css" rel="stylesheet" />
+        <link href="../styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <button class="main-page-button" onclick="goToMainPage()">
+            Main page
+        </button>
+        <h1>Introduction - making app installable</h1>
+        <p>
+            This page was made installable just by correctly wiring up the
+            manifest file and filling it with relevant information. After that,
+            this site was detected as "installable", thus becoming PWA.
+        </p>
+        <h2>App design</h2>
+        <p>
+            In order to apply different styles we can use media features, such
+            as <code>display-mode</code>.
+        </p>
+        <div class="media-example">
+            <p>
+                This is example of the media feature, depending on it this
+                paragraph has different background:
+            </p>
+            <ul>
+                <li>
+                    if this page is displayed in browser, background should be
+                    green,
+                </li>
+                <li>
+                    if this is displayed as standalone (installed, though you
+                    can pick how the app will display, about which later) and
+                    with user preference of light mode, background is red
+                </li>
+                <li>
+                    if this is displayed as standalone and with user preference
+                    of dark mode, background is yellow
+                </li>
+            </ul>
+        </div>
+        <p>
+            Note that <code>standalone</code> mode matched also
+            <code>@media (display-mode: browser)</code> query.
+        </p>
+        <p>
+            Selection does not work very well in PWAs, so it is usually
+            recommended to use
+        </p>
+        <pre><code class="block-code">.unselectable {
+   user-select: none;
+}</code></pre>
+        <p>
+            Sometimes, in PWAs (from Chrome on Android), PWAs have
+            <b>pull to refresh</b> (when page is puled down, it refreshes) -
+            this is not desirable in PWAs, so it can be disabled with
+        </p>
+        <pre><code class="block-code">body {
+    overscroll-behavior-y: contain;
+}</code></pre>
+    </body>
+</html>

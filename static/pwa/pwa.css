@@ -1,0 +1,21 @@
+.media-example {
+    font-weight: bolder;
+}
+
+@media (display-mode: standalone), (prefers-color-scheme: light) {
+    .media-example {
+        background: red;
+    }
+}
+
+@media (display-mode: standalone), (prefers-color-scheme: dark) {
+    .media-example {
+        background: yellow;
+    }
+}
+
+@media (display-mode: browser) {
+    .media-example {
+        background: greenyellow;
+    }
+}

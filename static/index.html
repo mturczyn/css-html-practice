@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#add8e6" />
+        <meta
+            name="description"
+            content="Intrinsic Michał Turczyn - kurs HTML i CSS"
+        />
+        <meta
+            http-equiv="content-security-policy"
+            content="default-src 'self' 'unsafe-inline'; img-src 'self' data:;"
+        />
+        <link rel="apple-touch-icon" href="logo192.png" />
+        <link rel="manifest" href="manifest.json" />
+
         <link
             href="/fonts/roboto-regular.woff2"
             type="font/woff2"
@@ -15,7 +30,14 @@
     <body>
         <h1>Welcome to CSS and HTML practice</h1>
 
-        <h2>HTML</h2>
+        <h2>Table Of Contents</h2>
+        <ul>
+            <li><a href="#html">HyperText Markup Language (HTML)</a></li>
+            <li><a href="#css">Cascade Stylesheets (CSS)</a></li>
+            <li><a href="#pwa">Progressive Web Apps (PWA)</a></li>
+        </ul>
+
+        <h2 id="html">HTML<a href="#">#</a></h2>
         <p>
             Below is the HTML topics followed from
             <a href="https://web.dev/learn/html">this website</a>.
@@ -32,7 +54,7 @@
         </p>
         <button onclick="goToForms()">Forms</button>
 
-        <h2>CSS</h2>
+        <h2 id="css">CSS<a href="#">#</a></h2>
         <p>
             Below are list of particular topics from CSS area followed from
             <a href="https://web.dev/learn/css">this website</a>.
@@ -101,5 +123,13 @@
                 console.log(msg)
             }
         </script>
+
+        <h2 id="pwa">Progressive Web Apps (PWA)<a href="#">#</a></h2>
+        <p>
+            PWAs are the way for making the web page acting as native app and
+            installable. On mobiles, it can also be uploaded to app stores after
+            building PWA.
+        </p>
+        <button onclick="goToPwa()">PWA</button>
     </body>
 </html>
