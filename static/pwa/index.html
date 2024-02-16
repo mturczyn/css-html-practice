@@ -188,9 +188,32 @@
             worker "proxying" to serve the CSS file.
         </p>
         <link rel="stylesheet" href="not-existing.css" type="text/css" />
-        <p class="bordered" style="padding: 1ch" id="from-not-existing-styles">
-            If service worker proxied request for non-existing CSS file, this
-            paragraph should have bold and purple font, with pink background.
+
+        <div
+            class="bordered"
+            style="padding: 1ch"
+            id="from-not-existing-styles"
+        >
+            <h1 id="from-not-existing-styles-header"></h1>
+            <p>
+                If service worker proxied request for non-existing CSS file,
+                this paragraph should have bold and purple font, with pink
+                background.
+            </p>
+        </div>
+        <h3>Notes about code</h3>
+        <p>
+            This page uses service worker and Cache API - all can be inspected
+            in dev tools - in console and in appropriate places in
+            <code>Application</code> tab.
+        </p>
+        <p>
+            <b>Caution:</b> The Response's body is a
+            <code>ReadableStream</code> that can only be consumed once. That
+            means that if you call <code>fetch()</code> to deliver the response
+            to the PWA because the asset was not cached, you cannot reuse the
+            same response for updating it in the cache. You need to call
+            <code>Response.clone()</code> to use it twice.
         </p>
     </body>
 </html>
