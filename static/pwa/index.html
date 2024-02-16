@@ -15,7 +15,15 @@
             manifest file and filling it with relevant information. After that,
             this site was detected as "installable", thus becoming PWA.
         </p>
-        <h2>App design</h2>
+        <p>Below are further datails of building PWAs:</p>
+        <ul id="toc">
+            <li><a href="#app-design">App design</a></li>
+            <li><a href="#service-workers">Service workers</a></li>
+            <li><a href="#cache-storage-api">Cache Storage API</a></li>
+            <li><a href="#serving">Serving repsonse from service worker</a></li>
+        </ul>
+
+        <h2 id="app-design">App design<a href="#">#</a></h2>
         <p>
             In order to apply different styles we can use media features, such
             as <code>display-mode</code>.
@@ -43,8 +51,23 @@
         </div>
         <p>
             Note that <code>standalone</code> mode matched also
-            <code>@media (display-mode: browser)</code> query.
+            <code>@media (display-mode: browser)</code> query. On the other day,
+            it did not, play with below snipper to verify (style should take
+            precedence, when matched against above colorful paragraph):
         </p>
+        <style
+            style="
+                display: block;
+                font-family: 'Courier New', Courier, monospace;
+            "
+            contenteditable="true"
+        >
+            @media (display-mode: standalone) {
+                .media-example {
+                    background: red;
+                }
+            }
+        </style>
         <p>
             Selection does not work very well in PWAs, so it is usually
             recommended to use
@@ -60,5 +83,114 @@
         <pre><code class="block-code">body {
     overscroll-behavior-y: contain;
 }</code></pre>
+
+        <h2 id="service-workers">Service workers<a href="#">#</a></h2>
+        <p>
+            When registering service worker, it will act as a proxy between
+            backend server and the PWA - service workter can decide where to
+            reach for the resource.
+        </p>
+        <p>
+            Not all browser support service workers, but if it dies, we need to
+            register it as follows:
+        </p>
+        <pre><code class="block-code">if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register("/serviceworker.js");
+}</code></pre>
+        <p>
+            Below info indicates whether your browser supports service workers:
+        </p>
+        <p style="padding: 1ch" id="service-worker-support"></p>
+        <script>
+            const serviceWorkerSupported = 'serviceWorker' in navigator
+            console.log('serviceWorkerSupported =', serviceWorkerSupported)
+
+            if (serviceWorkerSupported) {
+                console.log('Service worker supported.')
+                navigator.serviceWorker.register('./serviceworker.js')
+                console.log('Service worker registered.')
+            }
+
+            const swParagraph = document.getElementById(
+                'service-worker-support'
+            )
+
+            const text =
+                'Service workers' +
+                (serviceWorkerSupported ? ' ' : ' not ') +
+                'supported'
+            const color = serviceWorkerSupported ? 'yellowgreen' : 'red'
+
+            swParagraph.style.textAlign = 'center'
+            swParagraph.style.backgroundColor = color
+            swParagraph.innerText = text
+            swParagraph.style.fontWeight = 'bolder'
+        </script>
+
+        <p>
+            Service worker controls navigation for any route where the service
+            worker is located or subroutes. So for example, service worker for
+            this page will control requests to <code>/pwa</code> or
+            <code>/pwa/othersite</code>, but not root path <code>/</code> or
+            <code>/html-notes</code> route.
+        </p>
+        <h3>Updating service worker</h3>
+        <p>
+            In order to update service worker, we must not rename it, and on
+            client side - we need to navigate away from all occurences of the
+            page (PWAs, browser tabs). Then re-navigate to desired page.
+        </p>
+        <h3>Lifespan</h3>
+        <p>
+            Service workers are terminated when they've been idle for a few
+            seconds or if they've been busy for too long.
+        </p>
+
+        <h2 id="cache-storage-api">Cache storage API<a href="#">#</a></h2>
+        <p>
+            We can use this API to cache various types of resources, such as CSS
+            files, fonts, etc. The cache also includes headers for the HTTP
+            requests (for CSSes and other).
+        </p>
+        <p>Caching can be chieved with following code:</p>
+        <pre><code class='block-code'>caches.open('pwa-practice-assets').then((cache) => {
+    cache.add('pwa.css')
+})</code></pre>
+
+        <p>
+            See example in this page (JS file contains cache setting) and this
+            can be inspected by going to <code>Application</code> tab in
+            DevTools, there will be <code>Cache storage</code> on the left pane.
+        </p>
+        <p>
+            See the
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache"
+                >Cache object documentation</a
+            >
+            for further details.
+        </p>
+
+        <h2 id="serving">
+            Serving repsonse from service worker<a href="#">#</a>
+        </h2>
+        <p>
+            Thanks to service worker's <code>fetch</code> event, we have ability
+            to proxy all reuqests in service worker's scope (so current route or
+            subroutes). For example:
+        </p>
+        <pre><code class='block-code'>self.addEventListener("fetch", event => {
+    console.log(`URL requested: ${event.request.url}`);
+});</code></pre>
+        <p>
+            Log can be inspected in the dev tools (above is the real
+            implementation). Moreover, below we have <code>link</code> to styles
+            <code>not-existing.css</code>, which do not exist - we use service
+            worker "proxying" to serve the CSS file.
+        </p>
+        <link rel="stylesheet" href="not-existing.css" type="text/css" />
+        <p class="bordered" style="padding: 1ch" id="from-not-existing-styles">
+            If service worker proxied request for non-existing CSS file, this
+            paragraph should have bold and purple font, with pink background.
+        </p>
     </body>
 </html>
