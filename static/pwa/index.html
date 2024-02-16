@@ -203,6 +203,16 @@
         </div>
         <h3>Notes about code</h3>
         <p>
+            Inside <code>fetch</code> event handler in service worker,
+            <code>FetchEvent.respondWith</code> MUST be called synchronously. So
+            no <code>await</code>s can be used before it, neither can it be used
+            inside <code>then</code> method of a <code>Promise</code>. Luckily,
+            <code>FetchEvent.respondWith</code> accepts
+            <code>Response</code> object or <code>Promise</code> object, that
+            resolves to <code>Response</code> object. So we can produce response
+            asynchronously inside <code>FetchEvent.respondWith</code> method.
+        </p>
+        <p>
             This page uses service worker and Cache API - all can be inspected
             in dev tools - in console and in appropriate places in
             <code>Application</code> tab.
