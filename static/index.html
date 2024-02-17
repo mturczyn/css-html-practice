@@ -131,5 +131,14 @@
             building PWA.
         </p>
         <button onclick="goToPwa()">PWA</button>
+        <script>
+            if ('serviceWorker' in navigator) {
+                console.log('Service worker supported.')
+                navigator.serviceWorker.register('./serviceworker.js')
+                console.log('Service worker registered.')
+            } else {
+                console.log('Service worker NOT supported.')
+            }
+        </script>
     </body>
 </html>
