@@ -2,6 +2,13 @@ console.log('Service worker executed.')
 
 self.addEventListener('install', (event) => {
     console.log('Service worker installed')
+
+    const files = ['offline.html'] // you can add more resources here
+    event.waitUntil(
+        self.caches
+            .open('pwa-practice-offline-fallbacks')
+            .then((cache) => cache.addAll(files))
+    )
 })
 
 self.addEventListener('activate', (event) => {
@@ -64,9 +71,29 @@ async function produceResponseWithCustomCssAndCache(requestUrl) {
     return await fetch(requestUrl)
 }
 
+async function tryServeAndFallbackToOffline() {
+    const cache = await caches.open('pwa-practice-offline-fallbacks')
+    return (await cache.match('offline.html')) || Response.error()
+}
+
+async function respondWith(event) {
+    try {
+        return await produceResponseWithCustomCssAndCache(event.request.url)
+    } catch (error) {
+        console.log('>>>', 'ERROR: ', error)
+        if (event.request.destination === 'document') {
+            console.log('>>>', 'destination is ', event.request.destination)
+            return await tryServeAndFallbackToOffline(event.request)
+        }
+    }
+
+    return Response.error()
+}
+
 // RespondWith must be called synchronously, but it accepts Promise resolving to Response object.
 self.addEventListener('fetch', (event) => {
-    event.respondWith(produceResponseWithCustomCssAndCache(event.request.url))
+    console.log('destination', event.request.destination)
+    event.respondWith(respondWith(event))
 })
 
 caches.open('pwa-practice-assets').then(async (cache) => {
