@@ -355,5 +355,14 @@
             You can also check if persistent storage is already granted in the
             current origin by calling <code>StorageManager.persisted()</code>.
         </p>
+
+        <h3>iOS and iPadOS installation</h3>
+        <p>On these platforms, we need to include</p>
+        <pre><code class="block-code">&lt;link rel="apple-touch-icon" href="/icons/ios.png"&gt;</code></pre>
+        <p>
+            to instruct the browser/system to use that icon as application icon.
+            If not specified, icon will be screenshot of the PWA at the moment
+            of installation.
+        </p>
     </body>
 </html>
