@@ -21,9 +21,10 @@
             <li><a href="#service-workers">Service workers</a></li>
             <li><a href="#cache-storage-api">Cache Storage API</a></li>
             <li><a href="#serving">Serving repsonse from service worker</a></li>
+            <li><a href="#indexeddb">IndexedDB</a></li>
         </ul>
 
-        <h2 id="app-design">App design<a href="#">#</a></h2>
+        <h2 id="app-design">App design <a href="#">#</a></h2>
         <p>
             In order to apply different styles we can use media features, such
             as <code>display-mode</code>.
@@ -84,7 +85,7 @@
     overscroll-behavior-y: contain;
 }</code></pre>
 
-        <h2 id="service-workers">Service workers<a href="#">#</a></h2>
+        <h2 id="service-workers">Service workers <a href="#">#</a></h2>
         <p>
             When registering service worker, it will act as a proxy between
             backend server and the PWA - service workter can decide where to
@@ -146,7 +147,7 @@
             seconds or if they've been busy for too long.
         </p>
 
-        <h2 id="cache-storage-api">Cache storage API<a href="#">#</a></h2>
+        <h2 id="cache-storage-api">Cache storage API <a href="#">#</a></h2>
         <p>
             We can use this API to cache various types of resources, such as CSS
             files, fonts, etc. The cache also includes headers for the HTTP
@@ -171,7 +172,7 @@
         </p>
 
         <h2 id="serving">
-            Serving repsonse from service worker<a href="#">#</a>
+            Serving repsonse from service worker <a href="#">#</a>
         </h2>
         <p>
             Thanks to service worker's <code>fetch</code> event, we have ability
@@ -224,6 +225,135 @@
             to the PWA because the asset was not cached, you cannot reuse the
             same response for updating it in the cache. You need to call
             <code>Response.clone()</code> to use it twice.
+        </p>
+
+        <h2 id="indexeddb">IndexedDB <a href="#">#</a></h2>
+        <p>
+            To interact with IndexedDB, the recommended approach is to use
+            <a href="https://github.com/jakearchibald/idb" target="_blank"
+                >idb library</a
+            >
+        </p>
+        <button id="open-indexeddb">Open DB</button>
+        <button id="add-item-to-indexeddb">Add item to DB</button>
+        <button id="get-data-from-db">Get data in DB</button>
+        <script type="module">
+            import { openDB } from 'https://cdn.jsdelivr.net/npm/idb@8.0.0/+esm'
+
+            async function createDB() {
+                // Using https://github.com/jakearchibald/idb
+                const db = await openDB('cookbook', 1, {
+                    upgrade(db, oldVersion, newVersion, transaction) {
+                        // Switch over the oldVersion, *without breaks*, to allow the database to be incrementally upgraded.
+                        switch (oldVersion) {
+                            case 0:
+                            // Placeholder to execute when database is created (oldVersion is 0)
+                            case 1:
+                                // Create a store of objects
+                                const store = db.createObjectStore('recipes', {
+                                    // The `id` property of the object will be the key, and be incremented automatically
+                                    autoIncrement: true,
+                                    keyPath: 'id',
+                                })
+                                // Create an index called `name` based on the `type` property of objects in the store
+                                store.createIndex('type', 'type')
+                        }
+                    },
+                })
+
+                return db
+            }
+
+            async function addDataToDB() {
+                const db = await createDB()
+                const cookies = {
+                    name: 'Chocolate chips cookies',
+                    type: 'dessert',
+                    cook_time_minutes: 25,
+                }
+                const tx = await db.transaction('recipes', 'readwrite')
+                const store = tx.objectStore('recipes')
+                store.add(cookies)
+                await tx.done
+            }
+
+            async function getData() {
+                const db = await createDB()
+                const tx = await db.transaction('recipes', 'readonly')
+                const store = tx.objectStore('recipes')
+                // Because in our case the `id` is the key, we would
+                // have to know in advance the value of the id to
+                // retrieve the record
+                const data = await store.getAll()
+                return data
+            }
+
+            addEventListenerToElement('open-indexeddb', 'click', (event) =>
+                createDB()
+            )
+
+            addEventListenerToElement(
+                'add-item-to-indexeddb',
+                'click',
+                (event) => addDataToDB()
+            )
+
+            addEventListenerToElement('get-data-from-db', 'click', (event) =>
+                getData().then((result) => alert(JSON.stringify(result)))
+            )
+        </script>
+
+        <h3>Storage manager</h3>
+        <p>
+            Browsers allow much disk space to be used by sites. Space used by
+            the website consitutes of Cache Storage, Indexed DB, Web Storage and
+            even service worker file.
+        </p>
+        <p>
+            There is <code>StorageManager</code> API to get some info - how much
+            space the site uses, how much is left to use.
+        </p>
+        <button id="get-storage-info">Get Storage Information</button>
+        <script>
+            addEventListenerToElement('get-storage-info', 'click', (event) => {
+                if (navigator.storage && navigator.storage.estimate) {
+                    navigator.storage.estimate().then((quota) => {
+                        // quota.usage -> Number of bytes used.
+                        // quota.quota -> Maximum number of bytes available.
+                        const percentageUsed = (quota.usage / quota.quota) * 100
+                        const remaining = quota.quota - quota.usage
+                        alert(
+                            `You've used ${percentageUsed} % of the available storage.\n\n` +
+                                `You can write up to ${remaining} more bytes.`
+                        )
+                    })
+                } else {
+                    alert('Information not available')
+                }
+            })
+        </script>
+
+        <p>
+            Browser can be asked to prsist the data stored in browsser's
+            whatever storage (inlcuding service workers), to not be removed upon
+            long inactivity (no usage of the data) or on storage pressure. Users
+            can still forcibly remove the data, but browser will persist data
+            (when asked and granted).
+        </p>
+        <p>
+            To request peristent storage, we need to call
+            <code>StorageManager.persist()</code> method, which can be accessed
+            with <code>navigator.storage</code> object. For example:
+        </p>
+        <pre><code class='block-code'>async function persistData() {
+  if (navigator.storage && navigator.storage.persist) {
+    const result = await navigator.storage.persist();
+    console.log(`Data persisted: ${result}`);
+  }
+}</code></pre>
+        <p>
+            You can also check if persistent storage is already granted in the
+            current origin by calling <code>StorageManager.persisted()</code>.
         </p>
     </body>
 </html>

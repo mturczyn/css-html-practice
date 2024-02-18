@@ -11,5 +11,8 @@
     "author": "Michal Turczyn",
     "devDependencies": {
         "browser-sync": "^2.29.3"
+    },
+    "dependencies": {
+        "idb": "^8.0.0"
     }
 }
