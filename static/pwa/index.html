@@ -24,6 +24,7 @@
             <li><a href="#serving">Serving repsonse from service worker</a></li>
             <li><a href="#indexeddb">IndexedDB</a></li>
             <li><a href="#web-app-manifest">Web App Manifest</a></li>
+            <li><a href="#installation-prompt">Installation Prompt</a></li>
         </ul>
 
         <h2 id="app-design">App design <a href="#">#</a></h2>
@@ -377,6 +378,131 @@
             is linked in root page (<code>rel="manifest"</code> attribute on
             <code>link</code> element suffices for correct linking the manifest
             file).
+        </p>
+        <p style="font-weight: bold">
+            Manifest file should be linked to from every HTML page.
+        </p>
+
+        <h3>Splash Screen</h3>
+        <p>
+            When installed on Android, for instance, fields from manifest file
+            are used to create splash screen (shown when launching app). Here is
+            a breakdown:
+        </p>
+        <img src="../android_splash_screen_and_manifest.png" width="100%" />
+
+        <p>
+            Safari on iOS and iPadOS does not use the web app manifest to
+            generate splash screens. Instead, they use an image linked from a
+            proprietary
+            <code>&lt;link&gt;</code> element similar to how they handle icons.
+        </p>
+
+        <h3>Extended, optional fields</h3>
+        <p>Below fields are optional in manifest file:</p>
+        <dl>
+            <dt><code>lang</code></dt>
+            <dd>Primary language of the manifest's values.</dd>
+            <dt><code>dir</code></dt>
+            <dd>The direction to display direction-capable manifest fields.</dd>
+            <dt><code>oreitnation</code></dt>
+            <dd>
+                Desired orientation for the app once installed. For instance, a
+                game may set this to request a landscape-only orientation.
+            </dd>
+        </dl>
+
+        <h3>Promotional fields</h3>
+        <p>
+            Such manifest file's fields are used to provide promotional
+            information about PWA, for instance, in install flows, listings and
+            search results:
+        </p>
+        <dl>
+            <dt><code>description</code></dt>
+            <dd>An explanation of what PWA does.</dd>
+            <dt><code>screenshots</code></dt>
+            <dd>
+                Array of screenshot objects with <code>src</code>,
+                <code>type</code> and <code>sizes</code> (similar to the
+                <code>icons</code> object) intented to showcase the PWA. There
+                are no size restrictions.
+            </dd>
+            <dt><code>categories</code></dt>
+            <dd>
+                Array of categories the PWA should belong to beused as hints for
+                listings. These values are typically lowercase.
+            </dd>
+            <dt><code>iarc_rating_id</code></dt>
+            <dd>
+                The International Age Rating Coalition certification code for
+                the PWA, if you have one. It is intented to be used to determine
+                which ages your PWA is appropriate for.
+            </dd>
+        </dl>
+        <p>
+            Installation experience can be greatly enhanced when using
+            promotional fields. On Android, for example, if your PWA is
+            installable and you provide values for at least
+            <code>description</code> and <code>screenshots</code> fields, the
+            installation dialog experience transforms from a simple "Add to the
+            home screen" info bar, to a richer installation dialog similar to
+            the one from an app store.
+        </p>
+
+        <h2 id="installation-prompt">Installation Prompt <a href="#">#</a></h2>
+        <p>
+            Depending on OS and browser, and on manifest file (promotional
+            files), browser can show simple bar to install the app, enhanced UI
+            using promotional fields to create installation dialog (as for
+            native apps).
+        </p>
+        <p>
+            More advanced technique is to listen to
+            <code>beforeinstallprompt</code>, which is fired by the browser,
+            when it detects that the page is installable (so passes
+            installability criteria for PWAs).
+        </p>
+        <p>Here's small implementation:</p>
+        <pre><code class="block-code">// This variable will save the event for later use.
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevents the default mini-infobar or install dialog
+  // from appearing on mobile
+  e.preventDefault();
+  // Save the event because you'll need to trigger it later.
+  deferredPrompt = e;
+  // Show your customized install prompt for your PWA
+  // Your own UI doesn't have to be a single element, you
+  // can have buttons in different locations, or wait to prompt
+  // as part of a critical journey.
+  showInAppInstallPromotion();
+});</code></pre>
+        <p class="caution">CAUTION: Not all browsers support this event.</p>
+
+        <p>
+            To prompot user for installation, use
+            <code>deferredPrompt.prompt()</code> method. But this method can be
+            called only once. If user dismisses it, it needs to wait until next
+            time, when <code>beforeinstallprompt</code> event is fired.
+        </p>
+        <p>The event won't fire when:</p>
+        <ul>
+            <li>the user has already installed the current PWA,</li>
+            <li>the app does not pass PWA installation criteria,</li>
+            <li>
+                the PWA is not installable on the current device for other
+                reasons (for example, a device in kiosk mode or without
+                permissions).
+            </li>
+        </ul>
+        <p>To see user's choice, we can use below code:</p>
+        <pre><code class="block-code">const { outcome } = await deferredPrompt.userChoice;</code></pre>
+        <p class="remark">
+            Chromium browsers trigger the <code>appinstalled</code> event on the
+            <code>window</code> object. The event is fired when the user accepts
+            the install, whether action was triggered by a custom install button
+            or by the browser.
         </p>
     </body>
 </html>

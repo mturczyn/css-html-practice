@@ -9,6 +9,18 @@
     src: url('fonts/roboto-regular.woff2') format('woff2');
 }
 
+p.caution {
+    background: #feefe3;
+    color: #b31412;
+    padding: 1ch;
+}
+
+p.remark {
+    background: #e8f0fe;
+    color: #303f9f;
+    padding: 1ch;
+}
+
 html {
     font-family: Roboto, sans-serif;
     font-size: calc(0.1rem + 1.5vw);

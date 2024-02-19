@@ -28,5 +28,7 @@
             "type": "image/png",
             "sizes": "512x512"
         }
-    ]
+    ],
+    "lang": "en-US",
+    "dir": "ltr"
 }

@@ -19,3 +19,8 @@
         background: greenyellow;
     }
 }
+
+dl dt:not(:first-of-type) {
+    margin-top: 1ch;
+    border-top: 1px solid black;
+}
