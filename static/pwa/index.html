@@ -25,6 +25,16 @@
             <li><a href="#indexeddb">IndexedDB</a></li>
             <li><a href="#web-app-manifest">Web App Manifest</a></li>
             <li><a href="#installation-prompt">Installation Prompt</a></li>
+            <li>
+                <a href="#detecting-pwa-on-mobile-platforms"
+                    >Detecting a PWA on Apple mobile platforms</a
+                >
+            </li>
+            <li>
+                <a href="#full-screen-on-apple"
+                    >Full screen support for PWA on Apple mobile platforms</a
+                >
+            </li>
         </ul>
 
         <h2 id="app-design">App design <a href="#">#</a></h2>
@@ -395,8 +405,25 @@
             Safari on iOS and iPadOS does not use the web app manifest to
             generate splash screens. Instead, they use an image linked from a
             proprietary
-            <code>&lt;link&gt;</code> element similar to how they handle icons.
+            <code>&lt;link&gt;</code> element similar to how they handle icons:
         </p>
+        <code class="block-code"
+            >&lt;link rel="apple-touch-startup-image"
+            href="ios-startup.png"&gt;</code
+        >
+        <p>
+            The challenge is that the startup image must have the exact window
+            size that your PWA will have on opening. So, different iOS and
+            iPadOS devices will need different images.
+        </p>
+        <p>
+            Different versions of the launch image can be set with a media query
+            inside the media attribute:
+        </p>
+        <pre><code class="block-code">&lt;link rel="apple-touch-startup-image" href="ios-startup.png"
+      media="orientation: portrait"&gt;
+&lt;link rel="apple-touch-startup-image" href="ios-startup-landscape.png"
+      media="orientation: landscape"&gt;</code></pre>
 
         <h3>Extended, optional fields</h3>
         <p>Below fields are optional in manifest file:</p>
@@ -449,6 +476,15 @@
             home screen" info bar, to a richer installation dialog similar to
             the one from an app store.
         </p>
+
+        <h4><code>shortcuts</code> in manifest file</h4>
+        <p>
+            We can enhance PWA by adding shortcuts in manifest file, which add
+            folliwng shortcuts to "quick menu" in task bar (on Windows and
+            Android)
+        </p>
+
+        <img src="../images/pwa_shortcuts.png" />
 
         <h2 id="installation-prompt">Installation Prompt <a href="#">#</a></h2>
         <p>
@@ -504,5 +540,44 @@ window.addEventListener('beforeinstallprompt', (e) => {
             the install, whether action was triggered by a custom install button
             or by the browser.
         </p>
+
+        <h2 id="detecting-pwa-on-mobile-platforms">
+            Detecting a PWA on Apple mobile platforms <a href="#">#</a>
+        </h2>
+
+        <p>
+            To avoid reading user agent string, we can check
+            <code>navigator.standalone</code> property, which is available only
+            on the WebKit engine on iOS and iPadOS.
+        </p>
+
+        <ul>
+            <li>
+                <code>navigator.standalone</code> is <code>undefined</code> -
+                user is neither on iOS or iPadOs
+            </li>
+            <li>
+                <code>navigator.standalone</code> is <code>false</code> - user
+                opened PWA in browser
+            </li>
+            <li>
+                <code>navigator.standalone</code> is <code>trye</code> - user is
+                using PWA as standalone app.
+            </li>
+        </ul>
+
+        <h2 id="full-screen-on-apple">
+            Full screen support for PWA on Apple mobile platforms
+            <a href="#">#</a>
+        </h2>
+        <p>
+            Apple does not suport <code>display: fullscreen</code>, as Android
+            does. In order to provide this experience we need to use
+            <code>meta</code> tag:
+        </p>
+        <code class="block-code"
+            >&lt;meta name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"&gt;</code
+        >
     </body>
 </html>

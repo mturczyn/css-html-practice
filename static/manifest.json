@@ -29,6 +29,18 @@
             "sizes": "512x512"
         }
     ],
+    "shortcuts": [
+        {
+            "name": "PWA",
+            "short_name": "PWA",
+            "url": "/pwa"
+        },
+        {
+            "name": "Responsive design",
+            "short_name": "Responsive design",
+            "url": "/responsive-design"
+        }
+    ],
     "lang": "en-US",
     "dir": "ltr"
 }
