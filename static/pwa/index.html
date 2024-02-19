@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="manifest" href="/manifest.json" />
         <script src="../index.js"></script>
         <link href="./pwa.css" rel="stylesheet" />
         <link href="../styles.css" rel="stylesheet" />
@@ -22,6 +23,7 @@
             <li><a href="#cache-storage-api">Cache Storage API</a></li>
             <li><a href="#serving">Serving repsonse from service worker</a></li>
             <li><a href="#indexeddb">IndexedDB</a></li>
+            <li><a href="#web-app-manifest">Web App Manifest</a></li>
         </ul>
 
         <h2 id="app-design">App design <a href="#">#</a></h2>
@@ -363,6 +365,18 @@
             to instruct the browser/system to use that icon as application icon.
             If not specified, icon will be screenshot of the PWA at the moment
             of installation.
+        </p>
+
+        <h2 id="web-app-manifest">Web App Manifest <a href="#">#</a></h2>
+        <p>
+            Manifest file defines how the app should behave, when installed as
+            native app. This file should have
+            <code>.webmanifest</code> extension, but in general
+            <code>manifest.json</code> is used broadly, as long as it is linked
+            from HTML correctly. One can manifest file for this page and how it
+            is linked in root page (<code>rel="manifest"</code> attribute on
+            <code>link</code> element suffices for correct linking the manifest
+            file).
         </p>
     </body>
 </html>
