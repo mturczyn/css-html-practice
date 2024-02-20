@@ -677,6 +677,28 @@ const content = await file.text();</code></pre>
                 alert('Successfully written contents to ' + handle.name)
             })
         </script>
+        <h3>Contacts</h3>
+        <p>
+            On mobile phones, we can also access
+            <a
+                href="https://developer.mozilla.org/docs/Web/API/Contact_Picker_API"
+                >Contact Picker API</a
+            >. But it requires HTTPS, but luckily we have it here :).
+        </p>
+        <script>
+            function getContacts() {
+                const properties = ['name', 'email', 'tel']
+                const options = { multiple: true }
+                navigator.contacts
+                    .select(properties, options)
+                    .then((contacts) =>
+                        alert('Chosen contacts:\n\n' + JSON.stringify(contacts))
+                    )
+                    .catch((error) => alert(JSON.stringify(error)))
+            }
+        </script>
+
+        <button onclick="getContacts()">Pick Contacts Demo</button>
 
         <h2 id="window-management">Window Management <a href="#">#</a></h2>
         <p>
