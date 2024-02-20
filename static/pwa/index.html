@@ -35,6 +35,9 @@
                     >Full screen support for PWA on Apple mobile platforms</a
                 >
             </li>
+            <li><a href="#detection">Detection</a></li>
+            <li><a href="#os-integration">OS Intergration</a></li>
+            <li><a href="#window-management">Window Management</a></li>
         </ul>
 
         <h2 id="app-design">App design <a href="#">#</a></h2>
@@ -579,5 +582,126 @@ window.addEventListener('beforeinstallprompt', (e) => {
             >&lt;meta name="apple-mobile-web-app-status-bar-style"
             content="black-translucent"&gt;</code
         >
+
+        <h2 id="detection">Detection <a href="#">#</a></h2>
+        <p>We can detect various things regarding PWA:</p>
+        <ul>
+            <li>installation invitation dialog status and result,</li>
+            <li id="appinstalled-event-note">
+                installation finished (by listening to
+                <code>appinstalled</code> event), this should be highlighted
+                when event is triggered (install the app to see effect),
+            </li>
+            <li>navgiation transfer from browser to PWA and conversely,</li>
+            <li>PWA installation status,</li>
+            <li>related apps installed from and app store.,</li>
+        </ul>
+        <p>
+            For example, press <button id="detect-app-type">BUTTON</button> to
+            check where this page is viewed (PWA or browser).
+        </p>
+        <script>
+            window.addEventListener('appinstalled', () => {
+                console.log('PWA installed!')
+                let el = document.getElementById('appinstalled-event-note')
+                if (!el) {
+                    return
+                }
+                el.style.background = 'yellowgreen'
+                el.style.fontWeight = 'bolder'
+                el.style.padding = '0.5ch'
+            })
+
+            addEventListenerToElement('detect-app-type', 'click', (event) => {
+                let displayMode = 'browser tab (probably not PWA)'
+                if (window.matchMedia('(display-mode: standalone)').matches) {
+                    displayMode = 'standalone (probably PWA)'
+                }
+                // Log launch display mode to analytics
+                alert(`DISPLAY_MODE_LAUNCH: ${displayMode}`)
+            })
+        </script>
+
+        <h2 id="os-integration">OS Intergration <a href="#">#</a></h2>
+        <p>
+            In web apps we can leverage
+            <a href="https://web.dev/file-system-access"
+                >File System Access API</a
+            >, as follows:
+        </p>
+        <pre><code class="block-code">// Have the user select a file.
+const [ handle ] = await window.showOpenFilePicker();
+// Get the File object from the handle.
+const file = await handle.getFile();
+// Get the file content.
+// Also available, slice(), stream(), arrayBuffer()
+const content = await file.text();</code></pre>
+
+        <button id="peek-file">Peek the file</button>
+        <hr />
+        <label
+            >Enter contents to save to file:<br /><textarea
+                style="height: 4rem; display: block; width: 100%"
+                id="file-contents"
+            ></textarea>
+        </label>
+        <button id="save-file">Peek the file</button>
+        <script>
+            addEventListenerToElement('peek-file', 'click', async () => {
+                // Have the user select a file.
+                const [handle] = await window.showOpenFilePicker()
+                // Get the File object from the handle.
+                const file = await handle.getFile()
+                // Get the file content.
+                // Also available, slice(), stream(), arrayBuffer()
+                // const content = await file.text()
+
+                const fileSlice = await file.slice(0, 100)
+                const content = await fileSlice.text()
+
+                alert('===== Peek of the file =====\n\n' + content)
+            })
+
+            addEventListenerToElement('save-file', 'click', async () => {
+                const [handle] = await window.showOpenFilePicker()
+                // Make a writable stream from the handle.
+                const writable = await handle.createWritable()
+
+                // Write the contents of the file to the stream.
+                let contents = document.getElementById('file-contents').value
+                await writable.write(contents)
+
+                // Close the file and write the contents to disk.
+                await writable.close()
+                console.log(handle)
+                alert('Successfully written contents to ' + handle.name)
+            })
+        </script>
+
+        <h2 id="window-management">Window Management <a href="#">#</a></h2>
+        <p>
+            When PWA is run outside of the browser, we need to manage the window
+            the PWA is displayed in.
+        </p>
+        <p>Here are some examples for standalone window:</p>
+        <button onclick="window.moveTo(0, 0)">moveTo(0, 0)</button>
+        <button onclick="window.resizeTo(1000, 1000)">
+            resizeTo(1000, 1000)
+        </button>
+        <button
+            onclick="window.resizeTo(window.screen.width / 2, window.screen.height);window.moveTo(0, 0)"
+        >
+            To the side (half screen)
+        </button>
+        <p class="remark">
+            On mobile devices, moving or resizing your window won't make any
+            changes on the screen.
+        </p>
+
+        <h3>Screen Details events</h3>
+        <p>
+            Those events, among other, are: <code>screenschange</code> or
+            <code>currentscreenchange</code>.
+        </p>
     </body>
 </html>

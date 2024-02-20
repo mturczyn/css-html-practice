@@ -39,36 +39,36 @@ function produceCssResponse(forCache) {
     return cssResponse
 }
 
-async function addNonExistingCssToCache(requestUrl) {
+async function addNonExistingCssToCache(request) {
     console.log('>>> Setting cache for non-existing response.')
     cache = await caches.open('pwa-practice-assets')
     // We need to create separate object, as response object used
     // to produce return value (as HTTP response for the request)
     // the object MUST NOT be used in other places, such as in cache.
-    await cache.put(requestUrl, produceCssResponse(true))
-    console.log('>>> Added cache for ' + requestUrl)
+    await cache.put(request, produceCssResponse(true))
+    console.log('>>> Added cache for ' + request.url)
 }
 
-async function produceNonExistingCss(requestUrl) {
-    let cachedResponse = await caches.match(requestUrl)
+async function produceNonExistingCss(request) {
+    let cachedResponse = await caches.match(request)
     if (cachedResponse) {
-        console.log('>>> Cache found for ' + requestUrl)
+        console.log('>>> Cache found for ' + request.url)
         return cachedResponse
     }
-    await addNonExistingCssToCache(requestUrl)
+    await addNonExistingCssToCache(request)
     // We can also create simple, plain text responses.
     // const simpleResponse = new Response('Body of the HTTP response')
     return produceCssResponse(false)
 }
 
-async function produceResponseWithCustomCssAndCache(requestUrl) {
-    console.log(`URL requested: ${requestUrl}`)
+async function produceResponseWithCustomCssAndCache(request) {
+    console.log(`URL requested: ${request.url}`)
 
-    if (requestUrl.endsWith('not-existing.css')) {
-        return await produceNonExistingCss(requestUrl)
+    if (request.url.endsWith('not-existing.css')) {
+        return await produceNonExistingCss(request)
     }
 
-    return await fetch(requestUrl)
+    return await fetch(request)
 }
 
 async function tryServeAndFallbackToOffline() {
@@ -78,7 +78,7 @@ async function tryServeAndFallbackToOffline() {
 
 async function respondWith(event) {
     try {
-        return await produceResponseWithCustomCssAndCache(event.request.url)
+        return await produceResponseWithCustomCssAndCache(event.request)
     } catch (error) {
         console.log('>>>', 'ERROR: ', error)
         if (event.request.destination === 'document') {
